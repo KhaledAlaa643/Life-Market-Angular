@@ -1,0 +1,86 @@
+body{
+    background-color: rgb(215, 208, 224);
+    /* height: 5000px; */
+}
+.bg-c1{
+    background:#FF9B02;
+}
+.t-c1{
+    color:#FF9B02;
+}
+.btn-group-vertical{
+    border-radius: 3%;
+    /* color: white; */
+}
+.carousel-inner{
+    border-radius: 1%;
+}
+.sell-but{
+    text-decoration: none;
+    color: #FF9B02;
+    padding-top: 7px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+}
+.sell-but:hover{
+    text-decoration: underline;
+    color: #FF9B02;
+    padding-top: 7px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+}
+.btn-outline-light{
+    border: none;
+    color: black;
+}
+.btn-outline-light:hover{
+    border: none;
+    color: #FF9B02;
+    background-color: white;
+}
+.flex-column{
+    border-radius: 2%;
+    height: 100%;
+}
+.nav-link{
+    color: black;
+    font-size: 13px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+}
+.nav-link:hover{
+    color: #FF9B02;
+}
+.col-2>a>img:hover{
+    box-shadow: 1px 1px 3px black;
+    transform: scale(1.02);
+}
+.col-lg-6>div>a>img:hover{
+    transform: scale(1.02);
+}
+.col-lg-2>div>a>img:hover{
+    transform: scale(1.02);
+}
+.btn-link{
+    color: #FF9B02;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: small;
+    margin: 0px;
+    padding: 0px;
+
+}
+.x{
+    font-size: x-large;
+}
+.mystyle {
+    display: none;
+}
+.foot-bg-1{
+    background-color: rgb(27, 25, 25);
+}
+.foot-bg-2{
+    background-color: rgb(44, 40, 40);
+}

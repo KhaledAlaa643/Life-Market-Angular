@@ -1,0 +1,52 @@
+<div class="container-fluid mt-lg-0 mt-2 mb-5 ">
+
+    <!-- <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Home Page</h1>
+                <p class="lead fw-normal text-white-50 mb-0">The main page for websit</p>
+            </div>
+        </div>
+    </header>
+    <header class="bg-body py-1">
+        <div class="container px-0 px-lg- my-1">
+            <div class="col-2">
+                <img src="../../../assets/s4-1.png" width="100" alt="">
+            </div>
+        </div>
+    </header> -->
+    <!-- <div class="p-0 m-0">
+        <img src="../../../assets/home_bg.jpg" class="w-100 h-50" alt="">
+
+    </div> -->
+
+    <!---------- top body section ---------->
+    
+
+        <!-- <div class="col-2 p-0 d-none d-lg-inline flex-shrink-0 p-3 bg-white rounded" id="ggg">
+            <ul class="list-unstyled ps-0">
+                <li *ngFor="let i of cat, index as n" class="mb-1">
+                    <button (click)="getSubCat(i.id)" class="btn btn-toggle align-items-center rounded collapsed p-0" hide.bs.collapse="true" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#cat'+i.id" aria-expanded="false">
+                        {{i.name}}
+                    </button>
+                    <div class="collapse" [attr.id]="'cat'+i.id">
+                        <ul  class="btn-toggle-nav list-unstyled fw-normal pb-1 small px-2">
+                            <li *ngFor="let it of subCat">
+                                <a href="#" class="link-dark rounded">{{it.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
+
+
+    <!---------- main body section ---------->
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+
+
+</div>
