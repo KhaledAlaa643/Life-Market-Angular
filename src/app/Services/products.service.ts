@@ -18,4 +18,11 @@ export class ProductsService {
   getTopRatingProducts():Observable<Product[]>{
     return this._httpClient.get<Product[]>(`${environment.apiURL}/toprating/products`)
   }
+
+
+  getProductsByCatId(id:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/category/products/${id}`)
+  }
+
+
 }

@@ -8,6 +8,7 @@ import { FooterComponent } from './Components/footer/footer.component'
 import { NotFoundComponent } from './Components/errors/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsListComponent } from './Components/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+    ProductsListComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,9 @@
 
       <div *ngFor="let i of cat" class="col-3 mt-3">
         <h6 class="text-light mb-1">{{i.name}}</h6>
-        <a *ngFor="let it of subCat" href="#" class="text-light d-block" style="font-size: small;">{{it.name}}</a>
+        <ng-container *ngFor="let it of subCat">
+        <a *ngIf="it.cat_id==i.id" href="#" class="text-light d-block" style="font-size: small;">{{it.name}}</a>
+      </ng-container>
       </div>
     </div>
     <hr style="color: lightgrey;" class="m-0 mt-5 mb-2">
