@@ -1,25 +1,30 @@
+
 <div class="container-fluid ">
   <div class="row">
     <div class="col-3">
       <div id="sidebar-wrapper " class="bg-white mt-2">
         <ul class="sidebar-nav p-5 bg-white">
-          <li  class="nav-link active  ">
+          <li class="nav-link active  ">
             <a routerLink="/profile/myaccount" routerLinkActive="active"><i class="fa fa-user" aria-hidden="true"></i>
               My Account</a>
           </li>
           <li class="nav-link mt-3">
-            <a routerLink="/profile/order" routerLinkActive="activ"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <a routerLink="/profile/order" routerLinkActive="activ"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i>
               orders</a>
           </li>
           <li class="nav-link mt-3">
-            <a routerLink="/profile/address" routerLinkActive="active"><i class="fa-sharp fa-solid fa-address-book"></i> Address Book</a>
+            <a routerLink="/profile/address" routerLinkActive="active"><i class="fa-sharp fa-solid fa-address-book"></i>
+              Address Book</a>
           </li>
-        
+
           <li class="nav-link mt-3">
-            <a routerLink="/profile/saveditems" routerLinkActive="active"><i class="fa-solid fa-heart"></i> Saved items</a>
+            <a routerLink="/profile/saveditems" routerLinkActive="active"><i class="fa-solid fa-heart"></i> Saved
+              items</a>
           </li>
           <li class="nav-link mt-3">
-            <a routerLink="/profile/manage" routerLinkActive="active"> <i class="fa-sharp fa-solid fa-gear"></i> Account Management</a>
+            <a routerLink="/profile/manage" routerLinkActive="active"> <i class="fa-sharp fa-solid fa-gear"></i> Account
+              Management</a>
           </li>
           <hr class="mt-5" style="color:rgb(183, 187, 190)">
           <li class="nav-link  mt-3">
@@ -32,9 +37,9 @@
     </div>
     <div class="col-9 bg-white mt-2 mb-2 ">
       <router-outlet></router-outlet>
-   </div>
-   </div>
-<div  class="row" style="background-color: antiquewhite;">
-  <h5 class="text-center p-3 ">Top Selling items</h5>
-</div>
+    </div>
+  </div>
+  <div class="row" style="background-color: antiquewhite;">
+    <h5 class="text-center p-3 ">Top Selling items</h5>
+  </div>
 </div>
