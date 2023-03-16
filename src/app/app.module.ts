@@ -2,28 +2,32 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
-import { HeaderComponent } from './Components/header/header.component'
-import { FooterComponent } from './Components/footer/footer.component'
-import { NotFoundComponent } from './Components/errors/not-found/not-found.component';
-import { HomeComponent } from './Components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
-
+import { RegisterComponent } from './component/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './component/login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    ReactiveFormsModule,
+   HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide :HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

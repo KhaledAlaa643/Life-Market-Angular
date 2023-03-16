@@ -1,26 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RegisterComponent } from './component/register/register.component';
+import { LoginComponent } from './component/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
-import { NotFoundComponent } from './Components/errors/not-found/not-found.component';
-import { HomeComponent } from './Components/home/home.component';
+import { AuthGuard } from './auth.guard';
 
 
+const routes:Routes=[
+  {path:"",redirectTo:"login",pathMatch:'full'},
 
-const routes: Routes = [
-  {path: '', redirectTo:"/main", pathMatch:"full"},
-  {path: 'main', component:MainLayoutComponent, children: [
-    {path: 'home', component:HomeComponent},
-    
-  ]},
-  {path: '**', component:NotFoundComponent}
+    {path:'register',component:RegisterComponent, canActivate: [AuthGuard]},
+    {path:'login',component:LoginComponent}
+
 ];
 
 
+
+
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)]
+
 })
 
-export class AppRoutingModule { }
+
+export class AppRoutingModule {
+
+
+}
