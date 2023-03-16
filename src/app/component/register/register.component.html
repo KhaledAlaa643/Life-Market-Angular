@@ -60,7 +60,7 @@
 
 
             </div>
-           <div *ngIf="password_confirmation.value!=password.value">
+           <div *ngIf="password_confirmation.dirty &&password_confirmation.value!=password.value">
             <p class="alert alert-danger">password not match,again</p>
            </div>
             
@@ -71,7 +71,6 @@
                       [(ngModel)]="user.type"
                       #type="ngModel"
                       class=" form-select form-control form-control-sm" aria-label="Default select example">
-                <option  selected>Open this select menu</option>
                 <option value="User">User</option>
                 <option value="Seller">Seller</option>
               </select> 

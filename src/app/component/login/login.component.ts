@@ -19,7 +19,8 @@ login(){
       
     this.res=data;
     if (this.res['token']) {
-        this.route.navigate(['/register'])
+        // this.route.navigate(['/register'])
+        console.log(this.res)
       }
       else{
         console.log("invaild email or password")
