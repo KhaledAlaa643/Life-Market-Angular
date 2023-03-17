@@ -8,6 +8,12 @@ import { FooterComponent } from './Components/footer/footer.component'
 import { NotFoundComponent } from './Components/errors/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FavItemComponent } from './Components/fav-item/fav-item.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { ProductsComponent } from './Components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+    FavItemComponent,
+    CartComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    ProductDetailsComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
