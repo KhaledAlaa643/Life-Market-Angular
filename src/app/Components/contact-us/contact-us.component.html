@@ -1,5 +1,5 @@
     <!-- Page Header Start -->
-    <div class="container-fluid p-5 mb-5">
+    <div class="container-fluid p-5 mt-0 mt-lg-5">
       <div class="row">
           <div class="col-12 text-center">
               <h1 class="display-4 text-uppercase font-secondary contact mx-auto pb-3">Contact Us</h1>
@@ -10,20 +10,20 @@
 
 
 <!-- Contact Start -->
-    <div class="container-fluid contact position-relative px-5">
+    <div class="container-fluid contact position-relative">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-              <form>
+              <form (submit)="sendMessage()">
                   <div class="row g-3">
                       <div class="col-sm-6">
-                          <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
+                          <input [(ngModel)]="mess.user_name" name="user_name" type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
                       </div>
                       <div class="col-sm-6">
-                          <input type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
+                          <input [(ngModel)]="mess.email" name="email" type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
                       </div>
                       <div class="col-sm-12">
-                          <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
+                          <textarea [(ngModel)]="mess.comment" name="comment" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
                       </div>
                       <div class="col-sm-12">
                           <button class="btn but border-inner w-100 py-3" type="submit">Send Message</button>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="info">
                         <h3>Email Us</h3>
-                        <p>khaledalaaka643@gmail.com</p>
+                        <p>life_market@gmail.com</p>
                     </div>
                 </div> <!-- End card 1 -->
                 <div class="card col-lg-4 col-md-6"> <!-- Start card 2 -->
@@ -51,7 +51,7 @@
                     </div>
                     <div class="info">
                         <h3>Call Us</h3>
-                        <p> 0111 0400 862 </p>
+                        <p> +20100345312 </p>
                     </div>
                 </div> <!-- End card 2 -->
                 <div class="card col-lg-4 col-md-6"> <!-- Start card 3 -->
