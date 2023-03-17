@@ -132,5 +132,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  goToPrdDetails(id:any){
+    this.router.navigate(['main/product/', id]);
+  }
+
 
 }
