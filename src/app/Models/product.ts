@@ -14,3 +14,21 @@ export interface Product {
     sub_cat_id:string,
     user_id:string
 }
+
+export interface Product_Photo {
+    id?:string,
+    path:string,
+    createdAt?:Date,
+    updatedAt?:Date,
+    prd_id:string,
+}
+
+
+export interface Product_Rating {
+    id?:string,
+    review:string,
+    star:number,
+    created_at?:Date,
+    updatedAt?:Date,
+    prd_id:string,
+}

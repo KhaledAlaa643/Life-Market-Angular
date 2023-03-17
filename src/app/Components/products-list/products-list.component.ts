@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategory } from 'src/app/Models/category';
 import { Product } from 'src/app/Models/product';
 import { CategoryiesService } from 'src/app/Services/categoryies.service';
@@ -27,6 +27,7 @@ export class ProductsListComponent implements OnChanges, OnInit {
     private _offerServ: OffersService,    
     public httpclient: HttpClient,
     private activatRoute:ActivatedRoute, 
+    private router:Router,
   ){}
 
 
@@ -109,5 +110,10 @@ export class ProductsListComponent implements OnChanges, OnInit {
         }
       });
     }
+  }
+
+
+  goToPrdDetails(id:any){
+    this.router.navigate(['main/product/', id]);
   }
 }
