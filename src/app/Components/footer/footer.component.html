@@ -33,18 +33,23 @@
         <a href=""><i class="fa-brands fa-youtube fs-4 text-light mx-2"></i></a>
       </div>
     </div>
-    <div class="row d-none d-lg-flex pt-5">
 
+    <div class="row d-none d-lg-flex pt-5">
       <div *ngFor="let i of cat" class="col-3 mt-3">
         <h6 class="text-light mb-1">{{i.name}}</h6>
-        <a *ngFor="let it of subCat" href="#" class="text-light d-block" style="font-size: small;">{{it.name}}</a>
+        <ng-container *ngFor="let it of subCat">
+        <a *ngIf="it.cat_id==i.id" [href]="'/main/products/list/category/'+i.id+'?type=cat'" class="text-light d-block" style="font-size: small;">{{it.name}}</a>
+      </ng-container>
       </div>
     </div>
+
     <hr style="color: lightgrey;" class="m-0 mt-5 mb-2">
+
     <div class="row px-0 mx-0">
       <div class="col-12">
         <p class="text-light d-flex justify-content-center">Copyrights © Are Reserved To ITI</p>
       </div>
     </div>
+
   </div>
 </div>
