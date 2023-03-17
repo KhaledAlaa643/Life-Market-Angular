@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/Models/category';
 import { Offers } from 'src/app/Models/offers';
 import { Product } from 'src/app/Models/product';
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
     private _productServ: ProductsService,
     private _offerServ: OffersService,    
     public httpclient: HttpClient,
+    private router:Router,
   ) {}
 
 
@@ -116,6 +118,18 @@ export class HomeComponent implements OnInit {
         console.log(res);
       }
     });
+  }
+
+
+  goToPrdList(_type:any, id:any){
+    if(_type == "cat"){
+      this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });
+
+    }
+    else{
+      this.router.navigate(['main/products/list', id], { queryParams: { type: _type} });
+    }
+
   }
 
 

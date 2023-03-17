@@ -9,6 +9,9 @@ import { NotFoundComponent } from './Components/errors/not-found/not-found.compo
 import { HomeComponent } from './Components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './Components/products-list/products-list.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsListByCategoryComponent } from './Components/products-list-by-category/products-list-by-category.component';
+import { ProductsSearchComponent } from './Components/products-search/products-search.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import { ProductsListComponent } from './Components/products-list/products-list.
     NotFoundComponent,
     HomeComponent,
     ProductsListComponent,
+    ProductsListByCategoryComponent,
+    ProductsSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

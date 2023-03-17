@@ -8,6 +8,9 @@ body{
 .t-c1{
     color:#FF9B02;
 }
+.btn-success:hover{
+    background:rgb(5, 175, 175);
+}
 .btn-group-vertical{
     border-radius: 3%;
     /* color: white; */

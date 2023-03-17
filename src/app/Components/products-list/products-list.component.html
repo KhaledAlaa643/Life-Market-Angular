@@ -1,1 +1,28 @@
-product list
+<div class="container mt-0 mb-5 p-0 px-0">
+
+    <div *ngIf="prd.length>0" class="row mt-3">
+        <div *ngIf="prd[0].quantity>0" class="card p-0 ">
+            <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+                <h5 class="text-center mt-1">Products</h5>
+            </div>
+            <div class="row  px-3 pb-4">
+                <div *ngFor="let i of prd" class="col-lg-2 col-6 px-0 mt-2">
+                    <a href="#" class="text-muted text-decoration-none">
+                        <div class="card shadow m-2 bg-body rounded h-100 p-1">
+                            <img [src]="'../../../assets/'+i.photo" class="card-img-top p-4" height="200px" alt="...">
+                            <hr class="m-0 mb-2">
+                            <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+                            <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+                            <p *ngIf="i.price_before_discount>0"
+                                class="mx-2 mb-0 text-muted text-decoration-line-through">
+                                EGP
+                                {{i.price_before_discount}}
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
