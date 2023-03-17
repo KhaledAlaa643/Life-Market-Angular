@@ -124,12 +124,15 @@ export class HomeComponent implements OnInit {
   goToPrdList(_type:any, id:any){
     if(_type == "cat"){
       this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });
-
     }
     else{
       this.router.navigate(['main/products/list', id], { queryParams: { type: _type} });
     }
+  }
 
+
+  goToPrdDetails(id:any){
+    this.router.navigate(['main/product/', id]);
   }
 
 
