@@ -6,6 +6,12 @@ import { NotFoundComponent } from './Components/errors/not-found/not-found.compo
 import { HomeComponent } from './Components/home/home.component';
 import { ProductsListComponent } from './Components/products-list/products-list.component';
 import { ProductsListByCategoryComponent } from './Components/products-list-by-category/products-list-by-category.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { ProductsComponent } from './Components/products/products.component';
+import { FavItemComponent } from './Components/fav-item/fav-item.component';
 
 
 
@@ -16,6 +22,13 @@ const routes: Routes = [
     {path: 'products/list/:id', component:ProductsListComponent},
     {path: 'products/list/category/:id', component:ProductsListByCategoryComponent},
     
+    {path: 'product', component:ProductDetailsComponent},
+    {path: 'cart', component:CartComponent},
+    {path: 'about', component:AboutUsComponent},
+    {path: 'contact', component:ContactUsComponent},
+    {path: 'products', component:ProductsComponent},
+    {path: 'wishlist', component:FavItemComponent},
+
   ]},
   {path: '**', component:NotFoundComponent}
 ];
