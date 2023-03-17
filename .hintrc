@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/name-role-value": "off",
+    "axe/text-alternatives": "off",
+    "no-inline-styles": "off",
+    "compat-api/css": "off",
+    "axe/forms": "off",
+    "axe/parsing": "off",
+    "disown-opener": "off"
+  }
+}

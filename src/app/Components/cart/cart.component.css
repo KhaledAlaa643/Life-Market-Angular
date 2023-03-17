@@ -1,0 +1,17 @@
+
+.but{
+  background-color: darkcyan;
+  color: white;
+  height: 100%;
+}
+.icon{
+  color: darkcyan;
+}
+.perc{
+color: darkgoldenrod;
+outline: none;
+border: none;
+}
+.btn-primary{
+  border: none;
+}

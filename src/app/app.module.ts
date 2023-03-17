@@ -12,6 +12,12 @@ import { ProductsListComponent } from './Components/products-list/products-list.
 import { FormsModule } from '@angular/forms';
 import { ProductsListByCategoryComponent } from './Components/products-list-by-category/products-list-by-category.component';
 import { ProductsSearchComponent } from './Components/products-search/products-search.component';
+import { FavItemComponent } from './Components/fav-item/fav-item.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { ProductsComponent } from './Components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,12 @@ import { ProductsSearchComponent } from './Components/products-search/products-s
     ProductsListComponent,
     ProductsListByCategoryComponent,
     ProductsSearchComponent,
+    FavItemComponent,
+    CartComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    ProductDetailsComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
