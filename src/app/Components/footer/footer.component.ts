@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category, SubCategory } from 'src/app/Models/category';
 import { CategoryiesService } from 'src/app/Services/categoryies.service';
 
@@ -15,6 +16,7 @@ export class FooterComponent implements OnInit  {
 
   constructor(
     private _categoryServ: CategoryiesService,
+    private router:Router,
   ){}
 
 
@@ -22,15 +24,21 @@ export class FooterComponent implements OnInit  {
     this._categoryServ.getAllCategorys().subscribe({
       next: (res) => {
         this.cat = res;
-        console.log(res);
+        // console.log(res);
       }
     });
-    this._categoryServ.getSubCategorysByCatId(1).subscribe({
+    this._categoryServ.getAllSubCategorys().subscribe({
       next: (res) => {
         this.subCat = res;
-        console.log(res);
+        // console.log(res);
       }
     });
+  }
+
+
+  goToPrdList(_type:any, id:any){
+      this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });
+
   }
   
 }

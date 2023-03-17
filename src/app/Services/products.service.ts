@@ -18,4 +18,36 @@ export class ProductsService {
   getTopRatingProducts():Observable<Product[]>{
     return this._httpClient.get<Product[]>(`${environment.apiURL}/toprating/products`)
   }
+
+
+  getProductsByCatId(id:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/category/products/${id}`)
+  }
+
+
+  getProductsBySubCatId(id:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/sub_categories/${id}`)
+  }
+
+
+  getProductsByOfferId(id:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/offers_products/${id}`)
+  }
+
+
+  // getProductsBySearch(id:any):Observable<Product[]>{
+  //   // return this._httpClient.post<Product[]>(`${environment.apiURL}/search`)
+  //   return this._httpClient.post<Product>(
+  //     `${environment.apiURL}/products/`,
+  //     newPrd,
+  //     {
+  //       headers:new HttpHeaders({
+  //         'accept':"application/json"
+  //       })
+  //     }
+  //   ).pipe(retry(2));
+    
+  // }
+
+
 }

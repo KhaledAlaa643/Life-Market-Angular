@@ -18,4 +18,8 @@ export class CategoryiesService {
   getSubCategorysByCatId(id:any):Observable<SubCategory[]>{
     return this._httpClient.get<SubCategory[]>(`${environment.apiURL}/categories/${id}`)
   }
+
+  getAllSubCategorys():Observable<SubCategory[]>{
+    return this._httpClient.get<SubCategory[]>(`${environment.apiURL}/sub_categories`)
+  }
 }

@@ -1,7 +1,7 @@
 <!---------- Main Header NavBar ---------->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
   <div class="container p-0">
-    <a class="navbar-brand fs-3 fw-bold mx-2 py-1" href="#">
+    <a class="navbar-brand fs-3 fw-bold mx-2 py-1" [routerLink]="['/main/home']">
       <!-- <img src="../../../assets/p10.png" width="30" height="30" alt=""> -->
       <span>Life Market</span>
     </a>
@@ -12,9 +12,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <form class="d-flex ms-5 d-none d-lg-flex" style="width: 60%;">
-        <input class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
+        <input [(ngModel)]="searchInput" name="searchInput" class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
           aria-label="Search">
-        <button class="btn btn-warning bg-c1 shadow text-light px-3 fw-bold" type="submit">SEARCH</button>
+        <button class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" (click)="goToPrdList('search','src')">SEARCH</button>
       </form>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-1">

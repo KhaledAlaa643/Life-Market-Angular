@@ -8,7 +8,7 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner h-100">
           <div class="carousel-item active">
-            <img src="../assets/bg-img.jpg" class="d-block w-100" alt="...">
+            <img src="../assets/bg2-img.png" class="d-block w-100" alt="...">
           </div>
           <button class="carousel-control-prev visually-hidden" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
@@ -32,7 +32,7 @@
     <div class="row card-body">
       <div *ngFor="let i of cat" class="col-3 col-lg-2 px-1">
         <div class="mt-2 p-1">
-          <a href="#" class="text-decoration-none w-100">
+          <a (click)="goToPrdList('cat',i.id)" class="text-decoration-none w-100">
             <img [src]="'../../../assets/'+i.photo" class="w-100 rounded" alt="">
             <p class="card-title text-center text-decoration-none text-dark">{{i.name}}</p>
           </a>
@@ -50,17 +50,18 @@
     <div class="card p-0 ">
       <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
         <h5 class="text-center mt-1">Top Selling</h5>
-        <a href="#" class="p-1">SEE MORE</a>
+        <a (click)="goToPrdList('topSelling','1')" class="p-1">SEE MORE</a>
       </div>
       <div class="row  px-3 pb-4">
         <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
           <a href="#" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-4" alt="...">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
-              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP {{i.price_before_discount}}</p>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
             </div>
           </a>
         </div>
@@ -84,7 +85,7 @@
         <div class="row">
           <div *ngFor="let i of dealsOffer" class="col-sm-12 col-lg-6 px-1">
             <div class="mt-2">
-              <a href="#">
+              <a (click)="goToPrdList('dealsOffer',i.id)">
                 <img [src]="'../../../assets/'+i.photo" class="w-100 rounded" alt="">
               </a>
             </div>
@@ -102,17 +103,18 @@
     <div class="card p-0 ">
       <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
         <h5 class="text-center mt-1">Top Rating</h5>
-        <a href="#" class="p-1">SEE MORE</a>
+        <a (click)="goToPrdList('topRating','1')" class="p-1">SEE MORE</a>
       </div>
       <div class="row  px-3 pb-4">
         <div *ngFor="let i of topRating" class="col-lg-2 col-6 px-0 mt-2">
           <a href="#" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-4" alt="...">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
-              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP {{i.price_before_discount}}</p>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
             </div>
           </a>
         </div>
@@ -132,7 +134,7 @@
         <div class="row">
           <div *ngFor="let i of giftsOffer" class="col-6 col-lg-3 px-1">
             <div class="mt-2">
-              <a href="#">
+              <a (click)="goToPrdList('giftsOffer',i.id)">
                 <img [src]="'../../../assets/'+i.photo" class="w-100" alt="">
               </a>
             </div>
@@ -160,12 +162,12 @@
                 <div class="carousel-inner">
                   <ng-container *ngFor="let i of dailyOffer, index as n">
                     <div *ngIf="n==0" class="carousel-item active">
-                      <a href="#">
+                      <a (click)="goToPrdList('dailyOffer',i.id)">
                         <img [src]="'../../../assets/'+i.photo" class="d-block w-100" alt="...">
                       </a>
                     </div>
                     <div *ngIf="n>0" class="carousel-item">
-                      <a href="#">
+                      <a (click)="goToPrdList('dailyOffer',i.id)">
                         <img [src]="'../../../assets/'+i.photo" class="d-block w-100" alt="...">
                       </a>
                     </div>
@@ -184,6 +186,60 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- products list by category -->
+  <div *ngIf="prdByCat1.length>5" class="row mt-3">
+    <div class="card p-0 ">
+      <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+        <h5 class="text-center mt-1">Sub Category</h5>
+        <a (click)="goToPrdList('cat','1')" class="p-1">SEE MORE</a>
+      </div>
+      <div class="row  px-3 pb-4">
+        <div *ngFor="let i of prd1" class="col-lg-2 col-6 px-0 mt-2">
+          <a href="#" class="text-muted text-decoration-none">
+            <div class="card shadow m-2 bg-body rounded h-100 p-1">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
+              <hr class="m-0 mb-2">
+              <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+              <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- products list by category -->
+  <div *ngIf="prdByCat2.length>5" class="row mt-3">
+    <div class="card p-0 ">
+      <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+        <h5 class="text-center mt-1">Sub Category</h5>
+        <a (click)="goToPrdList('cat','2')" class="p-1">SEE MORE</a>
+      </div>
+      <div class="row  px-3 pb-4">
+        <div *ngFor="let i of prd2" class="col-lg-2 col-6 px-0 mt-2">
+          <a href="#" class="text-muted text-decoration-none">
+            <div class="card shadow m-2 bg-body rounded h-100 p-1">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
+              <hr class="m-0 mb-2">
+              <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+              <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>

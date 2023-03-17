@@ -17,15 +17,7 @@ export class MainLayoutComponent implements OnInit {
   constructor(private _categoryServ:CategoryiesService){}
 
   ngOnInit(): void {
-    this.filterCat = this._categoryServ.getAllCategorys().subscribe({
-      next:(res)=>{
-        this.cat = res;
-        console.log(res);
         
-      }
-    })
-
-    
   }
 
 
