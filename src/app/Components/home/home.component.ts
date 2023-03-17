@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
         this.prd1[3] = this.prdByCat1[3];
         this.prd1[4] = this.prdByCat1[4];
         this.prd1[5] = this.prdByCat1[5];
-        console.log(res);
+        // console.log(res);
       }
     });
     this._productServ.getProductsByCatId(2).subscribe({
@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit {
         this.prd2[3] = this.prdByCat2[3];
         this.prd2[4] = this.prdByCat2[4];
         this.prd2[5] = this.prdByCat2[5];
-        console.log(res);
+        // console.log(res);
       }
     });
   }
