@@ -17,12 +17,14 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     var reqWithToken = request
     let token = this.authservice.isLoggedIn();
-    console.log(token)
-
+    let userId= this.authservice.getUserId();
+    // console.log(token)
+    // console.log(userId)
     if (token) {
-      console.log('hi')
+      // console.log('hi')
       let header = new HttpHeaders({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        userid:` ${userId}`
 
       })
       reqWithToken = request.clone({ headers:header })

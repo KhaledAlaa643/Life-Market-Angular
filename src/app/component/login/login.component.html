@@ -28,6 +28,9 @@
                 <div class="alert alert-danger" [hidden]="!wrongCredentials">
                   {{wrongCredentials}}
                 </div>
+                <div class="form-group">
+                  <a routerLink="/reset-Password-Request">Forgot password ?</a>
+                </div>
             <div class="form-group">
                     <button type="submit" [disabled]="!myform.valid" class="btn btn-info btn-lg btn-block">Login Now</button>
                 </div>

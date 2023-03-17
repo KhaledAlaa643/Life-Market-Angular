@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './component/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    RequestPasswordResetComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,14 +22,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ReactiveFormsModule,
    HttpClientModule,
 
+
   ],
   providers: [
     {
       provide :HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }
-  ],
+    }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

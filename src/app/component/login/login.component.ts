@@ -22,7 +22,11 @@ login(){
     this.res=data;
     if (this.res['token']) {
       console.log(this.res)
+
               localStorage.setItem('token',this.res['token'])
+              localStorage.setItem('userId',this.res['user']['id'])
+
+
 
         this.route.navigate(['/register'])
       }
