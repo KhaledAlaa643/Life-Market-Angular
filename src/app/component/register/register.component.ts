@@ -27,6 +27,7 @@ export class RegisterComponent   {
 
 
   createUser() {
+    this.user.type = "user";
     this.userserve.createUser(this.user).subscribe({
       next: (data) => { 
         // console.log(data)

@@ -25,6 +25,7 @@ login(){
 
               localStorage.setItem('token',this.res['token'])
               localStorage.setItem('userId',this.res['user']['id'])
+              localStorage.setItem('userName',this.res['user']['first_name'])
 
 
 

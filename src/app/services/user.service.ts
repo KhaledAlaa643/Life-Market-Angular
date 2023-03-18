@@ -25,9 +25,9 @@ export class UserService {
     })
   }
 
-  logout() {
+  logout(): Observable<any> {
 
-    this.httpservice.post('http://localhost:8000/api/logout', {}, {
+    return this.httpservice.post<any>('http://localhost:8000/api/logout', {}, {
       headers: new HttpHeaders({
         accept: 'application/json'
       })

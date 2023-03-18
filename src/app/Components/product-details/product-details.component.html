@@ -8,7 +8,7 @@
             <img *ngFor="let i of prd" [src]="'../../../assets/'+photo" id="main_product_image" width="350" />
           </div>
           <div class="thumbnail_images">
-            <ul id="thumbnail">
+            <ul class="px-0" id="thumbnail">
               <li>
                 <img *ngFor="let i of prd" (click)="changeImage(i.photo)" [src]="'../../../assets/'+i.photo" width="70" />
               </li>
@@ -23,7 +23,7 @@
       <div class="col-md-6">
         <div *ngFor="let i of prd" class="p-5 right-side">
           <div class="d-flex justify-content-between align-items-center">
-            <h3 class="mt-5">{{prd[0].name}}</h3>
+            <h3 class="mt-1 mt-lg-5">{{prd[0].name}}</h3>
           </div>
           <div class="mt-2 pr-3 content">
             <p>{{prd[0].description}}</p>
@@ -42,7 +42,7 @@
 
           <div class="buttons d-flex flex-row mt-5 gap-3">
             <button class="btn btn-primary bg px-4">Add To Cart</button>
-            <button class="btn btn-secondary text-white px-4">Go Back</button>
+            <button [routerLink]="['/main/home']" class="btn btn-secondary text-white px-4">Go Back</button>
           </div>
 
         </div>
@@ -50,8 +50,8 @@
     </div>
   </div>
 </div>
-<section style="background-color: #f7f6f6;">
-  <div class="container my-5 py-5 text-dark">
+<section>
+  <div class="container my-lg-5 py-4 text-dark">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
         <div class="d-flex justify-content-between align-items-center mb-4">

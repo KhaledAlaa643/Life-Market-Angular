@@ -38,6 +38,8 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
+
+    {path: '**', component:NotFoundComponent}
   ]},
 
   {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
@@ -52,7 +54,6 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'reset-Password-Request',component:RequestPasswordResetComponent},
   
-  {path: '**', component:NotFoundComponent}
 ];
 
 
