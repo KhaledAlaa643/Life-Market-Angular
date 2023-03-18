@@ -26,11 +26,11 @@
               <i class="fa-regular fa-user fs-5 mx-2"></i>Admin
             </span>
             <span *ngIf="!isLoggedout">
-              <i class="fa-solid fa-user-check fs-5 mx-2"></i>Admin
+              <i class="fa-solid fa-user-check fs-5 mx-2"></i>{{userName}}
             </span>
           </button>
           <ul class="dropdown-menu" style="width: 190px;">
-            <button *ngIf="isLoggedout" [routerLink]="['/login']" type="button" class="btn btn-warning shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">SIGN IN</button>
+            <button *ngIf="isLoggedout" [routerLink]="['/login']" type="button" class="btn btn-success shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">SIGN IN</button>
             <li *ngIf="isLoggedout">
               <hr class="dropdown-divider">
             </li>
@@ -46,7 +46,7 @@
             <li *ngIf="!isLoggedout">
               <hr class="dropdown-divider">
             </li>
-            <button *ngIf="!isLoggedout" (click)="logoutFun()" [routerLink]="['/login']" type="button" class="btn btn-warning shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">LOGOUT</button>
+            <button *ngIf="!isLoggedout" (click)="logoutFun()" [routerLink]="['/login']" type="button" class="btn btn-success shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">LOGOUT</button>
                   
           </ul>
         </li>

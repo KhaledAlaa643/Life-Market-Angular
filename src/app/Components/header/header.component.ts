@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   product:Product = {} as Product;
   searchInput:any;
   isLoggedout: boolean = true;
+  userName!:any;
   
 
   constructor(
@@ -26,6 +27,8 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('userName');
+    
     if(this._authServ.isLoggedIn()!=null){
       this.isLoggedout = false;
     }
@@ -37,6 +40,7 @@ export class HeaderComponent implements OnInit {
       //  console.log(res)
        localStorage.removeItem('token');
        localStorage.removeItem('userId');
+       localStorage.removeItem('userName');
        this.router.navigate(['/login'])
       },
       error:(err:any)=>{

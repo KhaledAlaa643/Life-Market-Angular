@@ -4,18 +4,19 @@
       <div class="col-md-8 col-lg-7 col-xl-6 d-none d-sm-block">
         <img src="../../../assets/images/5464026.jpg" class="img-fluid" alt="site image">
       </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 mt-0">
 
-        <div class="signup-form  ">
+        <div class="signup-form  pt-0">
 
 
           <form #myform="ngForm" autocomplete="off" (ngSubmit)="createUser()">
-            <h2>Sign Up</h2>
-            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+            <h2 class="mb-3">SIGN UP</h2>
+            <p class="hint-text mb-4">Create your account. It's free and only takes a minute.</p>
             <div class="form-group">
               <div class="row">
-                <div class="col"><input #first_name="ngModel" type="text" [(ngModel)]="user.first_name"
-                    class="form-control" name="first_name" placeholder="First Name" required="required"
+                <div class="col">
+                  <input #first_name="ngModel" type="text" [(ngModel)]="user.first_name"
+                    class="form-control py-3" name="first_name" placeholder="First Name" required="required"
                     pattern="^[\u0621-\u064AA-Za-z]+([ ][\u0621-\u064AA-Za-z]+)*$"></div>
                 <div [hidden]="first_name.valid || first_name.pristine" class="text-danger">
                   <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!first_name.errors?.['required']">First
@@ -24,7 +25,7 @@
                     Invalid First Name</p>
                 </div>
                 <div class="col"><input #last_name="ngModel" type="text" [(ngModel)]="user.last_name"
-                    class="form-control" name="last_name" placeholder="Last Name" required="required"
+                    class="form-control py-3" name="last_name" placeholder="Last Name" required="required"
                     pattern="^[\u0621-\u064AA-Za-z]+([ ][\u0621-\u064AA-Za-z]+)*$"></div>
               </div>
               <div [hidden]="last_name.valid || last_name.pristine" class="text-danger">
@@ -35,7 +36,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="email" [(ngModel)]="user.email" #email="ngModel" class="form-control" name="email"
+              <input type="email" [(ngModel)]="user.email" #email="ngModel" class="form-control py-3" name="email"
                 placeholder="Email" required="required"
                 pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$">
               <div [hidden]="email.valid || email.pristine" class="text-danger">
@@ -47,8 +48,8 @@
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" #phone="ngModel" [(ngModel)]="user.phone" name="Phone"
-                placeholder="phone number" required="required" pattern="^01[0-2,5]{1}[0-9]{8}$">
+              <input type="text" class="form-control py-3" #phone="ngModel" [(ngModel)]="user.phone" name="Phone"
+                placeholder="Phone Number" required="required" pattern="^01[0-2,5]{1}[0-9]{8}$">
               <div [hidden]="phone.valid || phone.pristine" class="text-danger">
                 <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!phone.errors?.['required']"> Phone Is
                   Required</p>
@@ -58,7 +59,7 @@
             </div>
 
             <div class="form-group">
-              <input type="password" #password="ngModel" class="form-control" [(ngModel)]="user.password"
+              <input type="password" #password="ngModel" class="form-control py-3" [(ngModel)]="user.password"
                 name="password" placeholder="Password" required="required" title="
                   please password should be At least 8 characters long,
                   at least one uppercase letter,
@@ -73,7 +74,7 @@
                 </div>
             
             <div class="form-group">
-              <input type="password" #password_confirmation="ngModel" class="form-control" name="password_confirmation"
+              <input type="password" #password_confirmation="ngModel" class="form-control py-3" name="password_confirmation"
                 [(ngModel)]="user.password_confirmation" placeholder="Confirm Password" required="required">
               <div [hidden]="password_confirmation.valid || password_confirmation.pristine" class="text-danger">
                 <p class="text-danger ps-1" style="font-size: 14px;"
@@ -87,17 +88,17 @@
             
              
            
-            <div class="form-group">
-              <select name="type"
+            <!-- <div class="form-group"> -->
+              <!-- <select name="type"
                       [(ngModel)]="user.type"
                       #type="ngModel"
-                      class=" form-select form-control form-control-sm" aria-label="Default select example">
-                <option value="User">User</option>
-                <option value="Seller">Seller</option>
-              </select>
+                      class=" form-select form-control form-control-sm d-none" aria-label="Default select example">
+                <option value="user">User</option> -->
+                <!-- <option value="Seller">Seller</option> -->
+              <!-- </select> -->
               <!-- <input [(ngModel)]="user.type" #type="ngModel" type="text" class="form-control d-none" name="type"
                 value="user"> -->
-            </div>
+            <!-- </div> -->
 
             <div class="form-group">
               <button type="submit" [disabled]="!myform.valid" class="btn btn-info btn-lg btn-block">Register
@@ -106,7 +107,10 @@
           </form>
 
           <div class="text-center ">Already have an account? <a href="../login//login.component.html">Sign In</a></div>
+          <div class="text-center ">Go Back To <a [routerLink]="['/main/home']">Home</a>
+          </div>
         </div>
+        
       </div>
     </div>
   </div>
