@@ -11,6 +11,9 @@ body{
 .t-c1{
     color:#FF9B02;
 }
+a{
+    cursor:pointer;
+}
 .btn-group-vertical{
     border-radius: 3%;
     /* color: white; */

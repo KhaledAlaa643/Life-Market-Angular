@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
-import { Product } from '../Models/product';
+import { Product, Product_Photo, Product_Rating } from '../Models/product';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -34,6 +34,22 @@ export class ProductsService {
     return this._httpClient.get<Product[]>(`${environment.apiURL}/offers_products/${id}`)
   }
 
+
+  getProductsId(id:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/productdetails/${id}`)
+  }
+
+
+  getProductsPhoto(id:any):Observable<Product_Photo[]>{
+    return this._httpClient.get<Product_Photo[]>(`${environment.apiURL}/gallrey/productdetails/${id}`)
+  }
+
+
+  getProductsRating(id:any):Observable<Product_Rating[]>{
+    return this._httpClient.get<Product_Rating[]>(`${environment.apiURL}/review/productdetails/${id}`)
+  }
+
+  
 
   // getProductsBySearch(id:any):Observable<Product[]>{
   //   // return this._httpClient.post<Product[]>(`${environment.apiURL}/search`)

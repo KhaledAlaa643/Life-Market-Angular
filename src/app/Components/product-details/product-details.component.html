@@ -1,73 +1,48 @@
-<div class="container mt-5 mb-5">
+<div class="container mt-4 mb-4 px-0">
   <div class="card">
     <div class="row g-0">
       <div class="col-md-6 border-end">
         <div class="d-flex flex-column justify-content-center">
           <div class="main_image">
-            <img 
-              src="https://i.imgur.com/TAzli1U.jpg"
-              id="main_product_image"
-              width="350"
-            />
+            <!-- <p *ngFor="let i of prd">{{}}</p> -->
+            <img *ngFor="let i of prd" [src]="'../../../assets/'+photo" id="main_product_image" width="350" />
           </div>
           <div class="thumbnail_images">
             <ul id="thumbnail">
               <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/TAzli1U.jpg"
-                  width="70"
-                />
+                <img *ngFor="let i of prd" (click)="changeImage(i.photo)" [src]="'../../../assets/'+i.photo" width="70" />
               </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/w6kEctd.jpg"
-                  width="70"
-                />
-              </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/L7hFD8X.jpg"
-                  width="70"
-                />
-              </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/6ZufmNS.jpg"
-                  width="70"
-                />
+              <li *ngFor="let i of prdPhoto">
+                <img (click)="changeImage(i.path)" [src]="'../../../assets/'+i.path" width="70" />
               </li>
             </ul>
           </div>
         </div>
       </div>
+      <!-- <pre>{{ prd | json }}</pre> -->
       <div class="col-md-6">
-        <div class="p-3 right-side">
+        <div *ngFor="let i of prd" class="p-5 right-side">
           <div class="d-flex justify-content-between align-items-center">
-            <h3>IIlana</h3>
+            <h3 class="mt-5">{{prd[0].name}}</h3>
           </div>
           <div class="mt-2 pr-3 content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
-            </p>
+            <p>{{prd[0].description}}</p>
           </div>
-          <h3>$430.99</h3>
+          <h3>EGP {{prd[0].price}}</h3>
+          <p *ngIf="prd[0].price_before_discount>0" class="text-muted text-decoration-line-through">EGP
+            {{prd[0].price_before_discount}}</p>
           <div class="ratings d-flex flex-row align-items-center">
             <div class="d-flex flex-row">
-              <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <ng-container *ngFor="let index of [1,2,3,4,5],index as n">
+                <i *ngIf="prd[0].prd_rating>n" class="fa-solid fa-star"></i>
+                <i *ngIf="prd[0].prd_rating<=n" class="fa-regular fa-star"></i>
+              </ng-container>
             </div>
-            <span>441 reviews</span>
           </div>
 
           <div class="buttons d-flex flex-row mt-5 gap-3">
-            <button class="btn btn-primary buy ">Buy Now</button>
-            <button class="btn btn-primary bg text-white ">Add to Cart</button>
+            <button class="btn btn-primary bg px-4">Add To Cart</button>
+            <button class="btn btn-secondary text-white px-4">Go Back</button>
           </div>
 
         </div>
@@ -80,49 +55,25 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h4 class="text-dark mb-0">comments (2)</h4>
+          <h4 class="text-dark mb-0">Comments ({{prdRating.length}})</h4>
           <div class="card">
           </div>
         </div>
 
-        <div class="card mb-3">
+        <div *ngFor="let i of prdRating" class="card mb-3">
           <div class="card-body">
             <div class="d-flex flex-start">
               <div class="w-100">
-                <h3>V.good</h3>
+                <h4>{{i.review}}</h4>
+                <p>{{i.created_at | date}}</p>
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="text-primary fw-bold mb-0 text-dark ms-2">
-                    Hmm, This poster looks cool
-                  </p>
-                  <p class="mb-0">2 days ago</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-flex flex-row">
-                    <i class="fa-solid fa-star me-2"></i>
-                    <i class="fa-solid fa-star me-2"></i>
-                    <i class="fa-solid fa-star me-2"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="d-flex flex-start">
-              <div class="w-100">
-                <h3>V.good</h3>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="text-primary fw-bold mb-0 text-dark ms-2">
-                    Hmm, This poster looks cool
-                  </p>
-                  <p class="mb-0">2 days ago</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex flex-row">
-                    <i class="fa-solid fa-star me-2"></i>
-                    <i class="fa-solid fa-star me-2"></i>
-                    <i class="fa-solid fa-star me-2"></i>
+                    <ng-container *ngFor="let index of [1,2,3,4,5],index as n">
+                      <i *ngIf="i.star>n" class="fa-solid fa-star"></i>
+                      <i *ngIf="i.star<=n" class="fa-regular fa-star"></i>
+                    </ng-container>
                   </div>
                 </div>
               </div>
@@ -135,8 +86,8 @@
 </section>
 <script>
   function changeImage(element) {
-  var main_prodcut_image = document.getElementById('main_product_image');
-  main_prodcut_image.src = element.src;
-}
+    var main_prodcut_image = document.getElementById('main_product_image');
+    main_prodcut_image.src = element.src;
+  }
 
 </script>

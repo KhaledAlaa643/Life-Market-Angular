@@ -56,7 +56,7 @@
         <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
           <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3"  alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
@@ -99,7 +99,7 @@
 
 
   <!-- top products rating list -->
-  <div *ngIf="topRatingProducts.length>0" class="row mt-3">
+  <div *ngIf="topRatingProducts.length>5" class="row mt-3">
     <div class="card p-0 ">
       <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
         <h5 class="text-center mt-1">Top Rating</h5>
@@ -107,7 +107,7 @@
       </div>
       <div class="row  px-3 pb-4">
         <div *ngFor="let i of topRating" class="col-lg-2 col-6 px-0 mt-2">
-          <a href="#" class="text-muted text-decoration-none">
+          <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
               <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
               <hr class="m-0 mb-2">
@@ -203,7 +203,7 @@
       </div>
       <div class="row  px-3 pb-4">
         <div *ngFor="let i of prd1" class="col-lg-2 col-6 px-0 mt-2">
-          <a href="#" class="text-muted text-decoration-none">
+          <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
               <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
               <hr class="m-0 mb-2">
@@ -230,7 +230,7 @@
       </div>
       <div class="row  px-3 pb-4">
         <div *ngFor="let i of prd2" class="col-lg-2 col-6 px-0 mt-2">
-          <a href="#" class="text-muted text-decoration-none">
+          <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
               <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" height="200px" alt="...">
               <hr class="m-0 mb-2">
