@@ -49,21 +49,11 @@ export class ProductsService {
     return this._httpClient.get<Product_Rating[]>(`${environment.apiURL}/review/productdetails/${id}`)
   }
 
-  
+  getProductsBySearch(name:any):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/search/${name}`)
+  }
 
-  // getProductsBySearch(id:any):Observable<Product[]>{
-  //   // return this._httpClient.post<Product[]>(`${environment.apiURL}/search`)
-  //   return this._httpClient.post<Product>(
-  //     `${environment.apiURL}/products/`,
-  //     newPrd,
-  //     {
-  //       headers:new HttpHeaders({
-  //         'accept':"application/json"
-  //       })
-  //     }
-  //   ).pipe(retry(2));
-    
-  // }
 
+ 
 
 }

@@ -81,13 +81,14 @@ export class ProductsListComponent implements OnChanges, OnInit {
         }
       });
     }
-    // else if(this.listType == "search"){
-    //   this._productServ.getProductsBySearch(this.listId).subscribe({
-    //     next: (res) => {
-    //       this.prd = res;
-    //     }
-    //   });
-    // }
+    else if(this.listType == "search"){
+      this._productServ.getProductsBySearch(this.listId).subscribe({
+        next: (res) => {
+          this.prd = res;
+          console.log(this.listId);
+        }
+      });
+    }
   }
 
 

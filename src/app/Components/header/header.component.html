@@ -14,7 +14,7 @@
       <form class="d-flex ms-5 d-none d-lg-flex" style="width: 60%;">
         <input [(ngModel)]="searchInput" name="searchInput" class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
           aria-label="Search">
-        <button class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" (click)="goToPrdList('search','src')">SEARCH</button>
+        <button class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" (click)="goToPrdList('search',searchInput)" >SEARCH</button>
       </form>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-1">
