@@ -1,22 +1,50 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   product:Product = {} as Product;
   searchInput:any;
+  isLoggedout: boolean = true;
+  
 
   constructor(
     public httpclient: HttpClient,
     private router:Router,
+    private _authServ:AuthServiceService,
+    private _userServ:UserService
   ) {}
+
+
+  ngOnInit(): void {
+    if(this._authServ.isLoggedIn()!=null){
+      this.isLoggedout = false;
+    }
+  }
+
+  logoutFun(){
+    this._userServ.logout().subscribe({
+      next:(res)=>{
+      //  console.log(res)
+       localStorage.removeItem('token');
+       localStorage.removeItem('userId');
+       this.router.navigate(['/login'])
+      },
+      error:(err:any)=>{
+             console.log(err.error)
+      }
+    })
+  }
+
 
   goToPrdList(_type:any, id:any){
     this.router.navigate(['main/products/list', id], { queryParams: { type: _type, searchText: this.searchInput} });
@@ -25,5 +53,7 @@ export class HeaderComponent {
   searchProduct(){
 
   }
+
+
 
 }
