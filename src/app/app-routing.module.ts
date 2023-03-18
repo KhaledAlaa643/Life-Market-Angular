@@ -10,7 +10,7 @@ import { RequestPasswordResetComponent } from './component/request-password-rese
 const routes:Routes=[
   {path:"",redirectTo:"login",pathMatch:'full'},
 
-    {path:'register',component:RegisterComponent, canActivate: [AuthGuard]},
+    {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
     {path:'reset-Password-Request',component:RequestPasswordResetComponent},
 
