@@ -16,6 +16,12 @@ import { ProductsComponent } from './Components/products/products.component';
 import { FavItemComponent } from './Components/fav-item/fav-item.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { MyaccountComponent } from './component/myaccount/myaccount.component';
+import { OrdersComponent } from './component/orders/orders.component';
+import { SavedItemsComponent } from './component/saved-items/saved-items.component';
+import { AddressComponent } from './component/address/address.component';
+import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 
 
 const routes: Routes = [
@@ -32,6 +38,14 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
+  ]},
+
+  {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
+    {path:'myaccount',component:MyaccountComponent},
+    {path:'order',component:OrdersComponent},
+    {path:'saveditems',component:SavedItemsComponent},
+    {path:'address',component:AddressComponent},
+    {path:'manage',component:ManageAccountComponent}
   ]},
 
   {path:'register',component:RegisterComponent},

@@ -1,0 +1,30 @@
+<h5 class="mt-5 text-center">Welcome,Naglaa <img class="img-fluid" src="../../../assets/images/party-popper.webp"
+        width="60px" height="40px" /></h5>
+<p class="text-center text-primary">you can change and manage your information</p>
+<form #myform="ngForm" autocomplete="off">
+    <div class="form-group">
+        <div class="row">
+            <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name"
+                    required="required" pattern="^[\u0621-\u064AA-Za-z]+([ ][\u0621-\u064AA-Za-z]+)*$"></div>
+
+            <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                    required="required" pattern="^[\u0621-\u064AA-Za-z]+([ ][\u0621-\u064AA-Za-z]+)*$"></div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" placeholder="Email" required="required"
+            pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" name="Phone" placeholder="phone number" required="required"
+            pattern="^01[0-2,5]{1}[0-9]{8}$">
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!myform.valid"
+            class="btn btn-outline-primary btn-lg btn-block">Update</button>
+    </div>
+</form>

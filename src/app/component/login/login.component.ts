@@ -28,7 +28,9 @@ login(){
 
 
 
-        this.route.navigate(['/register'])
+        this.route.navigate(['/main/home'])
+        // this.route.navigate(['/register'])
+        console.log(this.res)
       }
       else{
 

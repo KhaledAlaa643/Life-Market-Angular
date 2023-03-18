@@ -1,0 +1,19 @@
+.container-fluid{
+    background-color:rgb(236, 235, 235) ;
+}
+.nav-link a{
+   text-decoration: none;
+   color: black;
+   font-size:16px;
+  
+}
+.sidebar-nav li.nav-link:hover a {
+    border-left: 4px solid rgb(46, 131, 216);
+    padding-left: 16px;
+  }
+  
+  .sidebar-nav li.nav-link:hover {
+    background-color: antiquewhite;
+  }
+
+  

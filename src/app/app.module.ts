@@ -22,6 +22,13 @@ import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { MyaccountComponent } from './component/myaccount/myaccount.component';
+import { OrdersComponent } from './component/orders/orders.component';
+import { SavedItemsComponent } from './component/saved-items/saved-items.component';
+import { ManageAccountComponent } from './component/manage-account/manage-account.component';
+import { AddressComponent } from './component/address/address.component';
+// import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -43,7 +50,14 @@ import { RequestPasswordResetComponent } from './component/request-password-rese
     ProductsComponent,
     RegisterComponent,
     LoginComponent,
-    RequestPasswordResetComponent
+    RequestPasswordResetComponent,
+    ProfileComponent,
+    MyaccountComponent,
+    OrdersComponent,
+    SavedItemsComponent,
+    ManageAccountComponent,
+    AddressComponent,
+    // AuthGuard,
   ],
 
   imports: [
