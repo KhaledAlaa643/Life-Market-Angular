@@ -85,7 +85,7 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsBySearch(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
-          console.log(this.listId);
+          // console.log(this.listId);
         }
       });
     }
@@ -111,10 +111,16 @@ export class ProductsListComponent implements OnChanges, OnInit {
         }
       });
     }
+
   }
 
 
   goToPrdDetails(id:any){
     this.router.navigate(['main/product/', id]);
+  }
+
+
+  trackByFun(index:number, prd:Product){
+    return prd.id;
   }
 }

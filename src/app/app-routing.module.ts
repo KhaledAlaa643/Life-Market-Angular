@@ -38,17 +38,19 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
+    
+    {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
+      {path:'myaccount',component:MyaccountComponent},
+      {path:'order',component:OrdersComponent},
+      {path:'saveditems',component:SavedItemsComponent},
+      {path:'address',component:AddressComponent},
+      {path:'manage',component:ManageAccountComponent}
+    ]},
 
     {path: '**', component:NotFoundComponent}
   ]},
 
-  {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
-    {path:'myaccount',component:MyaccountComponent},
-    {path:'order',component:OrdersComponent},
-    {path:'saveditems',component:SavedItemsComponent},
-    {path:'address',component:AddressComponent},
-    {path:'manage',component:ManageAccountComponent}
-  ]},
+  
 
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},

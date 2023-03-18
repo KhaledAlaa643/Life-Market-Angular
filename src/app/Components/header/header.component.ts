@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
        this.router.navigate(['/login'])
       },
       error:(err:any)=>{
-             console.log(err.error)
+        console.log(err.error)
       }
     })
   }
@@ -55,17 +55,6 @@ export class HeaderComponent implements OnInit {
   goToPrdList(_type:any, id:any){
     this.router.navigate(['main/products/list', id], { queryParams: { type: _type, searchText: this.searchInput} });
   }
-
-  // searchProduct(){
-  //   this._productServ.getProductsBySearch(this.searchInput).subscribe({
-  //     next: (res) => {
-  //      this.product=res;
-
-  //     }
-  //   });
-
-  // }
-
 
 
 }
