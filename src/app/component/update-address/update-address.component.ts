@@ -20,6 +20,7 @@ export class UpdateAddressComponent {
     
       this.addressserve.UpdateAdress(this.address).subscribe({
         next: (data) => { 
+          this.route.navigate(['/main/profile/myaccount']);
           console.log(data)
   
         },

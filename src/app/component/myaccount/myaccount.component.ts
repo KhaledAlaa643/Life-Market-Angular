@@ -27,7 +27,7 @@ export class MyaccountComponent implements OnInit{
     this.profileserve.getUserData().subscribe({
       next: (data) => { 
         this.user=data
-        console.log(data)
+        // console.log(data)
 
       },
       error: (err) => {console.log(err.error.error)}
@@ -40,11 +40,11 @@ export class MyaccountComponent implements OnInit{
       if (this.Addressres['error']) {
         this.show = false;
         this.hide=true;
-        console.log(this.Addressres)
+        // console.log(this.Addressres)
       } else {
         this.show = true;
         this.hide=false;
-        console.log(this.Addressres[0])
+        // console.log(this.Addressres[0])
       }
     },
     error: (err) => {

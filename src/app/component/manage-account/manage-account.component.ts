@@ -22,7 +22,7 @@ export class ManageAccountComponent  {
     this.profileserve.getUserData().subscribe({
       next: (data) => { 
         this.user=data
-        console.log(data)
+        // console.log(data)
 
       },
       error: (err) => {console.log(err.error.error)}
@@ -32,9 +32,8 @@ export class ManageAccountComponent  {
     this.profileserve.UpdateUserData(this.user).subscribe({
       next: (data) => { 
         this.user=data
-        console.log(data)
-        this.route.navigate(['/profile/myaccount'])
-
+        // console.log(data)
+        this.route.navigate(['/main/profile/myaccount'])
       },
       error: (err) => {console.log(err.error.error)}
     })

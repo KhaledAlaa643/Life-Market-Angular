@@ -20,7 +20,7 @@ export class AddressComponent  {
       this.addressserve.CreateAdress(this.address).subscribe({
         next: (data) => { 
           console.log(data)
-          this.route.navigate(['/profile/myaccount'])
+          this.route.navigate(['/main/profile/myaccount']);
         },
         error: (err) => {console.log(err.error.error)}
 

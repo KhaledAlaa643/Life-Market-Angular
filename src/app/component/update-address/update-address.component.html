@@ -1,25 +1,28 @@
-<div class="signup-form  row">
-    <form #myform="ngForm" (ngSubmit)="UpdateAdress()" autocomplete="off">
+<div class="signup-form  row p-2">
+    <form class="" #myform="ngForm" (ngSubmit)="UpdateAdress()" autocomplete="off">
         <h6 class="mt-3">Change YOUR ADDRESS</h6>
         <hr>
-        <div class="row mb-3 mt-4">
+        <div class="row mb-1 mt-1 p-3 py-2">
             <div class="col"><input type="text" [(ngModel)]="address.governorate" class="form-control"
-                    name="governorate" placeholder="Region" required="required"></div>
+                    name="governorate" placeholder="Governorate" required="required"></div>
 
             <div class="col"><input type="text" class="form-control" name="zip_code" [(ngModel)]="address.zip_code"
                     placeholder="Zip_code" required="required"></div>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group p-3 py-1">
             <input type="text" class="form-control" name="city" [(ngModel)]="address.city" placeholder="City"
                 required="required">
         </div>
 
-        <div class="form-group mb-3">
+        <div class="form-group p-3 py-0">
             <input type="text" class="form-control" placeholder="Street" name="street" [(ngModel)]="address.street"
                 required="required">
         </div>
-        <button type="submit" style="width: 100%;" [disabled]="!myform.valid"
-            class="btn  btn-outline-primary btn-lg btn-block">Update</button>
+        <div class="px-3">
+            <button type="submit" [disabled]="!myform.valid"
+            class="btn  btn-success bg-c1 w-100">Update Address</button>
+        </div>
+        
 
     </form>
 </div>
