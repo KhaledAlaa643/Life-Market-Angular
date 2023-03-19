@@ -36,4 +36,52 @@
     </div>
   </div>
 
+    <!-- top products selling list -->
+    <div *ngIf="topSellingProducts.length>5" class="row mt-4">
+      <div class="card p-0 ">
+        <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+          <h5 class="text-center mt-1">Top Selling</h5>
+          <a (click)="goToPrdList('topSelling','1')" class="p-1">SEE MORE</a>
+        </div>
+        <div class="row  px-3 pb-4">
+          <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
+            <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
+              <div class="card shadow m-2 bg-body rounded h-100 p-1">
+                <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3"  alt="...">
+                <hr class="m-0 mb-2">
+                <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+                <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+                <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                  {{i.price_before_discount}}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- top products rating list -->
+  <div *ngIf="topRatingProducts.length>5" class="row mt-4">
+    <div class="card p-0 ">
+      <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+        <h5 class="text-center mt-1">Top Rating</h5>
+        <a (click)="goToPrdList('topRating','1')" class="p-1">SEE MORE</a>
+      </div>
+      <div class="row  px-3 pb-4">
+        <div *ngFor="let i of topRating" class="col-lg-2 col-6 px-0 mt-2">
+          <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
+            <div class="card shadow m-2 bg-body rounded h-100 p-1">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" alt="...">
+              <hr class="m-0 mb-2">
+              <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+              <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
