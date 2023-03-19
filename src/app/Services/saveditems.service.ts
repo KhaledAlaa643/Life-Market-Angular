@@ -7,7 +7,7 @@ import { Item } from '../viewmodules/item';
 })
 
 export class SaveditemsService {
-   
+
   constructor(private httpservice: HttpClient) { }
   getSavedItem(): Observable<Item> {
     return this.httpservice.get<Item>('http://localhost:8000/api/saveditems', {
@@ -16,5 +16,5 @@ export class SaveditemsService {
       })
     });
   }
-  
+
 }
