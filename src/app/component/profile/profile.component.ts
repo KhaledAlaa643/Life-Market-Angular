@@ -8,25 +8,25 @@ import { User } from 'src/app/viewmodules/user';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent   {
-  user:User={} as User;
-  res!:any;
-constructor(private userserve:UserService,private route:Router){}
- 
-logoutFun() {
-  return  this.userserve.logout().subscribe({
-    next: () => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
-      localStorage.removeItem('userName');
-      this.route.navigate(['/login'])
+export class ProfileComponent {
+  user: User = {} as User;
+  res!: any;
+  constructor(private userserve: UserService, private route: Router) { }
 
-    },
-    error: (err: any) => {
-      console.log(err.error);
-    }
-  });
-}
+  logoutFun() {
+    return this.userserve.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
+        this.route.navigate(['/login'])
+
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      }
+    });
+  }
 }
 
 
