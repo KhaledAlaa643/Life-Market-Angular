@@ -24,13 +24,14 @@ export class UserService {
       })
     })
   }
-
-  logout() {
-
-    this.httpservice.post('http://localhost:8000/api/logout', {}, {
+  
+  
+  logout(): Observable<any> {
+    return this.httpservice.post<any>('http://localhost:8000/api/logout', {}, {
       headers: new HttpHeaders({
         accept: 'application/json'
       })
-    })
+    });
   }
+  
 };

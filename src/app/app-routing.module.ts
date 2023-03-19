@@ -22,7 +22,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { SavedItemsComponent } from './component/saved-items/saved-items.component';
 import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
-
+import { UpdateAddressComponent } from './component/update-address/update-address.component';
 
 const routes: Routes = [
 
@@ -41,11 +41,13 @@ const routes: Routes = [
   ]},
 
   {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
+    {path:'', redirectTo:"/profile/myaccount",pathMatch:"full"},
     {path:'myaccount',component:MyaccountComponent},
     {path:'order',component:OrdersComponent},
     {path:'saveditems',component:SavedItemsComponent},
     {path:'address',component:AddressComponent},
-    {path:'manage',component:ManageAccountComponent}
+    {path:'manage',component:ManageAccountComponent},
+    {path:'updateaddress',component:UpdateAddressComponent}
   ]},
 
   {path:'register',component:RegisterComponent},
