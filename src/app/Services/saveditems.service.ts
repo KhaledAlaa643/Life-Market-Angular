@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../viewmodules/item';
+import { environment } from 'src/environments/environment.development';
+import { Product } from '../Models/product';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,8 +12,8 @@ import { Item } from '../viewmodules/item';
 export class SaveditemsService {
 
   constructor(private httpservice: HttpClient) { }
-  getSavedItem(): Observable<Item> {
-    return this.httpservice.get<Item>('http://localhost:8000/api/saveditems', {
+  getSavedItem(): Observable<Product> {
+    return this.httpservice.get<Product>(`${environment.apiURL}/fav-items`, {
       headers: new HttpHeaders({
         accept: 'application/json'
       })
