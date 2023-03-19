@@ -14,8 +14,8 @@ export class ProfileServiceService {
       })
     });
   }
-  UpdateUserData(userData: User):Observable<User>{
-    return this.httpservice.post<User>(`http://localhost:8000/api/user/update`,userData, {
+  UpdateUserData(userData: User): Observable<User> {
+    return this.httpservice.post<User>(`http://localhost:8000/api/user/update`, userData, {
       headers: new HttpHeaders({
         accept: 'application/json'
       })
