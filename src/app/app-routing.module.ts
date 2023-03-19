@@ -33,7 +33,7 @@ const routes: Routes = [
     {path: 'products/list/:id', component:ProductsListComponent},
     {path: 'products/list/category/:id', component:ProductsListByCategoryComponent},
     {path: 'product/:id', component:ProductDetailsComponent},
-    {path: 'cart', component:CartComponent},
+    {path: 'cart', component:CartComponent, canActivate:[AuthGuard]},
     {path: 'about', component:AboutUsComponent},
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
