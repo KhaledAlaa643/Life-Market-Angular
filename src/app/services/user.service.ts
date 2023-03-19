@@ -31,6 +31,7 @@ export class UserService {
       headers: new HttpHeaders({
         accept: 'application/json'
       })
-    })
+    });
   }
+  
 };
