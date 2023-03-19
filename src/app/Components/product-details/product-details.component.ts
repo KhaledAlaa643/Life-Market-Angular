@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cart } from 'src/app/Models/cart';
 import { Product, Product_Photo, Product_Rating } from 'src/app/Models/product';
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
+import { CartService } from 'src/app/Services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -16,12 +19,16 @@ export class ProductDetailsComponent implements OnInit{
   prdRating: Product_Rating[] = [];
   prdId:any;
   photo:any;
+  cart:Cart = {} as Cart;
+  isLoggedIn:boolean = false;
 
   constructor(
     private _productServ: ProductsService,
     public httpclient: HttpClient,
     private router:Router,
     private activatRoute:ActivatedRoute, 
+    private _cartServ:CartService,
+    private _authServ:AuthServiceService,
   ) {}
 
 
@@ -46,10 +53,32 @@ export class ProductDetailsComponent implements OnInit{
         console.log(this.prdRating);
       }
     });
+
+    if(this._authServ.isLoggedIn()!=null){
+      this.isLoggedIn = true;
+    }
   }
 
   changeImage(pic:any){
     this.photo = pic;
+  }
+
+  addPrdToCart(){
+    if(this.isLoggedIn==true){
+      this.cart.quantity = 1;
+      this.cart.price = this.prd[0].price;
+      this.cart.prd_id = this.prdId;
+      this._cartServ.addProductToCart(this.cart).subscribe({
+        next: (res) => {
+          console.log(res);
+        }
+      });
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
+    
+
   }
 
 }
