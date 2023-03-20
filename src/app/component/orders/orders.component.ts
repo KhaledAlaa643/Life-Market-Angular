@@ -23,6 +23,8 @@ cardvisible!:boolean;
   ngOnInit(): void {
     this.Orderserve.getOrders().subscribe({
       next: (data) => {
+        // console.log(data);
+        
         this.orders=data
         if(this.orders['message']){
            this.cardvisible=true;
@@ -31,7 +33,7 @@ cardvisible!:boolean;
           this.cardvisible=false;
            this.tablevisible=true;
         }
-        console.log(this.orders)
+        // console.log(this.orders)
 
       },
       error: (err) => {console.log(err.error.error)}
@@ -40,7 +42,7 @@ cardvisible!:boolean;
 this.Orderserve.getOrdersTotal().subscribe({
   next: (data) => {
   this.ordersTotal=data;
-    console.log(this.ordersTotal)
+    // console.log(this.ordersTotal)
 
   },
   error: (err) => {console.log(err.error.error)}

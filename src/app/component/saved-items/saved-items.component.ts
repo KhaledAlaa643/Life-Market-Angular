@@ -44,7 +44,8 @@ export class SavedItemsComponent implements OnInit {
   deletFavItem(id:any){
     this.saveitem.deletFavItem(id).subscribe({
       next:(data)=>{
-        this.router.navigate(['/main/profile/myaccount']);
+        // this.router.navigate(['/main/profile/myaccount']);
+        window.location.reload();
 
 
       }
