@@ -1,10 +1,35 @@
-<div class="row pt-3 ">
-    <div class="col-12">
-        <h5>My Orders</h5>
-        <hr>
-    </div>
+ <ng-container   *ngFor="let order of orders;index as i " >
+  <caption class="font-weight-bold bg-light">OrderNum#{{i}} </caption>
+ <table class="table table-bordered mt-2">
 
-    <div class="col-12 p-3">
-        
-    </div>
-</div>
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">product name</th>
+      <th scope="col">product price</th>
+      <th scope="col">Qty</th>
+      <th scope="col">product total</th>
+    </tr>
+  </thead>
+  <tr   *ngFor="let item of order">
+
+
+
+  <td   *ngFor="let key of item | keyvalue ; index as z">
+  {{key.value}}
+<!-- 
+     <span *ngIf="z!==2"> {{key.value}}</span>
+
+   <img *ngIf="z==2" src="'../../../assets/'+key.value" width="100" class="w-100q p-1" alt="...">
+
+-->
+
+  </td>
+
+</tr>
+
+
+</table>
+<p class="font-weight-bold text-danger"> order total :
+  <span class="text-dark"> {{ordersTotal[i].total}}</span>
+</p>
+</ng-container>

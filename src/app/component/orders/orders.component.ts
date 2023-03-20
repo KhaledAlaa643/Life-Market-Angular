@@ -11,24 +11,41 @@ import { OrdersService } from 'src/app/Services/orders.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-
-  order:Order={} as Order;
-  favitem:Product[]=[] 
+tablevisible!:boolean;
+cardvisible!:boolean;
+  orders!:any;
+  ordersTotal!:any;
+  favitem:Product[]=[]
 
   constructor(private Orderserve:OrdersService,private route: Router,
     private http: HttpClient) { }
 
   ngOnInit(): void {
     this.Orderserve.getOrders().subscribe({
-      next: (data) => { 
-        this.order=data
-        console.log(data)
+      next: (data) => {
+        this.orders=data
+        if(this.orders['message']){
+           this.cardvisible=true;
+           this.tablevisible=false;
+        }else{
+          this.cardvisible=false;
+           this.tablevisible=true;
+        }
+        console.log(this.orders)
 
       },
       error: (err) => {console.log(err.error.error)}
     })
 
-    
+this.Orderserve.getOrdersTotal().subscribe({
+  next: (data) => {
+  this.ordersTotal=data;
+    console.log(this.ordersTotal)
+
+  },
+  error: (err) => {console.log(err.error.error)}
+
+})
   }
 
   }

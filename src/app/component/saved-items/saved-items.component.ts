@@ -41,4 +41,14 @@ export class SavedItemsComponent implements OnInit {
     this.router.navigate(['main/product/', id]);
   }
 
+  deletFavItem(id:any){
+    this.saveitem.deletFavItem(id).subscribe({
+      next:(data)=>{
+        this.router.navigate(['/main/profile/myaccount']);
+
+
+      }
+  })
+
+  }
 }

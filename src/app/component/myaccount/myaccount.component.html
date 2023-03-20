@@ -19,10 +19,10 @@
       <div *ngIf="show" class="card-body">
         <h6>ADDRESS DETAILS</h6>
         <hr style="color:gray">
-        <p class="mb-1"> Street : {{Addressres[0].street}}</p>
-        <p class="mb-1">City : {{Addressres[0].city}}</p>
-        <p class="mb-1">Governorate : {{Addressres[0].governorate}}</p>
-        <p>Zip Code : {{Addressres[0].zip_code}}</p>
+        <p class="mb-1"> Street : {{Addressres.street}}</p>
+        <p class="mb-1">City : {{Addressres.city}}</p>
+        <p class="mb-1">Governorate : {{Addressres.governorate}}</p>
+        <p>Zip Code : {{Addressres.zip_code}}</p>
         <a routerLink="/main/profile/updateaddress" routerLinkActive="active">CHANGE DEFAULT ADDRESS</a>
       </div>
       <div *ngIf="hide" class="card-body">

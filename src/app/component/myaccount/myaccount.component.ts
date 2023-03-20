@@ -18,14 +18,14 @@ export class MyaccountComponent implements OnInit{
    show!:boolean;
    hide!:boolean;
   constructor(
-    private profileserve:ProfileServiceService, 
+    private profileserve:ProfileServiceService,
     private addressserve:AddressService,
     private route: Router,
     private http: HttpClient
   ){ }
   ngOnInit(): void {
     this.profileserve.getUserData().subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.user=data
         // console.log(data)
 
@@ -33,14 +33,14 @@ export class MyaccountComponent implements OnInit{
       error: (err) => {console.log(err.error.error)}
     })
 
-  
+
   this.addressserve.getaddressData().subscribe({
     next: (data) => {
       this.Addressres = data;
       if (this.Addressres['error']) {
         this.show = false;
         this.hide=true;
-        // console.log(this.Addressres)
+         console.log(this.Addressres)
       } else {
         this.show = true;
         this.hide=false;
@@ -53,7 +53,7 @@ export class MyaccountComponent implements OnInit{
   });
 }
 
-  
+
 }
 
 

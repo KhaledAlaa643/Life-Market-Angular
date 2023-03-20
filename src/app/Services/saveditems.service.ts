@@ -19,5 +19,12 @@ export class SaveditemsService {
       })
     });
   }
+  deletFavItem(id:any):Observable<string>{
+    return  this.httpservice.post<string>(`${environment.apiURL}/fav-item/delete`,id, {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
 
 }

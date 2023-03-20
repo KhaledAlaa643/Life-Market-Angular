@@ -7,6 +7,7 @@ import { Order } from '../viewmodules/order';
 })
 
 export class OrdersService {
+
   constructor(private httpservice: HttpClient) { }
   getOrders(): Observable<Order> {
     return this.httpservice.get<Order>('http://localhost:8000/api/orders', {
@@ -15,6 +16,12 @@ export class OrdersService {
       })
     });
   }
+  getOrdersTotal(): Observable<Order> {
+    return this.httpservice.get<Order>('http://localhost:8000/api/orders/total', {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
 
-  
 }

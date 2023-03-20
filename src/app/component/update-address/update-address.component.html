@@ -2,27 +2,40 @@
     <form class="" #myform="ngForm" (ngSubmit)="UpdateAdress()" autocomplete="off">
         <h6 class="mt-3">Change YOUR ADDRESS</h6>
         <hr>
-        <div class="row mb-1 mt-1 p-3 py-2">
-            <div class="col"><input type="text" [(ngModel)]="address.governorate" class="form-control"
-                    name="governorate" placeholder="Governorate" required="required"></div>
 
-            <div class="col"><input type="text" class="form-control" name="zip_code" [(ngModel)]="address.zip_code"
-                    placeholder="Zip_code" required="required"></div>
+        <div class="row mb-1 mt-1 p-3 py-2">
+            <div class="col">
+              <label for="governorate">Governorate :</label><br>
+              <input type="text" [(ngModel)]="address.governorate"
+                     class="form-control" name="governorate"
+placeholder="governorate"
+                     required="required" id="governorate"></div>
+
+            <div class="col">
+              <label for="zip_code">Zip Code :</label><br>
+              <input type="text" class="form-control"
+              name="zip_code" [(ngModel)]="address.zip_code"
+              placeholder="zip cod"
+              required="required" id="zip_code"></div>
         </div>
         <div class="form-group p-3 py-1">
-            <input type="text" class="form-control" name="city" [(ngModel)]="address.city" placeholder="City"
-                required="required">
+          <label for="city">City :</label><br>
+            <input type="text" class="form-control" name="city" [(ngModel)]="address.city"
+                required="required" id="city">
+
         </div>
 
         <div class="form-group p-3 py-0">
-            <input type="text" class="form-control" placeholder="Street" name="street" [(ngModel)]="address.street"
-                required="required">
+          <label for="street">Street :</label><br>
+            <input type="text" class="form-control"  name="street" [(ngModel)]="address.street"
+                required="required" id="street" >
+
         </div>
         <div class="px-3">
             <button type="submit" [disabled]="!myform.valid"
             class="btn  btn-success bg-c1 w-100">Update Address</button>
         </div>
-        
+
 
     </form>
 </div>

@@ -12,7 +12,7 @@
             <img [src]="'../../../assets/'+i[0].photo" width="100" class="w-100q p-1" alt="...">
         </a>
     </div>
-    <div class="col-6 my-auto">
+   <div class="col-6 my-auto">
         <p class="card-title mx-2 text-decoration-none text-dark">{{i[0].name}}</p>
         <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i[0].price}}</h6>
         <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">
@@ -23,7 +23,7 @@
 
 
     <div class="col-2 my-auto">
-        <a class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
+        <a class="btn btn-danger text-white" (click)="deletFavItem(i[0].id)"><i class="fa-solid fa-trash-can"></i></a>
     </div>
 
 </div>

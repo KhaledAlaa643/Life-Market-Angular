@@ -14,15 +14,15 @@ export class ManageAccountComponent  {
   user:User={} as User;
   res!:any;
   constructor(
-    private profileserve:ProfileServiceService, 
+    private profileserve:ProfileServiceService,
     private route: Router,
     private http: HttpClient
   ){ }
   ngOnInit(): void {
     this.profileserve.getUserData().subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.user=data
-        // console.log(data)
+         console.log(data)
 
       },
       error: (err) => {console.log(err.error.error)}
@@ -30,7 +30,7 @@ export class ManageAccountComponent  {
   }
   UpdateUserData(){
     this.profileserve.UpdateUserData(this.user).subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.user=data
         // console.log(data)
         this.route.navigate(['/main/profile/myaccount'])
