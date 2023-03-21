@@ -23,6 +23,10 @@ import { SavedItemsComponent } from './component/saved-items/saved-items.compone
 import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
+import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/main-dashboard.component';
+import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
+import { OffersComponent } from './Components/Dashboard/offers/offers.component';
+import { ContactComponent } from './Components/Dashboard/contact/contact.component';
 
 const routes: Routes = [
 
@@ -49,6 +53,12 @@ const routes: Routes = [
     ]},
 
     {path: '**', component:NotFoundComponent}
+  ]},
+
+  {path: 'admin', component:MainDashboardComponent, children: [
+    {path: 'dashboard', component:DashboardComponent},
+    {path: 'offers', component:OffersComponent},
+    {path: 'contact', component:ContactComponent},
   ]},
 
   {path:'register',component:RegisterComponent},
