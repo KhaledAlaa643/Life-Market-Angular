@@ -6,7 +6,7 @@
                 <h5 class="text-center mt-1">Products</h5>
             </div>
             <div class="row  px-3 pb-4">
-                <div *ngFor="let i of prd" class="col-lg-2 col-6 px-0 mt-2">
+                <div *ngFor="let i of prd; index as n; trackBy:trackByFun" class="col-lg-2 col-6 px-0 mt-2">
                     <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
                         <div class="card shadow m-2 bg-body rounded h-100 p-1">
                             <img [src]="'../../../assets/'+i.photo" class="card-img-top p-4" alt="...">

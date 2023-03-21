@@ -1,38 +1,53 @@
 <!---------- Main Header NavBar ---------->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+
   <div class="container p-0">
+
     <a class="navbar-brand fs-3 fw-bold mx-2 py-1" [routerLink]="['/main/home']">
-      <!-- <img src="../../../assets/p10.png" width="30" height="30" alt=""> -->
       <span>Life Market</span>
     </a>
-    <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <form class="d-flex ms-5 d-none d-lg-flex" style="width: 60%;">
         <input [(ngModel)]="searchInput" name="searchInput" class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
           aria-label="Search">
-        <button class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" (click)="goToPrdList('search',searchInput)" >SEARCH</button>
+        <a class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" [href]="'/main/products/list/'+searchInput+'?type=search&searchText='+searchInput"  (click)="goToPrdList('search',searchInput)" >SEARCH</a>
       </form>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-1">
         <li class="nav-item dropdown">
-          <button type="button" class="btn btn-outline-light dropdown-toggle px-2 fw-bold" data-bs-toggle="dropdown"><i
-              class="fa-regular fa-user fs-5 mx-2"></i>Admin</button>
+          <button type="button" class="btn btn-outline-light dropdown-toggle px-2 fw-bold" data-bs-toggle="dropdown">
+            <span *ngIf="isLoggedout">
+              <i class="fa-regular fa-user fs-5 mx-2"></i>Admin
+            </span>
+            <span *ngIf="!isLoggedout">
+              <i class="fa-solid fa-user-check fs-5 mx-2"></i>{{userName}}
+            </span>
+          </button>
           <ul class="dropdown-menu" style="width: 190px;">
-            <button type="button" class="btn btn-warning shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">SIGN
-              IN</button>
-            <li>
+            <button *ngIf="isLoggedout" [routerLink]="['/login']" type="button" class="btn btn-success shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">SIGN IN</button>
+            <li *ngIf="isLoggedout">
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" [routerLink]="['/admin/profile']" routerLinkActive="router-link-active"><i
-                  class="fa-regular fa-user me-2 fs-5"></i>My Account</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/admin/products']" routerLinkActive="router-link-active"><i
-                  class="fa-solid fa-box me-2 fs-5"></i>Orders</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/admin/saveitems']" routerLinkActive="router-link-active"><i
-                  class="fa-regular fa-heart me-2 fs-5"></i>Saved Items</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/main/profile/myaccount']" routerLinkActive="router-link-active"><i class="fa-regular fa-user me-2 fs-5"></i>My Account</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/main/profile/order']" routerLinkActive="router-link-active"><i class="fa-solid fa-box me-2 fs-5"></i>Orders</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/main/profile/saveditems']" routerLinkActive="router-link-active"><i class="fa-regular fa-heart me-2 fs-5"></i>Saved Items</a>
+            </li>
+            <li *ngIf="!isLoggedout">
+              <hr class="dropdown-divider">
+            </li>
+            <button *ngIf="!isLoggedout" (click)="logoutFun()" [routerLink]="['/login']" type="button" class="btn btn-success shadow bg-c1 text-light fw-bold w-75 my-2 d-block mx-auto">LOGOUT</button>
+                  
           </ul>
         </li>
         
@@ -52,7 +67,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light px-2 fw-bold" href="#"><i
+          <a class="btn btn-outline-light px-2 fw-bold" [routerLink]="['/main/cart']"><i
               class="fa-solid fa-cart-shopping mx-2 fs-5"></i>Cart</a>
         </li>
       </ul>
@@ -62,5 +77,5 @@
 <form class="d-flex mt-2 d-lg-none d-flex mx-auto" style="width: 97%;">
   <input class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
     aria-label="Search">
-  <button class="btn btn-warning bg-c1 shadow text-light px-3 fw-bold" type="submit">SEARCH</button>
+  <button class="btn btn-success bg-c1 text-light px-3 fw-bold" type="submit">SEARCH</button>
 </form>

@@ -50,34 +50,25 @@ export class HomeComponent implements OnInit {
     this._productServ.getTopSellingProducts().subscribe({
       next: (res) => {
         this.topSellingProducts = res;
-        this.topSelling[0] = this.topSellingProducts[0];
-        this.topSelling[1] = this.topSellingProducts[1];
-        this.topSelling[2] = this.topSellingProducts[2];
-        this.topSelling[3] = this.topSellingProducts[3];
-        this.topSelling[4] = this.topSellingProducts[4];
-        this.topSelling[5] = this.topSellingProducts[5];
+        for(let i=0;i<6;i++){
+          this.topSelling[i] = this.topSellingProducts[i];
+        }
         // console.log(res);
-
       }
     });
     this._productServ.getTopRatingProducts().subscribe({
       next: (res) => {
         this.topRatingProducts = res;
-        this.topRating[0] = this.topRatingProducts[0];
-        this.topRating[1] = this.topRatingProducts[1];
-        this.topRating[2] = this.topRatingProducts[2];
-        this.topRating[3] = this.topRatingProducts[3];
-        this.topRating[4] = this.topRatingProducts[4];
-        this.topRating[5] = this.topRatingProducts[5];
+        for(let i=0;i<6;i++){
+          this.topRating[i] = this.topRatingProducts[i];
+        }
         // console.log(this.topSelling);
-
       }
     });
     this._offerServ.getOffer("deals").subscribe({
       next: (res) => {
         this.dealsOffer = res;
         // console.log(res);
-
       }
     });
     this._offerServ.getOffer("gifts").subscribe({
@@ -97,6 +88,7 @@ export class HomeComponent implements OnInit {
     this._productServ.getProductsByCatId(1).subscribe({
       next: (res) => {
         this.prdByCat1 = res;
+        
         this.prd1[0] = this.prdByCat1[0];
         this.prd1[1] = this.prdByCat1[1];
         this.prd1[2] = this.prdByCat1[2];
