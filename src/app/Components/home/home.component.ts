@@ -88,25 +88,18 @@ export class HomeComponent implements OnInit {
     this._productServ.getProductsByCatId(1).subscribe({
       next: (res) => {
         this.prdByCat1 = res;
-        
-        this.prd1[0] = this.prdByCat1[0];
-        this.prd1[1] = this.prdByCat1[1];
-        this.prd1[2] = this.prdByCat1[2];
-        this.prd1[3] = this.prdByCat1[3];
-        this.prd1[4] = this.prdByCat1[4];
-        this.prd1[5] = this.prdByCat1[5];
+        for(let i=0;i<6;i++){
+          this.prd1[i] = this.prdByCat1[i];
+        }
         // console.log(res);
       }
     });
     this._productServ.getProductsByCatId(2).subscribe({
       next: (res) => {
         this.prdByCat2 = res;
-        this.prd2[0] = this.prdByCat2[0];
-        this.prd2[1] = this.prdByCat2[1];
-        this.prd2[2] = this.prdByCat2[2];
-        this.prd2[3] = this.prdByCat2[3];
-        this.prd2[4] = this.prdByCat2[4];
-        this.prd2[5] = this.prdByCat2[5];
+        for(let i=0;i<6;i++){
+          this.prd2[i] = this.prdByCat2[i];
+        }
         // console.log(res);
       }
     });

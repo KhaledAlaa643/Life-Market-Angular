@@ -74,8 +74,8 @@
     </div>
   </div>
 </nav>
-<form class="d-flex mt-2 d-lg-none d-flex mx-auto" style="width: 97%;">
-  <input class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
+<form class="d-flex py-2 d-lg-none d-flex mx-auto" style="width: 97%;">
+  <input [(ngModel)]="searchInput" name="searchInput" class="form-control me-2 fs-6" type="search" placeholder="Search products, brands and categories"
     aria-label="Search">
-  <button class="btn btn-success bg-c1 text-light px-3 fw-bold" type="submit">SEARCH</button>
+    <a class="btn btn-success bg-c1 shadow text-light px-3 fw-bold" [href]="'/main/products/list/'+searchInput+'?type=search&searchText='+searchInput"  (click)="goToPrdList('search',searchInput)" >SEARCH</a> 
 </form>

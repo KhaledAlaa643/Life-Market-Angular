@@ -11,14 +11,14 @@
     width: 15%;
 }
 ::-webkit-scrollbar{
-    width: 10px;
+    width: 1px;
 }
 .main_section_style{
     width: 85%;
     margin: 10px;
     /* border-radius: 15px; */
     background-color: rgb(227, 235, 238);
-    max-height: 90;
+    max-height: 92vh;
     overflow: auto;
     /* height: 100vh; */
 }

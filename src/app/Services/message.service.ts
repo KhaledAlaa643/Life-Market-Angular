@@ -22,4 +22,10 @@ export class MessageService {
       }
     ).pipe(retry(2));
   }
+
+  getAllMessages():Observable<Message[]>{
+    return this._httpClient.get<Message[]>(`${environment.apiURL}/contact_us`)
+
+  }
+  
 }
