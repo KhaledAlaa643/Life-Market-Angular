@@ -1,45 +1,58 @@
-<div style="height: 100vh !important;" class="m-0 p-3 h-100 w-100 d-flex dash-body">
+<div style="height: 92vh !important;" class="">
+
+<div class="row m-0 p-0 dash-head">
+    <div class="col-12 d-flex justify-content-between">
+        <h4 class="p-1 py-2 mb-0 text-light">
+            <img src="../../../../assets/logo.png" width="30" class="pb-2" alt="">
+            Life Market
+        </h4>
+        <h6 class="p-1 py-2 mt-1 mb-0 text-light">
+            {{user.first_name}} {{user.last_name}}
+            <img src="../../../../assets/user.jpg" width="25" class="rounded-circle ms-2" alt="...">
+        </h6>
+    </div>
+</div>
+
+<div  class="row m-0 p-0 h-100 w-100 d-flex dash-body">
     <!-- Right Side Section -->
     
 
     <div class="right_side_style pe-3 pt-3 pt-lg-2">
-        <div class="btn-group-vertical text-light w-100 pt-4 pt-lg-1 p-1 p-lg-2">
-            <h5>Life Market</h5>
-        </div>
-        <div class="btn-group-vertical w-100 pt-4 pt-lg-1 p-1 p-lg-2">
-            <a [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active" class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+        
+        <div class="btn-group-vertical w-100 pt-lg-1 p-1 p-lg-2">
+            <a [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active" class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-chart-column mx-2"></i>
                 <span class="d-none d-lg-inline">Dashboard</span>
             </a>
-            <a [routerLink]="['/admin/admins']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/admins']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-user-gear mx-2"></i>
                 <span class="d-none d-lg-inline">Admins</span>
             </a>
-            <a [routerLink]="['/admin/users']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/users']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-users mx-2"></i>
                 <span class="d-none d-lg-inline">Users</span>
             </a>
-            <a [routerLink]="['/admin/products']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/products']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-bag-shopping mx-2"></i>
                 <span class="d-none d-lg-inline">Products</span>
             </a>
-            <a [routerLink]="['/admin/orders']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/orders']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-cart-shopping mx-2"></i>
                 <span class="d-none d-lg-inline">Orders</span>
             </a>
-            <a [routerLink]="['/admin/offers']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/offers']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-percent mx-2"></i>
                 <span class="d-none d-lg-inline">Offers</span>
             </a>
-            <a [routerLink]="['/admin/contact']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/contact']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-envelope-open-text mx-2"></i>
                 <span class="d-none d-lg-inline">Messages</span>
             </a>
-            <a [routerLink]="['/admin/delivery']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/delivery']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-truck mx-2"></i>
                 <span class="d-none d-lg-inline">Delivery</span>
             </a>
-            <a [routerLink]="['/admin/signout']" routerLinkActive="router-link-active"  class="btn btn-outline-light text-start p-1 p-lg-2 my-1">
+            <a [routerLink]="['/admin/signout']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-right-from-bracket mx-2"></i>
                 <span class="d-none d-lg-inline">Sign Out</span>
             </a>
@@ -49,4 +62,5 @@
     <div class="main_section_style m-0 p-4">
         <router-outlet></router-outlet>
     </div>
+</div>
 </div>
