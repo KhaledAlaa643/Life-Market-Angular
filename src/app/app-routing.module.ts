@@ -23,6 +23,7 @@ import { SavedItemsComponent } from './component/saved-items/saved-items.compone
 import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
+import { OrderComponent } from './Components/Dashboard/order/order.component';
 
 const routes: Routes = [
 
@@ -54,7 +55,8 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'reset-Password-Request',component:RequestPasswordResetComponent},
-  
+  /////////dashboard routes////
+  {path:'orderadmin',component:OrderComponent},
 ];
 
 
