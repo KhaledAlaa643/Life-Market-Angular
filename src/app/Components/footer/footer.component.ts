@@ -19,18 +19,18 @@ export class FooterComponent implements OnInit  {
 
 
   ngOnInit(): void {
-    this._categoryServ.getAllCategorys().subscribe({
-      next: (res) => {
-        this.cat = res;
-        console.log(res);
-      }
-    });
-    this._categoryServ.getSubCategorysByCatId(1).subscribe({
-      next: (res) => {
-        this.subCat = res;
-        console.log(res);
-      }
-    });
+    // this._categoryServ.getAllCategorys().subscribe({
+    //   next: (res) => {
+    //     this.cat = res;
+    //     console.log(res);
+    //   }
+    // });
+    // this._categoryServ.getSubCategorysByCatId(1).subscribe({
+    //   next: (res) => {
+    //     this.subCat = res;
+    //     console.log(res);
+    //   }
+    // });
   }
-  
+
 }

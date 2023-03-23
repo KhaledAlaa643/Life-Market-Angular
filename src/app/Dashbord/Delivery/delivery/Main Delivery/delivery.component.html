@@ -1,0 +1,23 @@
+<table class="table table-striped mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Gvernorate</th>
+      <th scope="col">Price</th>
+      <th scope="col">Time</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dlv of delivery">
+      <th scope="row">{{dlv.id}}</th>
+      <td> {{dlv.governorate}}</td>
+      <td> {{dlv.price}}</td>
+      <td> {{dlv.time}}</td>
+      <td>  <a name="" id="" class="btn btn-success" [routerLink]="['edit',dlv.id]" role="button">Edit</a> </td>
+      <td>  <input type="button" value="Delete" class="btn btn-danger" (click)="deleteDelivery(dlv.id)"> </td>
+    </tr>
+  </tbody>
+</table>
+<input type="button" value="Add Delivery" class="btn btn-primary"[routerLink]="['add']">

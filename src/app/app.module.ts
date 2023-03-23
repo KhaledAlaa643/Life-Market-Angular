@@ -14,6 +14,18 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ProductsComponent } from './Components/products/products.component';
+import { CloseComponent } from './close/close.component';
+import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
+import { AdminsComponent } from './Dashbord/Admins/admins/Main Admin/admins.component';
+import { DeliveryComponent } from './Dashbord/Delivery/delivery/Main Delivery/delivery.component';
+import { EditAdminComponent } from './Dashbord/Admins/admins/edit-admin/edit-admin.component';
+import { FormsModule } from '@angular/forms';
+import { AddAdminComponent } from './Dashbord/Admins/admins/add-admin/add-admin.component';
+import { EditCustomerComponent } from './Dashbord/Customers/Edit Customer/edit-customer/edit-customer.component';
+import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-customer/add-customer.component';
+import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
+import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
+import { CheckOutComponent } from './Components/check-out/check-out.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +41,23 @@ import { ProductsComponent } from './Components/products/products.component';
     ContactUsComponent,
     ProductDetailsComponent,
     ProductsComponent,
+    CloseComponent,
+    CustomersComponent,
+    AdminsComponent,
+    DeliveryComponent,
+    EditAdminComponent,
+    AddAdminComponent,
+    EditCustomerComponent,
+    AddCustomerComponent,
+    EditDeliveryComponent,
+    AddDeliveryComponent,
+    CheckOutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

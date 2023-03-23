@@ -1,9 +1,5 @@
 
-.but{
-  background-color: darkcyan;
-  color: white;
-  height: 100%;
-}
+
 .icon{
   color: darkcyan;
 }
@@ -13,5 +9,35 @@ outline: none;
 border: none;
 }
 .btn-primary{
+  background-color: darkcyan;
+  color: white;
+  height: 100%;
   border: none;
 }
+h2{
+  text-align: center;
+}
+.disc-perc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row-product
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.data
+{
+  justify-content: center;
+}
+.maths{
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
