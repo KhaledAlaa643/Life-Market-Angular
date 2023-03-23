@@ -21,4 +21,10 @@ export class OffersService {
     return this._httpClient.delete<Offers>(`${environment.apiURL}/offers/${offer.id}`)
 
   }
+  getOfferByid(id:any):Observable<Offers[]>{
+    return this._httpClient.get<Offers[]>(`${environment.apiURL}/offer/${id}`)
+  }
+  updateProduct(offer:Offers):Observable <any>{
+    return  this._httpClient.put<any>(`${environment.apiURL}/offers/${offer.id}`,offer)
+  }
 }

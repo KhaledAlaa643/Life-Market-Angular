@@ -23,7 +23,7 @@
             <td class="  text-primary"> {{offer.discont_percent}}%</td>
             <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td>
             <td>
-                <button class="btn btn-primary" [routerLink]="['/main/products/',offer.id]" >Edit</button>
+                <button class="btn btn-primary" [routerLink]="['/offers/edit/',offer.id]" >Edit</button>
             </td>
             <td>
                 <button class="btn btn-danger" (click)="deleteOffer(offer)">Delete</button>

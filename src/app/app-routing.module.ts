@@ -24,11 +24,13 @@ import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OffersComponent } from './Components/offers/offers.component';
+import { EditofferComponent } from './Components/editoffer/editoffer.component';
 
 const routes: Routes = [
 
   {path: '', redirectTo:"/main/home", pathMatch:"full"},
   {path:'admin/offers',component:OffersComponent},
+  {path:'offers/edit/:id',component:EditofferComponent},
 
   {path: 'main', component:MainLayoutComponent, children: [
     {path: 'home', component:HomeComponent},
