@@ -34,6 +34,8 @@ const routes: Routes = [
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
     {path: 'cart/check', component:CheckOutComponent},
+    {path: 'cart', component:CartComponent},
+
     {path: '**', component:NotFoundComponent}
 
   ]},

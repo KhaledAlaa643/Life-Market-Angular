@@ -23,16 +23,17 @@ export class AddAdminComponent {
   }
   saveAdmin()
   {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Added Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
+   
     this.adminService.saveAdmin(this.admin).subscribe({
       next: (res) => {
         console.log(res)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Added Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        })
       },
     })
   }
