@@ -24,7 +24,10 @@ export class OffersService {
   getOfferByid(id:any):Observable<Offers[]>{
     return this._httpClient.get<Offers[]>(`${environment.apiURL}/offer/${id}`)
   }
-  updateProduct(offer:Offers):Observable <any>{
+  updateoffer(offer:Offers):Observable <any>{
     return  this._httpClient.put<any>(`${environment.apiURL}/offers/${offer.id}`,offer)
+  }
+  addNewoffer(offer:Offers):Observable<Offers>{
+    return this._httpClient.post<Offers>(`${environment.apiURL}/offers`,offer)
   }
 }

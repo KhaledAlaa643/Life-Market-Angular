@@ -31,6 +31,7 @@ import { AddressComponent } from './component/address/address.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { EditofferComponent } from './Components/editoffer/editoffer.component';
+import { AddofferComponent } from './Components/addoffer/addoffer.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 
@@ -63,6 +64,7 @@ import { EditofferComponent } from './Components/editoffer/editoffer.component';
     UpdateAddressComponent,
     OffersComponent,
     EditofferComponent,
+    AddofferComponent,
     // AuthGuard,
   ],
 

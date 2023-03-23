@@ -26,12 +26,12 @@ export class EditofferComponent implements OnInit {
   }
 
   saveEditedProduct(){
-    this.offerservice.updateProduct(this.offer).subscribe({
+    this.offerservice.updateoffer(this.offer).subscribe({
       next:(res)=>{
-        // console.log(this.offer)
+        console.log(res)
 
         console.log(res)
-        // this.router.navigate(['./admin/offers'])
+        this.router.navigate(['./admin/offers'])
       }
      })
   }
