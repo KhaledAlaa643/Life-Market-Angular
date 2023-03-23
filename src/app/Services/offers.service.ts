@@ -14,4 +14,11 @@ export class OffersService {
   getOffer(type:any):Observable<Offers[]>{
     return this._httpClient.get<Offers[]>(`${environment.apiURL}/offers/${type}`)
   }
+  getAllOffers():Observable<Offers[]>{
+    return this._httpClient.get<Offers[]>(`${environment.apiURL}/offers`)
+  }
+  deleteoffer(offer:Offers):Observable<Offers>{
+    return this._httpClient.delete<Offers>(`${environment.apiURL}/offers/${offer.id}`)
+
+  }
 }

@@ -23,10 +23,12 @@ import { SavedItemsComponent } from './component/saved-items/saved-items.compone
 import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
+import { OffersComponent } from './Components/offers/offers.component';
 
 const routes: Routes = [
 
   {path: '', redirectTo:"/main/home", pathMatch:"full"},
+  {path:'admin/offers',component:OffersComponent},
 
   {path: 'main', component:MainLayoutComponent, children: [
     {path: 'home', component:HomeComponent},

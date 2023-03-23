@@ -29,6 +29,8 @@ import { SavedItemsComponent } from './component/saved-items/saved-items.compone
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { AddressComponent } from './component/address/address.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
+import { OffersComponent } from './Components/offers/offers.component';
+import { EditofferComponent } from './Components/editoffer/editoffer.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 
@@ -59,6 +61,8 @@ import { UpdateAddressComponent } from './component/update-address/update-addres
     ManageAccountComponent,
     AddressComponent,
     UpdateAddressComponent,
+    OffersComponent,
+    EditofferComponent,
     // AuthGuard,
   ],
 

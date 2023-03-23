@@ -1,0 +1,34 @@
+<h1>User Offers</h1>
+
+    <button class="btn btn-success" [routerLink]="['/main/products/']" >Add New offer</button>
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Offer title</th>
+            <th>Type</th>
+            <th>Discount percent </th>
+            <th>photo</th>
+            <th>Edit</th>
+            <th>delete</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let offer of offers" >
+           
+         <tr> 
+            <th class="  text-danger">{{offer.offer_title}}</th>
+            <td class="  text-primary"> {{offer.type}}</td>
+            <td class="  text-primary"> {{offer.discont_percent}}%</td>
+            <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/main/products/',offer.id]" >Edit</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteOffer(offer)">Delete</button>
+            </td>
+
+        </tr>
+    </ng-container>
+    </tbody>
