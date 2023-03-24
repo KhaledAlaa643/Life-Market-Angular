@@ -1,0 +1,40 @@
+/* @import url(); */
+.dash-head{
+    background-color: rgb(9, 68, 68);
+    /* height: 100vh; */
+}
+.dash-body{
+    background-color: rgb(6, 95, 95);
+    /* height: 100vh; */
+}
+.right_side_style{
+    width: 15%;
+}
+::-webkit-scrollbar{
+    width: 1px;
+}
+.main_section_style{
+    width: 85%;
+    margin: 10px;
+    /* border-radius: 15px; */
+    background-color: rgb(227, 235, 238);
+    max-height: 92vh;
+    overflow: auto;
+    /* height: 100vh; */
+}
+.user_info_style>img{
+    border: 3px solid white;
+}
+
+body{
+    font-family: NotoSerif;
+}
+
+.btn-outline-primary:focus{
+    background-color: #18f;
+ }
+
+#products_menu{
+    max-height: 550px;
+    overflow: auto;
+}

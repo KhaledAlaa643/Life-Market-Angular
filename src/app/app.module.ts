@@ -30,6 +30,10 @@ import { ManageAccountComponent } from './component/manage-account/manage-accoun
 import { AddressComponent } from './component/address/address.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OrderComponent } from './Components/Dashboard/order/order.component';
+import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/main-dashboard.component';
+import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
+import { OffersComponent } from './Components/Dashboard/offers/offers.component';
+import { ContactComponent } from './Components/Dashboard/contact/contact.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
@@ -62,7 +66,10 @@ import { OrderComponent } from './Components/Dashboard/order/order.component';
     AddressComponent,
     UpdateAddressComponent,
     OrderComponent,
-    
+    MainDashboardComponent,
+    DashboardComponent,
+    OffersComponent,
+    ContactComponent,
     // AuthGuard,
   ],
 

@@ -14,7 +14,7 @@ export class CartService {
 
   addProductToCart(prd:Cart):Observable<Cart>{
     return this._httpClient.post<Cart>(
-      `${environment.apiURL}/cart/`,
+      `${environment.apiURL}/addprdtocart/`,
       prd,
       {
         headers:new HttpHeaders({

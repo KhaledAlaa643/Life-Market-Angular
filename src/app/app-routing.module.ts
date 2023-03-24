@@ -24,10 +24,18 @@ import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OrderComponent } from './Components/Dashboard/order/order.component';
+import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/main-dashboard.component';
+import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
+import { OffersComponent } from './Components/Dashboard/offers/offers.component';
+import { ContactComponent } from './Components/Dashboard/contact/contact.component';
 
 const routes: Routes = [
 
   {path: '', redirectTo:"/main/home", pathMatch:"full"},
+
+  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
+  {path:'reset-Password-Request',component:RequestPasswordResetComponent},
 
   {path: 'main', component:MainLayoutComponent, children: [
     {path: 'home', component:HomeComponent},
@@ -52,11 +60,12 @@ const routes: Routes = [
     {path: '**', component:NotFoundComponent}
   ]},
 
-  {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent},
-  {path:'reset-Password-Request',component:RequestPasswordResetComponent},
-  /////////dashboard routes////
-  {path:'orderadmin',component:OrderComponent},
+  {path: 'admin', component:MainDashboardComponent, children: [
+    {path: 'dashboard', component:DashboardComponent},
+    {path: 'offers', component:OffersComponent},
+    {path: 'contact', component:ContactComponent},
+    {path:'orders',component:OrderComponent},
+  ]},
 ];
 
 

@@ -1,0 +1,30 @@
+<div class="container ">
+    <div class="row m-0 d-flex justify-content-center w-100">
+        <div class="col-md-12 col-lg-12 w-100">
+            <div class="card text-dark w-100">
+                <div class="card-body p-4 w-100">
+                    <h4 class="mb-0">Recent comments</h4>
+                    <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                    <ng-container *ngFor="let i of mess; index as n">
+                        <div class="d-flex flex-start">
+                            <img class="rounded-circle shadow-1-strong me-3" src="../../../../assets/user.jpg"
+                                alt="avatar" width="60" height="60" />
+                            <div>
+                                <h5 class="fw-bold mb-1">{{i.user_name}}</h5>
+                                <div class="d-flex align-items-center mb-3">
+                                    <p class="mb-0">
+                                        {{i.email}} | {{i.created_at | date}}
+                                    </p>
+                                </div>
+                                <p class="mb-0">
+                                    {{i.comment}}
+                                </p>
+                            </div>
+                        </div>
+                        <hr *ngIf="mess.length>n+1" class="my-3" />
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
