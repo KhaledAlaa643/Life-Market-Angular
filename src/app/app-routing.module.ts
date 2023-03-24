@@ -23,6 +23,15 @@ import { SavedItemsComponent } from './component/saved-items/saved-items.compone
 import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
+import { ProductsManagementComponent } from './Components/Dashboard/products-management/products-management.component';
+import { CategoriesManagementComponent } from './Components/Dashboard/categories-management/categories-management.component';
+import { CategoryUpdateComponent } from './Components/Dashboard/category-update/category-update.component';
+import { CreateCategoryComponent } from './Components/Dashboard/create-category/create-category.component';
+import { SubCategoriesManagementComponent } from './Components/Dashboard/sub-categories-management/sub-categories-management.component';
+import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-update/sub-category-update.component';
+import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-category/create-sub-category.component';
+import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
+import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 
 const routes: Routes = [
 
@@ -38,7 +47,7 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
-    
+
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},
       {path:'order',component:OrdersComponent},
@@ -54,7 +63,26 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'reset-Password-Request',component:RequestPasswordResetComponent},
-  
+
+  // dashboard
+
+  //products
+  {path:'dashboard/products-management',component:ProductsManagementComponent},
+  {path:'create-product',component:CreateProductComponent},
+  {path:'update-product/:id',component:ProductUpdateComponent},
+  //category
+
+  {path:'dashboard/categories-management',component:CategoriesManagementComponent},
+  {path:'update-category/:id',component:CategoryUpdateComponent},
+  {path:'create-category',component:CreateCategoryComponent},
+
+  //subcategory
+  {path:'dashboard/sub-categories-management',component:SubCategoriesManagementComponent},
+  {path:'update-sub-category/:id',component:SubCategoryUpdateComponent},
+  {path:'create-sub-category',component:CreateSubCategoryComponent}
+
+
+
 ];
 
 

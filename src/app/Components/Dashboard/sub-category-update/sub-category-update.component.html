@@ -1,0 +1,28 @@
+<div class="container">
+<form #catUpdate (ngSubmit)="updateSubCat()" method="post"
+
+class="mt-5">
+<h5 class="text-center"> update Sub-Category </h5>
+
+  <div class="form-group ">
+    <label for="Name" class="h5"> Name :</label>
+    <input type="text" class="form-control" id="Name" name="name" [(ngModel)]="Subcat.name" [placeholder]="Subcat.name">
+  </div>
+  <div class="form-group " >
+    <label for="Description" class="h5"> Description :</label>
+    <input type="text" class="form-control" id="Description" name="description" [(ngModel)]=Subcat.description [placeholder]="Subcat.description">
+  </div>
+
+  <label for="Category" class="h5"> Category:</label>
+    <select  style="width: 700px; border-radius: 6px; margin-left: 4px;"
+     class="mt-2 mb-2 "
+      id="Category"
+      name="category"
+    [(ngModel)]="Subcat.cat_id">
+    <option   [value]='category.id' *ngFor="let category of categories"> {{category.name}}</option>
+
+  </select>
+<br>
+  <button type="submit" class="btn btn-primary mt-2 ">Submit</button>
+</form>
+</div>
