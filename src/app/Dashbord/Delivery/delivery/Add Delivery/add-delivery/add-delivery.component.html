@@ -1,8 +1,10 @@
+<div class="container-fluid px-2">
+  <h3>Add New</h3>
 <form  #myForm="ngForm" autocomplete="off" (ngSubmit)="saveDelivery()">
   <div class="form-group">
-    <label for="exampleInputname">Gvernorate :</label>
+    <label for="exampleInputname">Gvernorate</label>
     <input #adminGvernorate="ngModel" [(ngModel)]="delivery.governorate" required
-    pattern="^[a-zA-Z]{4,15}$"
+    pattern="^[a-zA-Z]{3,15}$"
     type="text"
         class="form-control" id="exampleInputname" name="adminGvernorate" aria-describedby="nameHelp"
         >
@@ -13,7 +15,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="exampleInputPrice">Price :</label>
+    <label for="exampleInputPrice">Price</label>
     <input #price="ngModel" [(ngModel)]="delivery.price" required
     type="number"
         class="form-control" id="exampleInputPrice" name="price" aria-describedby="price"
@@ -23,10 +25,12 @@
 
   <div class="form-group">
     <label for="description">Time</label>
-    <textarea class="form-control" id="description" name="time" required [(ngModel)]="delivery.time"></textarea>
+    <input class="form-control" id="description" name="time" required [(ngModel)]="delivery.time">
   </div>
 
 
-  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary btn-block">Add</button>
+  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary px-3 mt-3 me-3">Add</button>
+  <input type="button" class="btn btn-success px-3 mt-3" value="Back" (click)="goBack()">
+
 </form>
-<input type="button" class="btn btn-success but" value="Back" (click)="goBack()">
+</div>

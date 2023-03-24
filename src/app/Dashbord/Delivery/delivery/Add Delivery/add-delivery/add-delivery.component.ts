@@ -22,16 +22,19 @@ export class AddDeliveryComponent {
   }
   saveDelivery()
   {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Added Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
+    
     this.deliveryService.saveDelivery(this.delivery).subscribe({
       next: (res) => {
-        this.router.navigate(['/delivery'])
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Added Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(()=>{
+          this.router.navigate(['/admin/delivery'])
+        })
+        
       },
     })
   }

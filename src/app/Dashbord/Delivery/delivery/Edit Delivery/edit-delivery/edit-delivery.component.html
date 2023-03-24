@@ -1,8 +1,11 @@
+<div class="container-fluid px-2">
+  <h3>Update Admin Info</h3>
+
 <form  #myForm="ngForm" autocomplete="off" (ngSubmit)="update()">
   <div class="form-group">
     <label for="exampleInputname">Gvernorate :</label>
     <input #adminGvernorate="ngModel" [(ngModel)]="backupDelivery.governorate" required
-    pattern="^[a-zA-Z]{4,15}$"
+    pattern="^[a-zA-Z]{3,15}$"
     type="text"
         class="form-control" id="exampleInputname" name="adminGvernorate" aria-describedby="nameHelp"
         >
@@ -27,6 +30,8 @@
   </div>
 
 
-  <button type="submit"[disabled]="!myForm.valid" class="btn btn-primary btn-block">Update</button>
+  <button type="submit"[disabled]="!myForm.valid" class="btn btn-primary px-3 mt-3 me-3">Update</button>
+  <input type="button" class="btn btn-success px-3 mt-3 me-3" value="Back" (click)="goBack()">
+
 </form>
-<input type="button" class="btn btn-success but" value="Back" (click)="goBack()">
+</div>

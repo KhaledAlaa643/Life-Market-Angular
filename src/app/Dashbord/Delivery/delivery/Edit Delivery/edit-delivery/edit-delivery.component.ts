@@ -35,17 +35,20 @@ export class EditDeliveryComponent {
   }
   update()
   {
-    this.deliveryService
-      .updateDelivery(this.id, this.backupDelivery)
-      .subscribe((res) => {
+    this.deliveryService.updateDelivery(this.id, this.backupDelivery).subscribe({
+      next:(res) => {
         this.backupDelivery = res
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Updated Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(()=>{
+          this.router.navigate(['/admin/delivery'])
+        })
+      }
     })
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Updated Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
+    
   }
 }

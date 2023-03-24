@@ -35,11 +35,24 @@ export class DeliveryComponent {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'The Admin has been deleted.', 'success');
-        this.deliveryService.deleteDelivery(DeliveryId).subscribe(() => {
-          const index = this.delivery.findIndex((p) => p.id === DeliveryId)
-          if (index !== -1) {
-            this.delivery.splice(index, 1)
+        this.deliveryService.deleteDelivery(DeliveryId).subscribe({
+          next: (res) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'The delivery price has been deleted Successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            }).then(() => {
+              window.location.reload();
+            })
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong, '+err,
+            })
           }
         })
       }

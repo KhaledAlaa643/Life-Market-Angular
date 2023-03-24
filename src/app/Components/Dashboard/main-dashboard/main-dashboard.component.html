@@ -52,7 +52,7 @@
                 <i class="fa-solid fa-truck mx-2"></i>
                 <span class="d-none d-lg-inline">Delivery</span>
             </a>
-            <a [routerLink]="['/admin/signout']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
+            <a (click)="logoutFun()" [routerLink]="['/login']"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-right-from-bracket mx-2"></i>
                 <span class="d-none d-lg-inline">Sign Out</span>
             </a>

@@ -1,23 +1,31 @@
-<table class="table table-striped mt-5">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Gvernorate</th>
-      <th scope="col">Price</th>
-      <th scope="col">Time</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let dlv of delivery">
-      <th scope="row">{{dlv.id}}</th>
-      <td> {{dlv.governorate}}</td>
-      <td> {{dlv.price}}</td>
-      <td> {{dlv.time}}</td>
-      <td>  <a name="" id="" class="btn btn-success" [routerLink]="['edit',dlv.id]" role="button">Edit</a> </td>
-      <td>  <input type="button" value="Delete" class="btn btn-danger" (click)="deleteDelivery(dlv.id)"> </td>
-    </tr>
-  </tbody>
-</table>
-<input type="button" value="Add Delivery" class="btn btn-primary"[routerLink]="['add']">
+<div class="container-fluid px-2">
+  <div class="d-flex justify-content-between">
+    <h3 class="my-2 ps-1">Delivery Price Management</h3>
+  <input type="button" value="Add New" class="btn btn-primary my-2" [routerLink]="['add']">
+
+  </div>
+  <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+
+    <thead>
+      <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white">
+
+        <th scope="col">No</th>
+        <th scope="col">Gvernorate</th>
+        <th scope="col">Price</th>
+        <th scope="col">Time</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dlv of delivery; index as n">
+        <td scope="row">{{n+1}}</td>
+        <td> {{dlv.governorate}}</td>
+        <td> {{dlv.price}}</td>
+        <td> {{dlv.time}}</td>
+        <td> <a name="" id="" class="btn btn-success" [routerLink]="['edit',dlv.id]" role="button">Edit</a> </td>
+        <td> <input type="button" value="Delete" class="btn btn-danger" (click)="deleteDelivery(dlv.id)"> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
