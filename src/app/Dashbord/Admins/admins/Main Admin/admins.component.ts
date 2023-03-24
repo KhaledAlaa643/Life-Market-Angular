@@ -34,12 +34,26 @@ deleteAdmin(adminId: any) {
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire('Deleted!', 'The Admin has been deleted.', 'success');
-      this.AdminService.deleteAdmins(adminId).subscribe(() => {
-        const index = this.admins.findIndex((p) => p.id === adminId)
-        if (index !== -1) {
-          this.admins.splice(index, 1)
+      this.AdminService.deleteAdmins(adminId).subscribe({
+        next: (res) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'The Customer has been deleted Successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            window.location.reload();
+          })
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong, '+err,
+          })
         }
+        
       })
     }
   })

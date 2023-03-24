@@ -1,53 +1,52 @@
-<form #myForm="ngForm" autocomplete="off" (ngSubmit)="saveAdmin()">
-  <div class="form-group">
-      <label for="exampleInputEmail1">First Name :</label>
-      <input #adminFirstName="ngModel" [(ngModel)]="admin.first_name" required
-      pattern="^[a-zA-Z]{4,15}$"
-      type="text"
-          class="form-control" id="exampleInputEmail1" name="adminFirstName"
-          >
+<div class="container-fluid px-2">
+  <h3>Add New Admin</h3>
+  <form #myForm="ngForm" autocomplete="off" (ngSubmit)="saveAdmin()">
+    <div class="form-group mb-1">
+      <label for="exampleInputEmail1">First Name</label>
+      <input #adminFirstName="ngModel" [(ngModel)]="admin.first_name" required pattern="^[a-zA-Z]{4,15}$" type="text"
+        class="form-control" id="exampleInputEmail1" name="adminFirstName">
 
       <div [hidden]="adminFirstName.valid || adminFirstName.pristine" class="text-danger">
-          <p [hidden]="!adminFirstName.errors?.['required']">admin First Name Required</p>
-          <p [hidden]="!adminFirstName.errors?.['pattern']">Invalid First admin Name</p>
+        <p [hidden]="!adminFirstName.errors?.['required']">admin First Name Required</p>
+        <p [hidden]="!adminFirstName.errors?.['pattern']">Invalid First admin Name</p>
       </div>
-  </div>
-  <div class="form-group">
-      <label for="exampleInputEmail1">Last Name :</label>
-      <input #adminLastName="ngModel" [(ngModel)]="admin.last_name" required
-      pattern="^[a-zA-Z]{4,15}$"
-      type="text"
-          class="form-control" id="exampleInputEmail1" name="adminLastName"
-          >
+    </div>
+    <div class="form-group mb-1">
+      <label for="exampleInputEmail1">Last Name</label>
+      <input #adminLastName="ngModel" [(ngModel)]="admin.last_name" required pattern="^[a-zA-Z]{4,15}$" type="text"
+        class="form-control" id="exampleInputEmail1" name="adminLastName">
 
       <div [hidden]="adminLastName.valid || adminLastName.pristine" class="text-danger">
-          <p [hidden]="!adminLastName.errors?.['required']">admin Last Name Required</p>
-          <p [hidden]="!adminLastName.errors?.['pattern']">Invalid Last admin Name</p>
+        <p [hidden]="!adminLastName.errors?.['required']">admin Last Name Required</p>
+        <p [hidden]="!adminLastName.errors?.['pattern']">Invalid Last admin Name</p>
       </div>
-  </div>
+    </div>
 
-  <div class="form-outline mb-4">
-    <label class="form-label" for="form1Example2">Email</label>
-    <input name="adminEmail"[(ngModel)]="admin.email" type="email" id="form1Example2" class="form-control" />
-  </div>
-  <div class="form-outline mb-4">
-    <label class="form-label" for="form1Example2">Phone</label>
-    <input name="adminPhone"[(ngModel)]="admin.phone" type="Phone" id="form1Example2" class="form-control" />
-  </div>
+    <div class="form-outline mb-1">
+      <label class="form-label" for="form1Example2">E-Mail</label>
+      <input name="adminEmail" [(ngModel)]="admin.email" type="email" id="form1Example2" class="form-control" />
+    </div>
+    <div class="form-outline mb-1">
+      <label class="form-label" for="form1Example2">Phone</label>
+      <input name="adminPhone" [(ngModel)]="admin.phone" type="Phone" id="form1Example2" class="form-control" />
+    </div>
 
-  <div class="form-group">
-    <label for="description">Password</label>
-    <input type="password"[(ngModel)]="admin.password" class="form-control" id="description" name="password" required>
-  </div>
-  <div class="form-group">
-    <label for="description">Confirm Password</label>
-    <input type="password"[(ngModel)]="admin.password_confirmation" class="form-control" id="description" name="Confirmpassword" required>
-  </div>
-  <div class="form-group">
-    <label for="description">Type</label>
-    <input type="Type" [(ngModel)]="admin.type"class="form-control" id="description" name="Type" required>
-  </div>
-  <!-- Submit button -->
-  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary btn-block">Submit</button>
-</form>
-<input type="button" class="btn btn-secondary" value="Back" (click)="goBack()">
+    <div class="form-group mb-1">
+      <label for="description">Password</label>
+      <input type="password" [(ngModel)]="admin.password" class="form-control" id="description" name="password"
+        required>
+    </div>
+    <div class="form-group mb-1">
+      <label for="description">Confirm Password</label>
+      <input type="password" [(ngModel)]="admin.password_confirmation" class="form-control" id="description"
+        name="Confirmpassword" required>
+    </div>
+    <!-- <div class="form-group mb-1">
+      <label for="description">Type</label>
+      <input type="Type" [(ngModel)]="admin.type" class="form-control" id="description" name="Type" required>
+    </div> -->
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary px-4 mt-2 me-2">Save</button>
+    <input type="button" class="btn btn-secondary px-3 mt-2" value="Back" (click)="goBack()">
+  </form>
+</div>

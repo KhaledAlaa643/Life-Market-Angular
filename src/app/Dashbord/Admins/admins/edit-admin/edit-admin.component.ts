@@ -36,17 +36,28 @@ export class EditAdminComponent implements OnInit {
 
   update()
   {
-    this.adminService
-      .updateAdmin(this.id, this.backupAdmin)
-      .subscribe((res) => {
+    this.adminService.updateAdmin(this.id, this.backupAdmin).subscribe({
+      next:(res) => {
         this.backupAdmin = res
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Updated Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(()=>{
+          this.router.navigate(['/admin/admin'])
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, '+err,
+        })
+      }
     })
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Updated Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
+  
+    
   }
 }

@@ -36,17 +36,20 @@ export class EditCustomerComponent {
 
   update()
   {
-    this.customerService
-      .updateCustomer(this.id, this.backupCustomer)
-      .subscribe((res) => {
+    this.customerService.updateCustomer(this.id, this.backupCustomer).subscribe({
+      next:(res) => {
         this.backupCustomer = res
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Updated Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(()=>{
+          this.router.navigate(['/admin/customer'])
+        });
+      }
     })
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Updated Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
+    
   }
 }

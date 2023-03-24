@@ -5,6 +5,7 @@ import { Location } from '@angular/common'
 import { Customers } from 'src/app/Models/customers';
 import { CustomerService } from 'src/app/Services/customer.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -19,7 +20,8 @@ export class AddCustomerComponent {
     private customerService: CustomerService,
     private router: Router,
     private location: Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userserve: UserService, 
   ) {
     this.passwordForm = this.fb.group({
       password: ['', Validators.required],
@@ -63,18 +65,29 @@ export class AddCustomerComponent {
   }
   saveCustomer()
   {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Added Successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    })
-    this.customerService.saveCustomer(this.customer).subscribe({
-      next: (res) => {
-        console.log(res)
-        this.router.navigate(['/customer'])
+    
+    this.customer.type = "user";
+    this.userserve.createUser(this.customer).subscribe({
+      next: (data) => { 
+        // console.log(data)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Added Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(()=>{
+          this.router.navigate(['/admin/customer'])
+        });
       },
+      error: (err) => {
+        // console.log(err.error.error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, '+err,
+        })
+      }
     })
   }
 }

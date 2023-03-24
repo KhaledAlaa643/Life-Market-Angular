@@ -17,6 +17,7 @@ export class CustomersComponent {
   password_confirmation: string = "";
   type: string = "";
   constructor(private customerService:CustomerService){}
+
   ngOnInit(): void {
     this.customerService.getCustomers().subscribe((customers) => {
       this.customers = customers
@@ -34,15 +35,30 @@ export class CustomersComponent {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'The Admin has been deleted.', 'success');
-        this.customerService.deleteCustomer(customerId).subscribe(() => {
-          const index = this.customers.findIndex((p) => p.id === customerId)
-          if (index !== -1) {
-            this.customers.splice(index, 1)
+        this.customerService.deleteCustomer(customerId).subscribe({
+          next: (res) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'The Customer has been deleted Successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            }).then(() => {
+              window.location.reload();
+            })
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong, '+err,
+            })
           }
+          
         })
       }
     })
+    
   }
 
 }

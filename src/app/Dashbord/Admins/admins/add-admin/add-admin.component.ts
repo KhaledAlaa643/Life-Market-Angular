@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { Location } from '@angular/common'
 import { Admin } from 'src/app/Models/admin'
 import { AdminService } from 'src/app/Services/admin.service'
+import { UserService } from 'src/app/services/user.service'
 
 @Component({
   selector: 'app-add-admin',
@@ -16,6 +17,8 @@ export class AddAdminComponent {
     private adminService: AdminService,
     private router: Router,
     private location: Location,
+    private route:Router,
+    private userserve: UserService, 
   ) {}
   goBack()
   {
@@ -23,18 +26,28 @@ export class AddAdminComponent {
   }
   saveAdmin()
   {
-   
-    this.adminService.saveAdmin(this.admin).subscribe({
-      next: (res) => {
-        console.log(res)
+    this.admin.type = "admin";
+    this.userserve.createUser(this.admin).subscribe({
+      next: (data) => { 
+        // console.log(data)
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Added Successfully',
           showConfirmButton: false,
           timer: 1500,
-        })
+        }).then(()=>{
+          this.router.navigate(['/admin/admin'])
+        });
       },
+      error: (err) => {
+        // console.log(err.error.error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, '+err,
+        })
+      }
     })
   }
 
