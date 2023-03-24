@@ -7,8 +7,7 @@
             <th>Price Before Discount</th>
             <!-- <th>photo</th> -->
             <th>Price</th>
-            <th>Add to offer</th>
-            <th>Remove from offer</th>
+            <th>Add OR Remove offer</th>
             
             
         </tr>
@@ -21,19 +20,15 @@
             <td class="  text-primary"> {{pro.brand}}</td>
             <td class="  text-primary"> {{pro.price_before_discount}}</td>
             <td class="  text-primary"> {{pro.price}}</td>
+            <td>
            
-            <td>
-                <!-- <form #userform="ngForm" (ngSubmit)="addproductstooffer()">
-                    <input name="prd_id" [(ngModel)]="Offer_product.prd_id" type="hidden" [value]="pro.id">
-                    <input name="offer_id" [(ngModel)]="Offer_product.offer_id" type="hidden" [value]="offer_id"> -->
-                <button class="btn btn-primary" (click)="addproductstooffer(pro.id,offer_id)"   [routerLink]="['/addproduct/offer/',offer_id]" >ADD</button>
-                <!-- </form> -->
-            </td>
-            <td>
-                <button class="btn btn-danger" (click)="deleteProductFromffer(pro.id)"   [routerLink]="['/addproduct/offer/',offer_id]" >Remove</button>
-            </td>
+             <button class="btn btn-primary" *ngIf="check(pro.id) else elseblock" (click)="addproductstooffer(pro.id,offer_id)"   [routerLink]="['/addproduct/offer/',offer_id]" >ADD</button>
             
+                <ng-template #elseblock>
+                <button class="btn btn-danger"  (click)="deleteProductFromffer(pro.id)"   [routerLink]="['/addproduct/offer/',offer_id]" >Remove</button>
+                </ng-template>
            
+            </td>
 
         </tr>
     </ng-container>

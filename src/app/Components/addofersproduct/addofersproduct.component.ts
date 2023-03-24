@@ -11,7 +11,7 @@ import { ProductOffer } from './../../Models/product-offer';
   templateUrl: './addofersproduct.component.html',
   styleUrls: ['./addofersproduct.component.css']
 })
-export class AddofersproductComponent implements OnInit {
+export class AddofersproductComponent implements OnInit  {
 
   allproducts:any={} as Product;
   offer_id!:any;
@@ -20,6 +20,7 @@ export class AddofersproductComponent implements OnInit {
 
 
   constructor(private prodsservice:ProductsService,private offerservice:OffersService,private activeroute: ActivatedRoute){}
+ 
   ngOnInit(): void {
     this.offer_id = this.activeroute.snapshot.paramMap.get("id");
     // this.Offer_product.offer_id=this.offer_id;
@@ -27,6 +28,7 @@ export class AddofersproductComponent implements OnInit {
 
     this.getAllProducts();
     this.getAllproductsWithOffers();
+    this.check;
   }
 
 
@@ -71,11 +73,29 @@ export class AddofersproductComponent implements OnInit {
     this.offerservice.getAllproductsWithOffers().subscribe({
       next:(res)=>{
         this.products_id=res;
-        console.log(this.products_id);
+        // console.log(this.products_id);
 
        
       }
     })
   }
+
+   check (prd_id:any) {
+    
+   for (let index = 0; index < this.products_id.length; index++)
+    {
+    if (prd_id==this.products_id[index].prd_id)
+    {
+      
+      return false;
+    }
+    
+  }
+
+
+  return true
+
+}
+   
 
 }
