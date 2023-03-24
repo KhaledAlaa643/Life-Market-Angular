@@ -1,0 +1,56 @@
+<form #myForm="ngForm" autocomplete="off" (ngSubmit)="saveCustomer()" >
+  <div class="form-group">
+      <label for="exampleInputfirst_name">First Name :</label>
+      <input #customerFirstName="ngModel" [(ngModel)]="customer.first_name" required
+      pattern="^[a-zA-Z]{4,15}$"
+      type="text"
+          class="form-control" id="exampleInputfirst_name" name="customerFirstName"
+          >
+
+      <div [hidden]="customerFirstName.valid || customerFirstName.pristine" class="text-danger">
+          <p [hidden]="!customerFirstName.errors?.['required']">Customer First Name Required</p>
+          <p [hidden]="!customerFirstName.errors?.['pattern']">Invalid First customer Name</p>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="exampleInputlast_name">Last Name :</label>
+      <input #customerLastName="ngModel" [(ngModel)]="customer.last_name" required
+      pattern="^[a-zA-Z]{4,15}$"
+      type="text"
+          class="form-control" id="exampleInputlast_name" name="customerLastName"
+          >
+
+      <div [hidden]="customerLastName.valid || customerLastName.pristine" class="text-danger">
+          <p [hidden]="!customerLastName.errors?.['required']">customer Last Name Required</p>
+          <p [hidden]="!customerLastName.errors?.['pattern']">Invalid Last customer Name</p>
+      </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form1Example2">Email</label>
+    <input name="customerEmail"[(ngModel)]="customer.email" type="email" id="form1Example2" class="form-control" />
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form1Example2">Phone</label>
+    <input name="customerPhone"[(ngModel)]="customer.phone" type="Phone" id="form1Example2" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Password</label>
+    <input type="password"[(ngModel)]="customer.password" class="form-control" id="description" name="password" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Confirm Password</label>
+    <input type="password"[(ngModel)]="customer.password_confirmation" class="form-control" id="description" name="Confirmpassword" required>
+  </div>
+  <div *ngIf="passwordForm.invalid">
+    <p *ngIf="passwordForm.hasError('passwordMismatch')">Passwords do not match.</p>
+  </div>
+  <div class="form-group">
+    <label for="description">Type</label>
+    <input type="Type" [(ngModel)]="customer.type"class="form-control" id="description" name="Type" required>
+  </div>
+  <!-- Submit button -->
+  <button type="submit"  [disabled]="!myForm.valid" class="btn btn-primary btn-block">Submit</button>
+</form>
+<input type="button" class="btn btn-secondary" value="Back" (click)="goBack()">

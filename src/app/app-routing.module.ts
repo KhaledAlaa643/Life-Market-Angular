@@ -28,6 +28,18 @@ import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/ma
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { OffersComponent } from './Components/Dashboard/offers/offers.component';
 import { ContactComponent } from './Components/Dashboard/contact/contact.component';
+import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
+import { DeliveryComponent } from './Dashbord/Delivery/delivery/Main Delivery/delivery.component';
+import { AdminsComponent } from './Dashbord/Admins/admins/Main Admin/admins.component';
+import { EditAdminComponent } from './Dashbord/Admins/admins/edit-admin/edit-admin.component';
+import { AddAdminComponent } from './Dashbord/Admins/admins/add-admin/add-admin.component';
+import { EditCustomerComponent } from './Dashbord/Customers/Edit Customer/edit-customer/edit-customer.component';
+import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-customer/add-customer.component';
+import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
+import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
+import { CheckOutComponent } from './Components/check-out/check-out.component';
+
+
 
 const routes: Routes = [
 
@@ -43,6 +55,8 @@ const routes: Routes = [
     {path: 'products/list/category/:id', component:ProductsListByCategoryComponent},
     {path: 'product/:id', component:ProductDetailsComponent},
     {path: 'cart', component:CartComponent, canActivate:[AuthGuard]},
+    {path: 'product', component:ProductDetailsComponent},
+    {path: 'getcartprd', component:CartComponent},
     {path: 'about', component:AboutUsComponent},
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
@@ -57,6 +71,9 @@ const routes: Routes = [
       {path:'updateaddress',component:UpdateAddressComponent}
     ]},
 
+    {path: 'cart/check', component:CheckOutComponent},
+    {path: 'cart', component:CartComponent},
+
     {path: '**', component:NotFoundComponent}
   ]},
 
@@ -64,8 +81,19 @@ const routes: Routes = [
     {path: 'dashboard', component:DashboardComponent},
     {path: 'offers', component:OffersComponent},
     {path: 'contact', component:ContactComponent},
-    {path:'orders',component:OrderComponent},
+    {path: 'orders',component:OrderComponent},
+    {path: 'admin', component:AdminsComponent},
+    {path: 'admin/add', component:AddAdminComponent},
+    {path: 'admin/edit/:id', component:EditAdminComponent},
+    {path: 'customer', component:CustomersComponent},
+    {path: 'customer/add', component:AddCustomerComponent},
+    {path: 'customer/edit/:id', component:EditCustomerComponent},
+    {path: 'delivery', component:DeliveryComponent},
+    {path: 'delivery/add', component:AddDeliveryComponent},
+    {path: 'delivery/edit/:id', component:EditDeliveryComponent},
+    {path: '**', component:NotFoundComponent}
   ]},
+    
 ];
 
 

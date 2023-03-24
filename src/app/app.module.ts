@@ -35,6 +35,17 @@ import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.c
 import { OffersComponent } from './Components/Dashboard/offers/offers.component';
 import { ContactComponent } from './Components/Dashboard/contact/contact.component';
 // import { AuthGuard } from './guards/auth.guard';
+import { CloseComponent } from './close/close.component';
+import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
+import { AdminsComponent } from './Dashbord/Admins/admins/Main Admin/admins.component';
+import { DeliveryComponent } from './Dashbord/Delivery/delivery/Main Delivery/delivery.component';
+import { EditAdminComponent } from './Dashbord/Admins/admins/edit-admin/edit-admin.component';
+import { AddAdminComponent } from './Dashbord/Admins/admins/add-admin/add-admin.component';
+import { EditCustomerComponent } from './Dashbord/Customers/Edit Customer/edit-customer/edit-customer.component';
+import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-customer/add-customer.component';
+import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
+import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
+import { CheckOutComponent } from './Components/check-out/check-out.component';
 
 @NgModule({
   declarations: [
@@ -71,13 +82,23 @@ import { ContactComponent } from './Components/Dashboard/contact/contact.compone
     OffersComponent,
     ContactComponent,
     // AuthGuard,
+    CloseComponent,
+    CustomersComponent,
+    AdminsComponent,
+    DeliveryComponent,
+    EditAdminComponent,
+    AddAdminComponent,
+    EditCustomerComponent,
+    AddCustomerComponent,
+    EditDeliveryComponent,
+    AddDeliveryComponent,
+    CheckOutComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

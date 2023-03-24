@@ -4,131 +4,84 @@
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header py-3">
-            <h5 class="mb-0">Cart - 2 items</h5>
+            <h5 class="mb-0">Cart - {{ products.length }} items</h5>
           </div>
           <div class="card-body">
             <!-- Single item -->
-            <div class="row content">
-              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                <!-- Image -->
-                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-                    class="w-100" alt="Blue Jeans Jacket" />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                  </a>
-                </div>
-                <!-- Image -->
-              </div>
-
-              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                <!-- Data -->
-                <p><strong>Blue denim shirt</strong></p>
-                <p>Units Left : 2</p>
-                <button type="button" class="btn icon btn-sm me-1 mb-2 " data-mdb-toggle="tooltip"
-                  title="Remove item">
-                  <i class="fas fa-trash "></i>
-                </button>
-                <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                  title="Move to the wish list">
-                  <i class="fas fa-heart"></i>
-                </button>
-                <!-- Data -->
-              </div>
-
-              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <h4 class="text-start text-md-center">
-                  <strong>$17.99</strong>
-                </h4>
-                <h6 class="text-start text-md-center">
-                  <del class="text-danger ">$54.99 </del>
-                  <button class="perc"> -40%</button>
-                </h6>
-                <!-- Quantity -->
-                <div class="d-flex mb-4" style="max-width: 300px">
-                  <button class="btn but px-3 me-2 btn-primary"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-
-                  <div class="form-outline">
-                    <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
-                    <label class="form-label" for="form1">Quantity</label>
-                  </div>
-
-                  <button class="btn but px-3 ms-2 btn-primary"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <!-- Quantity -->
-              </div>
-            </div>
-            <!-- Single item -->
-
-            <hr class="my-4" />
 
             <!-- Single item -->
-            <div class="row">
-              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                <!-- Image -->
-                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
-                    class="w-100" />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                  </a>
-                </div>
-                <!-- Image -->
-              </div>
-
-              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                <!-- Data -->
-                <p><strong>Red hoodie</strong></p>
-                <p>Units Left: 2</p>
-
-                <button type="button" class="btn icon btn-sm me-1 mb-2 " data-mdb-toggle="tooltip"
-                  title="Remove item">
-                  <i class="fas fa-trash"></i>
-                </button>
-                <button type="button" class="btn btn-danger btn-sm mb-2 btn-primary" data-mdb-toggle="tooltip"
-                  title="Move to the wish list">
-                  <i class="fas fa-heart"></i>
-                </button>
-                <!-- Data -->
-              </div>
-
-              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <!-- Price -->
-                <p class="text-start text-md-center">
-                  <strong>$17.99</strong>
-                </p>
-                <h6 class="text-start text-md-center">
-                  <del class="text-danger ">$54.99 </del>
-                  <button class="perc"> -40%</button>
-                </h6>
-                <!-- Price -->
-                <!-- Quantity -->
-                <div class="d-flex mb-4" style="max-width: 300px">
-                  <button class="btn but px-3 me-2 btn-primary"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-
-                  <div class="form-outline">
-                    <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
-                    <label class="form-label" for="form1">Quantity</label>
-                  </div>
-
-                  <button class="btn but px-3 ms-2 btn-primary"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <!-- Quantity -->
-              </div>
-            </div>
-            <!-- Single item -->
+            <table
+              class="table table-hover table-lg table-xl table-sm table-md"
+            >
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products" class="row-product">
+                  <td>
+                    <img
+                      [src]="product.photo"
+                      width="200"
+                      height="240"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <h5>{{ product.name }}</h5>
+                    <p>Units Left: {{ product.quantity }}</p>
+                    <button
+                      type="button"
+                      class="btn icon btn-sm me-1 mb-2"
+                      data-mdb-toggle="tooltip"
+                      title="Remove item"
+                      (click)="deleteCart(product.id)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm mb-2"
+                      data-mdb-toggle="tooltip"
+                      title="Move to the wish list"
+                    >
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <h2>{{ product.price * product.quantity | currency }}</h2>
+                    <div class="disc-perc">
+                      <del class="text-danger">
+                        {{ product.price_before_discount | currency }}</del
+                      >
+                      <button class="perc">
+                        -{{
+                          1 - product.price / product.price_before_discount
+                            | percent
+                        }}
+                      </button>
+                    </div>
+                    <div class="d-flex mb-4 data" style="max-width: 300px">
+                      <i
+                        class="fa-solid fa-minus px-3 me-2 maths btn-primary"
+                        (click)="dec(product.id)"
+                      ></i>
+                      <div class="form-outline">
+                        <h2>{{ product.quantity }}</h2>
+                        <label class="form-label">Quantity</label>
+                      </div>
+                      <i
+                        class="fas fa-plus px-3 me-2 maths btn-primary"
+                        (click)="inc(product.id)"
+                      ></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="card mb-4">
@@ -146,27 +99,20 @@
           <div class="card-body">
             <ul class="list-group list-group-flush">
               <li
-                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                Products
-                <span>$53.98</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                Shipping
-                <span>Gratis</span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
+              >
                 <div>
                   <strong>Total amount</strong>
                   <strong>
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>$53.98</strong></span>
+                <span
+                  ><strong>{{ total() | currency }}</strong></span
+                >
               </li>
             </ul>
-
-            <button type="button" class="btn but btn-lg btn-block btn-primary">
+            <button type="button" class="btn but btn-lg btn-block btn-primary" (click)="check()" [routerLink]="['check']">
               Go to checkout
             </button>
           </div>

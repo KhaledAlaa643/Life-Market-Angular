@@ -9,6 +9,7 @@
     "compat-api/css": "off",
     "axe/forms": "off",
     "axe/parsing": "off",
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "axe/structure": "off"
   }
 }

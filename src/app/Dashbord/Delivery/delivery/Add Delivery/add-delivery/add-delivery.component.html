@@ -1,0 +1,32 @@
+<form  #myForm="ngForm" autocomplete="off" (ngSubmit)="saveDelivery()">
+  <div class="form-group">
+    <label for="exampleInputname">Gvernorate :</label>
+    <input #adminGvernorate="ngModel" [(ngModel)]="delivery.governorate" required
+    pattern="^[a-zA-Z]{4,15}$"
+    type="text"
+        class="form-control" id="exampleInputname" name="adminGvernorate" aria-describedby="nameHelp"
+        >
+
+    <div [hidden]="adminGvernorate.valid || adminGvernorate.pristine" class="text-danger">
+        <p [hidden]="!adminGvernorate.errors?.['required']">Delivery Gvernorate Required</p>
+        <p [hidden]="!adminGvernorate.errors?.['pattern']">Invalid Delivery Gvernorate</p>
+    </div>
+</div>
+<div class="form-group">
+    <label for="exampleInputPrice">Price :</label>
+    <input #price="ngModel" [(ngModel)]="delivery.price" required
+    type="number"
+        class="form-control" id="exampleInputPrice" name="price" aria-describedby="price"
+        >
+
+</div>
+
+  <div class="form-group">
+    <label for="description">Time</label>
+    <textarea class="form-control" id="description" name="time" required [(ngModel)]="delivery.time"></textarea>
+  </div>
+
+
+  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary btn-block">Add</button>
+</form>
+<input type="button" class="btn btn-success but" value="Back" (click)="goBack()">

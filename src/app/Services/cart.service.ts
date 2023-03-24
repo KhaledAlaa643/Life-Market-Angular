@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Cart } from '../Models/cart';
 import { Observable, retry } from 'rxjs';
-
+import { Product } from '../Models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,14 @@ export class CartService {
         })
       }
     ).pipe(retry(2));
+  }
+
+
+  getCarts():Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/shoppingcart`)
+  }
+  
+  deleteCart(prdId:number):Observable<Product>{
+    return this._httpClient.delete<Product>(`${environment.apiURL}/shoppingcart/${prdId}`)
   }
 }
