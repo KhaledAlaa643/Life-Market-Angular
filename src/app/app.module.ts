@@ -32,6 +32,7 @@ import { UpdateAddressComponent } from './component/update-address/update-addres
 import { OffersComponent } from './Components/offers/offers.component';
 import { EditofferComponent } from './Components/editoffer/editoffer.component';
 import { AddofferComponent } from './Components/addoffer/addoffer.component';
+import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 
@@ -65,6 +66,7 @@ import { AddofferComponent } from './Components/addoffer/addoffer.component';
     OffersComponent,
     EditofferComponent,
     AddofferComponent,
+    AddofersproductComponent,
     // AuthGuard,
   ],
 
@@ -72,7 +74,7 @@ import { AddofferComponent } from './Components/addoffer/addoffer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    // FormsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

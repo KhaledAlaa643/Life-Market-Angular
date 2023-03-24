@@ -53,6 +53,9 @@ export class ProductsService {
     return this._httpClient.get<Product[]>(`${environment.apiURL}/search/${name}`)
   }
 
+  getAllProducts():Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${environment.apiURL}/products`)
+  }
 
  
 

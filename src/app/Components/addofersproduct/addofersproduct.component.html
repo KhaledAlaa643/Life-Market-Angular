@@ -1,0 +1,40 @@
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Brand</th>
+            <th>Price Before Discount</th>
+            <!-- <th>photo</th> -->
+            <th>Price</th>
+            <th>Add to offer</th>
+            <th>Remove from offer</th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let pro of allproducts;" >
+           
+         <tr> 
+            <th class="  text-danger">{{pro.name}}</th>
+            <td class="  text-primary"> {{pro.brand}}</td>
+            <td class="  text-primary"> {{pro.price_before_discount}}</td>
+            <td class="  text-primary"> {{pro.price}}</td>
+           
+            <td>
+                <!-- <form #userform="ngForm" (ngSubmit)="addproductstooffer()">
+                    <input name="prd_id" [(ngModel)]="Offer_product.prd_id" type="hidden" [value]="pro.id">
+                    <input name="offer_id" [(ngModel)]="Offer_product.offer_id" type="hidden" [value]="offer_id"> -->
+                <button class="btn btn-primary" (click)="addproductstooffer(pro.id,offer_id)"   [routerLink]="['/addproduct/offer/',offer_id]" >ADD</button>
+                <!-- </form> -->
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteProductFromffer(pro.id)"   [routerLink]="['/addproduct/offer/',offer_id]" >Remove</button>
+            </td>
+            
+           
+
+        </tr>
+    </ng-container>
+    </tbody>

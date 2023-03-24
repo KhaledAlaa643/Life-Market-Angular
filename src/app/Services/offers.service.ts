@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, retry } from 'rxjs';
 import { Offers } from '../Models/offers';
 import { environment } from 'src/environments/environment.development';
+import { Product } from './../Models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,16 @@ export class OffersService {
   addNewoffer(offer:Offers):Observable<Offers>{
     return this._httpClient.post<Offers>(`${environment.apiURL}/offers`,offer)
   }
+
+  addProductTooffer(data:any):Observable <any>{
+    return  this._httpClient.post<any>(`${environment.apiURL}/offers_products/`,data)
+  }
+  deleteProductFromffer(id:any):Observable <any>{
+    return  this._httpClient.delete<any>(`${environment.apiURL}/offers_products/${id}`)
+  }
+
+  getAllproductsWithOffers():Observable<Offers[]>{
+    return this._httpClient.get<Offers[]>(`${environment.apiURL}/offers_products`)
+  }
+
 }

@@ -26,6 +26,7 @@ import { UpdateAddressComponent } from './component/update-address/update-addres
 import { OffersComponent } from './Components/offers/offers.component';
 import { EditofferComponent } from './Components/editoffer/editoffer.component';
 import { AddofferComponent } from './Components/addoffer/addoffer.component';
+import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'admin/offers',component:OffersComponent},
   {path:'offers/edit/:id',component:EditofferComponent},
   {path:'offer/addoffer',component:AddofferComponent},
+  {path:'addproduct/offer/:id',component:AddofersproductComponent},
 
   {path: 'main', component:MainLayoutComponent, children: [
     {path: 'home', component:HomeComponent},

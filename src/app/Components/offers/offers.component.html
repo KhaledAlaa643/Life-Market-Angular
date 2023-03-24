@@ -8,9 +8,11 @@
             <th>Offer title</th>
             <th>Type</th>
             <th>Discount percent </th>
-            <th>photo</th>
+            <!-- <th>photo</th> -->
+            <th>Add product to offer</th>
             <th>Edit</th>
-            <th>delete</th>
+            <th>Delete</th>
+            
             
         </tr>
     </thead>
@@ -21,13 +23,17 @@
             <th class="  text-danger">{{offer.offer_title}}</th>
             <td class="  text-primary"> {{offer.type}}</td>
             <td class="  text-primary"> {{offer.discont_percent}}%</td>
-            <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td>
+            <!-- <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td> -->
+            <td>
+                <button class="btn btn-info" [routerLink]="['/addproduct/offer/',offer.id]" >ADD</button>
+            </td>
             <td>
                 <button class="btn btn-primary" [routerLink]="['/offers/edit/',offer.id]" >Edit</button>
             </td>
             <td>
                 <button class="btn btn-danger" (click)="deleteOffer(offer)">Delete</button>
             </td>
+           
 
         </tr>
     </ng-container>
