@@ -1,0 +1,78 @@
+<button [routerLink]="['/create-product']">create product</button>
+<br>
+<div class="btn-group mt-3 ml-5" style="width: 600px;">
+  <button type="button" class="btn btn-primary" (click)="Categoryfiltration()">Category</button>
+  <button type="button" class="btn btn-primary"   (click)="SubCategoryfiltration()">Sub Category</button>
+  <button type="button" class="btn btn-primary" (click)="getAllProducts()">All products</button>
+</div>
+<br>
+<!--Drop down selection filter-->
+<ng-container *ngIf="categoriesNamesVisibility" >
+  <select  style="width: 700px; border-radius: 6px; margin-left: 4px;"
+   class="mt-2 mb-2"
+  (change)="categoryFilteredPrd()"
+  [(ngModel)]="selectedCat">
+  <option   [value]='category.id' *ngFor="let category of categoriesNames"> {{category.name}}</option>
+
+</select>
+</ng-container>
+
+<ng-container *ngIf="SubcategoriesNamesVisibility" >
+  <select style="width: 700px; border-radius: 12px; margin-left: 4px;"
+  class="mt-2 mb-2"
+  (change)="SubcategoryFilteredPrd()"
+  [(ngModel)]="selectedSubCat">
+  <option [value]="Subcategory.id" *ngFor="let Subcategory of SubcategoriesNames;">{{Subcategory.name}} </option>
+
+</select>
+</ng-container>
+
+<!-- Products table-->
+
+
+
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="h5 ">Name</th>
+        <th class="h5">Description</th>
+        <th class="h5">photo</th>
+        <th class="h5"> Edit</th>
+        <th class="h5">Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of AllProducts">
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td><img [src]="'../../../assets/'+product.photo" style="width:100px;"></td>
+        <td><button class="btn btn-primary m-2" [routerLink]="['/update-product',product.id]" >Update</button></td>
+          <td>  <button class="btn btn-primary m-2" (click)="deletePrd(product.id)"> Delete</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+
+<!-- <ng-container  class="container">
+
+  <div class="row">
+
+  <div class="card col-2" style="width: 18rem;"
+   *ngFor="let product of AllProducts; let i as index"
+   style="display: inline;">
+
+    <img [src]="'../../../assets/'+product.photo" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}} </h5>
+      <p class="card-text">{{product.description}}</p>
+      <a href="#" class="btn btn-primary">Edit</a>
+      <a href="#" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
+
+</div>
+</ng-container> -->
+

@@ -5,9 +5,9 @@
     </div>
 </div>
 
-<div *ngFor="let i of prd; index as n" class="row  px-3 px-lg-5">
+<div *ngFor="let i of prd; index as n" class="row  px-3 px-lg-5" >
 
-    <div class="col-3 col-lg-2">
+    <div class="col-3 col-lg-2" >
         <a (click)="goToPrdDetails(i[0].id)" class="text-muted text-decoration-none d-flex">
             <img [src]="'../../../assets/'+i[0].photo" width="100" class="w-100q p-1" alt="...">
         </a>
