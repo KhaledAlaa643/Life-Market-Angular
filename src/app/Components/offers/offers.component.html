@@ -1,40 +1,52 @@
-<h1>User Offers</h1>
+<div class="row ">
+    <div class="col-3 ">
+        <h1>User Offers</h1>
 
-    <button class="btn btn-success" [routerLink]="['/offer/addoffer/']" >Add New offer</button>
+    </div>
+    <div class=" col-9 d-flex justify-content-end  ">
+        <button class="btn btn-success new" [routerLink]="['/offer/addoffer/']">Add New offer</button>
+    </div>
 
-<table class="table table-bordered ">
+</div>
+
+
+<table class="table table-dark table-striped table-hover mt-2">
     <thead>
         <tr>
+            <td>#</td>
             <th>Offer title</th>
             <th>Type</th>
             <th>Discount percent </th>
-            <!-- <th>photo</th> -->
+            <th>photo</th>
             <th>Add product to offer</th>
             <th>Edit</th>
             <th>Delete</th>
-            
-            
+
+
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngFor="let offer of offers" >
-           
-         <tr> 
-            <th class="  text-danger">{{offer.offer_title}}</th>
-            <td class="  text-primary"> {{offer.type}}</td>
-            <td class="  text-primary"> {{offer.discont_percent}}%</td>
-            <!-- <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td> -->
-            <td>
-                <button class="btn btn-info" [routerLink]="['/addproduct/offer/',offer.id]" >ADD</button>
-            </td>
-            <td>
-                <button class="btn btn-primary" [routerLink]="['/offers/edit/',offer.id]" >Edit</button>
-            </td>
-            <td>
-                <button class="btn btn-danger" (click)="deleteOffer(offer)">Delete</button>
-            </td>
-           
+        <ng-container *ngFor="let offer of offers;let i =index">
 
-        </tr>
-    </ng-container>
+            <tr>
+                <th class="  text-danger"> {{i+1}}</th>
+                <th class="  text-danger">{{offer.offer_title}}</th>
+                <td class="  text-primary"> {{offer.type}}</td>
+                <td class="  text-primary"> {{offer.discont_percent}}%</td>
+                <!-- <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td> -->
+                <td><img [src]="'../../C:/wamp64/www/Life_Market_API/public/storage/images/'+offer.photo" width="200px" height="70px" /></td>
+
+                <td>
+                    <button class="btn btn-info add" [routerLink]="['/addproduct/offer/',offer.id]"><i class="fa fa-add"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/offers/edit/',offer.id]"><i class="fa fa-edit"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteOffer(offer)"><i class="fa fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+        </ng-container>
     </tbody>

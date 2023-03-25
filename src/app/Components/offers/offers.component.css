@@ -1,5 +1,12 @@
-h1
+*
+{   
+    margin: 0;
+}
+.add
 {
-    display: flex;
-    justify-content: center;
+    background-color: rgb(35, 178, 178);
+}
+.new
+{
+    background-color: rgb(40, 155, 155);
 }

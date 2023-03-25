@@ -5,6 +5,7 @@ import { OffersService } from 'src/app/Services/offers.service';
 import { ActivatedRoute } from '@angular/router';
 import { Offers } from './../../Models/offers';
 import { ProductOffer } from './../../Models/product-offer';
+// import { Swal } from 'sweetalert2';
 
 @Component({
   selector: 'app-addofersproduct',

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OffersService } from 'src/app/Services/offers.service';
@@ -11,17 +12,36 @@ import { Offers } from './../../Models/offers';
 export class AddofferComponent {
 
   offer:Offers={} as Offers 
-  constructor(private offerservice:OffersService,private activeroute: ActivatedRoute,private router:Router){}
+  file!:File
+  x!:any
+  constructor(private offerservice:OffersService,private activeroute: ActivatedRoute,private router:Router,private http: HttpClient){}
 
-
+  
   addOffer(){
-    this.offerservice.addNewoffer(this.offer).subscribe({
+    const formData = new FormData();
+    formData.append('photo', this.file, this.file.name);
+    formData.append('offer_title', this.offer.offer_title);
+    formData.append('type',this.offer.type);
+    this.x =this.offer.discont_percent;
+    formData.append('discont_percent',this.x);
+    // console.log(formData.get("offer_title"))
+
+    this.offerservice.addNewoffer(formData).subscribe({
       next:(res)=>{
-        console.log(this.offer)
         this.router.navigate(['./admin/offers'])
 
 
       }
     })
   }
+
+
+  onFileSelected(event:any) {
+
+    this.file= event.target.files[0];
+
+  }
+   
+
+
 }
