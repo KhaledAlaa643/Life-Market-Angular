@@ -34,11 +34,11 @@
       </div>
     </div>
 
-    <div class="row d-none d-lg-flex pt-5">
-      <div *ngFor="let i of cat" class="col-3 mt-3">
-        <h6 class="text-light mb-1">{{i.name}}</h6>
+    <div class="row d-none d-lg-flex pt-4 d-flex justify-content-center">
+      <div *ngFor="let i of cat" class="col-2 mt-3">
+        <h6 class="text-light text-center mb-1">{{i.name}}</h6>
         <ng-container *ngFor="let it of subCat">
-        <a *ngIf="it.cat_id==i.id" [href]="'/main/products/list/category/'+i.id+'?type=cat'" class="text-light d-block" style="font-size: small;">{{it.name}}</a>
+        <a *ngIf="it.cat_id==i.id" [href]="'/main/products/list/category/'+i.id+'?type=cat'" class="text-light d-block text-center" style="font-size: small;">{{it.name}}</a>
       </ng-container>
       </div>
     </div>
