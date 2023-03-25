@@ -25,8 +25,9 @@
         <td> {{admin.last_name}}</td>
         <td> {{admin.email}}</td>
         <td> {{admin.phone}}</td>
-        <td> <a name="" id="" class="btn btn-success" [routerLink]="['edit',admin.id]" role="button">Edit</a> </td>
-        <td> <input type="button" value="Delete" class="btn btn-danger" (click)="deleteAdmin(admin.id)"> </td>
+        <td> <a name="" id="" class="btn btn-primary" [routerLink]="['edit',admin.id]" role="button"><i
+          class="fa fa-edit"></i></a> </td>
+        <td> <button type="button" value="Delete" class="btn btn-danger" (click)="deleteAdmin(admin.id)"><i class="fa fa-trash"></i></button></td>
       </tr>
     </tbody>
   </table>
