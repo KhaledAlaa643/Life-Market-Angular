@@ -19,6 +19,11 @@ export class DashboardComponent {
   chart2:any = [];
   prd2:any = [];
   prd2Count:any = [];
+  date:any;
+  year:any;
+  month:any;
+  choseYear:any = 2023;
+  usersMonthCount:any [] = [0,0,0,0,0,0,0,0,0,0,0,0];
   
 
   constructor(
@@ -30,21 +35,21 @@ export class DashboardComponent {
     this._messageServ.getUsersCount().subscribe({
       next: (res) => {
         this.usersCount = res;
-        console.log(res);
+        // console.log(res);
 
       }
     });
     this._messageServ.getOrderCount().subscribe({
       next: (res) => {
         this.ordersCount = res;
-        console.log(res);
+        // console.log(res);
 
       }
     });
     this._messageServ.getProductCount().subscribe({
       next: (res) => {
         this.productsCount = res;
-        console.log(res);
+        // console.log(res);
 
       }
     });
@@ -52,28 +57,30 @@ export class DashboardComponent {
       next: (res) => {
         this.totalIncome = res;
         
-        console.log(res);
+        // console.log(res);
 
       }
     });
 
-
-    this._productServ.getTopSellingProducts().subscribe({
+    this._messageServ.getUsersChart().subscribe({
       next: (res) => {
-        for(let i=0;i<10;i++){
-          this.prd2[i]=res[i].name;
-          this.prd2Count[i]=res[i].selling_count;
+        
+        for(let i=0;i<res.length;i++){
+          // console.log(res[i].created_at);
+          this.date = new Date(res[i].created_at);
+          if(this.date.getFullYear() == this.choseYear){
+            this.usersMonthCount[this.date.getMonth()]+=1;
+          }
+          
         }
-        // this.prd2 = res.map((prd:any)=>prd.name)
-        // this.prd2Count = res.map((prd:any)=>prd.selling_count)
-        // const labels = Utils.months({count: 7});
+        // console.log(this.usersMonthCount);
         this.chart1 = new Chart('canvas1', {
           type: 'line',
           data: {
-            labels: this.prd2,
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
               label: 'Customers',
-              data: this.prd2Count,
+              data: this.usersMonthCount,
               borderWidth: 1
             }]
           },
@@ -85,10 +92,11 @@ export class DashboardComponent {
             }
           }
         });
+        
+
       }
     });
     
-
 
 
     this._productServ.getTopSellingProducts().subscribe({

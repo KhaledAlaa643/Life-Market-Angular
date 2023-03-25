@@ -18,6 +18,10 @@ export class DashboaedService {
     return this._httpClient.get<any>(`${environment.apiURL}/orders/count`)
   }
 
+  getUsersChart():Observable<any>{
+    return this._httpClient.get<any>(`${environment.apiURL}/userss`)
+  }
+
   getProductCount():Observable<any>{
     return this._httpClient.get<any>(`${environment.apiURL}/product/count`)
   }
