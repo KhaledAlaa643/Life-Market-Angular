@@ -32,8 +32,11 @@ import { UpdateAddressComponent } from './component/update-address/update-addres
 import { OrderComponent } from './Components/Dashboard/order/order.component';
 import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/main-dashboard.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
-import { OffersComponent } from './Components/Dashboard/offers/offers.component';
+import { OffersComponent } from './Components/offers/offers.component';
 import { ContactComponent } from './Components/Dashboard/contact/contact.component';
+import { EditofferComponent } from './Components/editoffer/editoffer.component';
+import { AddofferComponent } from './Components/addoffer/addoffer.component';
+import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
 // import { AuthGuard } from './guards/auth.guard';
 import { CloseComponent } from './close/close.component';
 import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
@@ -81,6 +84,10 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     DashboardComponent,
     OffersComponent,
     ContactComponent,
+    // OffersComponent,
+    EditofferComponent,
+    AddofferComponent,
+    AddofersproductComponent,
     // AuthGuard,
     CloseComponent,
     CustomersComponent,
@@ -99,6 +106,7 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    // FormsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

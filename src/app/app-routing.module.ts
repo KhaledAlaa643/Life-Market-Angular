@@ -26,7 +26,7 @@ import { UpdateAddressComponent } from './component/update-address/update-addres
 import { OrderComponent } from './Components/Dashboard/order/order.component';
 import { MainDashboardComponent } from './Components/Dashboard/main-dashboard/main-dashboard.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
-import { OffersComponent } from './Components/Dashboard/offers/offers.component';
+import { OffersComponent } from './Components/offers/offers.component';
 import { ContactComponent } from './Components/Dashboard/contact/contact.component';
 import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
 import { DeliveryComponent } from './Dashbord/Delivery/delivery/Main Delivery/delivery.component';
@@ -38,8 +38,9 @@ import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-cust
 import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
 import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
 import { CheckOutComponent } from './Components/check-out/check-out.component';
-
-
+import { EditofferComponent } from './Components/editoffer/editoffer.component';
+import { AddofferComponent } from './Components/addoffer/addoffer.component';
+import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
 
 const routes: Routes = [
 
@@ -80,7 +81,7 @@ const routes: Routes = [
   {path: 'admin', component:MainDashboardComponent,canActivate:[AuthGuard], children: [
     
     {path: 'dashboard', component:DashboardComponent},
-    {path: 'offers', component:OffersComponent},
+    // {path: 'offers', component:OffersComponent},
     {path: 'contact', component:ContactComponent},
     {path: 'orders',component:OrderComponent},
     {path: 'admin', component:AdminsComponent},
@@ -92,6 +93,10 @@ const routes: Routes = [
     {path: 'delivery', component:DeliveryComponent},
     {path: 'delivery/add', component:AddDeliveryComponent},
     {path: 'delivery/edit/:id', component:EditDeliveryComponent},
+    {path: 'offers',component:OffersComponent},
+    {path: 'offers/edit/:id',component:EditofferComponent},
+    {path: 'offer/addoffer',component:AddofferComponent},
+    {path: 'addproduct/offer/:id',component:AddofersproductComponent},
     {path: '**', component:NotFoundComponent}
   ]},
     

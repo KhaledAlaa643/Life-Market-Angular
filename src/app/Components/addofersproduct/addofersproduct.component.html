@@ -1,0 +1,41 @@
+<h3>Add Products To Offer</h3>
+
+<table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+
+    <thead>
+        <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white">
+
+            <th>No</th>
+            <th>Photo</th>
+            <th>Product Name</th>
+            <th>Brand</th>
+            <th>Price Before Discount</th>            
+            <th>Price</th>
+            <th>Add OR Remove offer</th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let pro of allproducts;let i =index" >
+           
+         <tr> 
+            <td> {{i+1}}</td>
+            <td> <img [src]="'../../../assets/'+pro.photo" width="50" alt=""></td>
+            <td> {{pro.name}}</td>
+            <td> {{pro.brand}}</td>
+            <td> {{pro.price_before_discount}}</td>
+            <td> {{pro.price}}</td>
+            <td>
+           
+             <button class="btn btn-primary" *ngIf="check(pro.id) else elseblock" (click)="addproductstooffer(pro.id,offer_id)"   [routerLink]="['/addproduct/offer/',offer_id]" ><i class="fa fa-add"></i></button>
+            
+                <ng-template #elseblock>
+                <button class="btn btn-danger"  (click)="deleteProductFromffer(pro.id)"   [routerLink]="['/addproduct/offer/',offer_id]" ><i class="fa fa-trash"></i></button>
+                </ng-template>
+           
+            </td>
+
+        </tr>
+    </ng-container>
+    </tbody>

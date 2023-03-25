@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
 
   goToPrdList(_type:any, id:any){
     this.router.navigate(['main/products/list', id], { queryParams: { type: _type, searchText: this.searchInput} });
+
   }
 
 

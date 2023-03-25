@@ -1,0 +1,54 @@
+<div class="row ">
+    <div class="col-6">
+        <h3 class="my-2">Offers Management</h3>
+    </div>
+    <div class=" col-6 d-flex justify-content-end  my-2">
+        <button class="btn btn-primary" [routerLink]="['/admin/offer/addoffer/']">Add New Offer</button>
+    </div>
+</div>
+
+
+<table class="w-100 mt-2 table table-bordered table-hover table-striped text-center">
+
+    <thead>
+        <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white">
+
+            <th>No</th>
+            <th>Offer title</th>
+            <th>Type</th>
+            <th>Discount percent</th>
+            <th>photo</th>
+            <th>Add product</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let offer of offers;let i =index">
+
+            <tr>
+                <td> {{i+1}}</td>
+                <td>{{offer.offer_title}}</td>
+                <td> {{offer.type}}</td>
+                <td> {{offer.discont_percent}}%</td>
+                <!-- <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td> -->
+                <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td>
+
+                <td>
+                    <button class="btn btn-info add" [routerLink]="['/admin/addproduct/offer/',offer.id]"><i
+                            class="fa fa-add"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/admin/offers/edit/',offer.id]"><i
+                            class="fa fa-edit"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteOffer(offer)"><i class="fa fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+        </ng-container>
+    </tbody>
