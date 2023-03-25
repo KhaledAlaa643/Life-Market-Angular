@@ -21,6 +21,8 @@ export class ProductDetailsComponent implements OnInit{
   photo:any;
   cart:Cart = {} as Cart;
   isLoggedIn:boolean = false;
+  addBtn:boolean = true;
+  isFav:boolean = false;
 
   constructor(
     private _productServ: ProductsService,
@@ -37,26 +39,51 @@ export class ProductDetailsComponent implements OnInit{
     this._productServ.getProductsId(this.prdId).subscribe({
       next: (res) => {
         this.prd = res;
-        this.photo=res[0].photo,
-        console.log(this.prd);
+        this.photo=res[0].photo;
+        // console.log(this.prd);
       }
     });
     this._productServ.getProductsPhoto(this.prdId).subscribe({
       next: (res) => {
         this.prdPhoto = res;
-        console.log(this.prdPhoto);
+        // console.log(this.prdPhoto);
       }
     });
     this._productServ.getProductsRating(this.prdId).subscribe({
       next: (res) => {
         this.prdRating = res;
-        console.log(this.prdRating);
+        // console.log(this.prdRating);
       }
     });
 
     if(this._authServ.isLoggedIn()!=null){
       this.isLoggedIn = true;
     }
+
+    this._cartServ.getCarts().subscribe({
+      next: (res) => {
+        // console.log(res);
+        
+        for(let i=0;i<res.length;i++){
+          if(res[i].prd_id==this.prdId){
+            // console.log(res[i].prd_id);
+            this.addBtn=false;
+          }
+          
+          
+        }
+
+      }
+    });
+
+
+    this._cartServ.getCarts().subscribe({
+      next: (res) => {
+        if(res){
+        this.isFav = true;
+        }
+      }
+    });
   }
 
   changeImage(pic:any){
@@ -70,7 +97,8 @@ export class ProductDetailsComponent implements OnInit{
       this.cart.prd_id = this.prdId;
       this._cartServ.addProductToCart(this.cart).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
+          window.location.reload();
         }
       });
     }

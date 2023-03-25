@@ -25,8 +25,8 @@ export class CartService {
   }
 
 
-  getCarts():Observable<Product[]>{
-    return this._httpClient.get<Product[]>(`${environment.apiURL}/shoppingcart`)
+  getCarts():Observable<any[]>{
+    return this._httpClient.get<any[]>(`${environment.apiURL}/getcartprd`)
   }
   
   deleteCart(prdId:number):Observable<Product>{
