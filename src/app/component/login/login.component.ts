@@ -11,36 +11,40 @@ import { User } from 'src/app/viewmodules/user';
 })
 
 export class LoginComponent {
-  user:User={} as User;
-  res!:any;
-  wrongCredentials:any=null;
-constructor(private userserve:UserService,private route:Router , private http:HttpClient){}
-login(){
-  this.userserve.login(this.user).subscribe({
-    next:(data:any)=>{
+  user: User = {} as User;
+  res!: any;
+  wrongCredentials: any = null;
+  constructor(private userserve: UserService, private route: Router, private http: HttpClient) { }
+  login() {
+    this.userserve.login(this.user).subscribe({
+      next: (data: any) => {
 
-    this.res=data;
-    if (this.res['token']) {
-      console.log(this.res)
+        this.res = data;
+        if (this.res['token']) {
+          // console.log(this.res)
 
-              localStorage.setItem('token',this.res['token'])
-              localStorage.setItem('userId',this.res['user']['id'])
-              localStorage.setItem('userName',this.res['user']['first_name'])
+          localStorage.setItem('token', this.res['token'])
+          localStorage.setItem('userId', this.res['user']['id'])
+          localStorage.setItem('userName', this.res['user']['first_name'])
 
 
+          if(this.res['user']['type']=="admin"){
+            this.route.navigate(['/admin/dashboard'])
+          }
+          else{
+            this.route.navigate(['/main/home'])
+          }
+          
+          // console.log(this.res)
+        }
+        else {
 
-        this.route.navigate(['/main/home'])
-        // this.route.navigate(['/register'])
-        console.log(this.res)
+          this.wrongCredentials = "please Enter a valid Email or password"
+        }
       }
-      else{
-
-         this.wrongCredentials="please Enter a valid Email or password"
-      }
-    }
-  })
+    })
 
 
-}
+  }
 
 }

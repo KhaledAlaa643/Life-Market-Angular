@@ -31,6 +31,9 @@ export class MainDashboardComponent implements OnInit {
     this.profileserve.getUserData().subscribe({
       next: (data) => {
         this.user = data
+        // if(this.user.type != "admin"){
+        //   this.logoutFun();
+        // }
         // console.log(data)
       },
       error: (err) => { console.log(err.error.error) }

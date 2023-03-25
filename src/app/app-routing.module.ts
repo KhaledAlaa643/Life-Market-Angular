@@ -77,7 +77,8 @@ const routes: Routes = [
     {path: '**', component:NotFoundComponent}
   ]},
 
-  {path: 'admin', component:MainDashboardComponent, children: [
+  {path: 'admin', component:MainDashboardComponent,canActivate:[AuthGuard], children: [
+    
     {path: 'dashboard', component:DashboardComponent},
     {path: 'offers', component:OffersComponent},
     {path: 'contact', component:ContactComponent},

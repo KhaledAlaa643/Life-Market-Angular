@@ -30,21 +30,21 @@ export class DashboardComponent {
     this._messageServ.getUsersCount().subscribe({
       next: (res) => {
         this.usersCount = res;
-        // console.log(res);
+        console.log(res);
 
       }
     });
     this._messageServ.getOrderCount().subscribe({
       next: (res) => {
         this.ordersCount = res;
-        // console.log(res);
+        console.log(res);
 
       }
     });
     this._messageServ.getProductCount().subscribe({
       next: (res) => {
         this.productsCount = res;
-        // console.log(res);
+        console.log(res);
 
       }
     });
@@ -52,7 +52,7 @@ export class DashboardComponent {
       next: (res) => {
         this.totalIncome = res;
         
-        // console.log(res);
+        console.log(res);
 
       }
     });
