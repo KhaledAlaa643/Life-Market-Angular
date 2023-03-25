@@ -1,0 +1,27 @@
+<button [routerLink]="['/create-sub-category']"
+>Create Sub-Category</button>
+
+
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="h5 ">Name</th>
+        <th class="h5">Description</th>
+        <th class="h5">photo</th>
+        <th class="h5"> Edit</th>
+        <th class="h5">Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Subcategory of AllSubcategories">
+        <td>{{Subcategory.name}}</td>
+        <td>{{Subcategory.description}}</td>
+        <td><img [src]="'../../../assets/'+Subcategory.photo" style="width:100px;"></td>
+        <td><button class="btn btn-primary m-2" [routerLink]="['/update-sub-category',Subcategory.id]" >Update</button></td>
+          <td>  <button class="btn btn-primary m-2" (click)="deleteSubCat(Subcategory.id)"> Delete</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
