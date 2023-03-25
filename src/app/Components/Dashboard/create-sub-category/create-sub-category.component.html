@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 class="mb-4"> Add New Sub Category</h3>
+  <form #catUpdate (ngSubmit)="createSubCat()" method="post">
+    <div class="form-group ">
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" id="Name" name="name" [(ngModel)]="Subcat.name"
+        [placeholder]="Subcat.name">
+    </div>
+    <div class="form-group ">
+      <label for="Description">Description</label>
+      <input type="text" class="form-control" id="Description" name="description" [(ngModel)]=Subcat.description
+        [placeholder]="Subcat.description">
+    </div>
+
+    <div class="form-group ">
+      <label for="Category">Category</label>
+
+      <select class="form-control" id="Category" name="category" [(ngModel)]="Subcat.cat_id">
+        <option [value]='category.id' *ngFor="let category of categories"> {{category.name}}</option>
+
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2 me-2 px-3">Submit</button>
+    <button [routerLink]="['/admin/sub-categories-management']"
+      class="btn btn-secondary text-white px-3 mt-2">Back</button>
+
+  </form>
+</div>

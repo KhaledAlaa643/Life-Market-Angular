@@ -1,4 +1,5 @@
-<div style="height: 92vh !important;" class="">
+
+<div *ngIf="x" style="height: 92vh !important;" class="">
 
 <div class="row m-0 p-0 dash-head">
     <div class="col-12 d-flex justify-content-between">
@@ -32,7 +33,7 @@
                 <i class="fa-solid fa-users mx-2"></i>
                 <span class="d-none d-lg-inline">Customer</span>
             </a>
-            <a [routerLink]="['/admin/products']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
+            <a [routerLink]="['/admin/products-management']" routerLinkActive="router-link-active"  class="btn text-light m-0 text-start p-0 p-lg-2 my-1">
                 <i class="fa-solid fa-bag-shopping mx-2"></i>
                 <span class="d-none d-lg-inline">Products</span>
             </a>

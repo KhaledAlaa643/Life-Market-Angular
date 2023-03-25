@@ -41,6 +41,15 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
 import { EditofferComponent } from './Components/editoffer/editoffer.component';
 import { AddofferComponent } from './Components/addoffer/addoffer.component';
 import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
+import { ProductsManagementComponent } from './Components/Dashboard/products-management/products-management.component';
+import { CategoriesManagementComponent } from './Components/Dashboard/categories-management/categories-management.component';
+import { CategoryUpdateComponent } from './Components/Dashboard/category-update/category-update.component';
+import { CreateCategoryComponent } from './Components/Dashboard/create-category/create-category.component';
+import { SubCategoriesManagementComponent } from './Components/Dashboard/sub-categories-management/sub-categories-management.component';
+import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-update/sub-category-update.component';
+import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-category/create-sub-category.component';
+import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
+import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 
 const routes: Routes = [
 
@@ -62,7 +71,7 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
-    
+
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},
       {path:'order',component:OrdersComponent},
@@ -81,25 +90,44 @@ const routes: Routes = [
   {path: 'admin', component:MainDashboardComponent,canActivate:[AuthGuard], children: [
     
     {path: 'dashboard', component:DashboardComponent},
-    // {path: 'offers', component:OffersComponent},
+
     {path: 'contact', component:ContactComponent},
+
     {path: 'orders',component:OrderComponent},
+
     {path: 'admin', component:AdminsComponent},
     {path: 'admin/add', component:AddAdminComponent},
     {path: 'admin/edit/:id', component:EditAdminComponent},
+
     {path: 'customer', component:CustomersComponent},
     {path: 'customer/add', component:AddCustomerComponent},
     {path: 'customer/edit/:id', component:EditCustomerComponent},
+
     {path: 'delivery', component:DeliveryComponent},
     {path: 'delivery/add', component:AddDeliveryComponent},
     {path: 'delivery/edit/:id', component:EditDeliveryComponent},
+
     {path: 'offers',component:OffersComponent},
     {path: 'offers/edit/:id',component:EditofferComponent},
     {path: 'offer/addoffer',component:AddofferComponent},
     {path: 'addproduct/offer/:id',component:AddofersproductComponent},
+
+    {path:'products-management',component:ProductsManagementComponent},
+    {path:'create-product',component:CreateProductComponent},
+    {path:'update-product/:id',component:ProductUpdateComponent},
+  
+    {path:'categories-management',component:CategoriesManagementComponent},
+    {path:'update-category/:id',component:CategoryUpdateComponent},
+    {path:'create-category',component:CreateCategoryComponent},
+  
+    {path:'sub-categories-management',component:SubCategoriesManagementComponent},
+    {path:'update-sub-category/:id',component:SubCategoryUpdateComponent},
+    {path:'create-sub-category',component:CreateSubCategoryComponent},
+
     {path: '**', component:NotFoundComponent}
   ]},
     
+
 ];
 
 

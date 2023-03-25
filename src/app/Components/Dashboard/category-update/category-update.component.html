@@ -1,0 +1,22 @@
+<div class="container">
+  <h3> Update Category</h3>
+
+<form #catUpdate (ngSubmit)="updateCat()" method="post" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="cat.name" [placeholder]="cat.name">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" name="description" [(ngModel)]=cat.description [placeholder]="cat.description">
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input type="file" class="form-control" [(ngModel)]="cat.photo" id="photo" name="photo" >
+  </div>
+  <button type="submit" class="btn btn-primary me-3 px-3">Update</button>
+  <button [routerLink]="['/admin/categories-management']" class="btn btn-secondary text-white px-3">Back</button>
+
+</form>
+</div>

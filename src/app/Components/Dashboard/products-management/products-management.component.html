@@ -1,0 +1,70 @@
+<div class="container-fluid px-2">
+  <div class="d-flex justify-content-between">
+    <h3 class="my-2 ps-1">Products Management</h3>
+    <button class="btn btn-primary my-2" [routerLink]="['/admin/create-product']">Create New Product</button>
+
+  </div>
+
+  <div class="btn-group mt-1 w-100">
+    <button type="button" class="btn btn-outline-secondary" (click)="getAllProducts()">All Products</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="Categoryfiltration()">Category</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="SubCategoryfiltration()">Sub Category</button>
+  </div>
+  <!--Drop down selection filter-->
+  <ng-container *ngIf="categoriesNamesVisibility">
+    <div class="mt-3 w-100 d-flex justify-content-between">
+    <select class="me-3 w-100 p-1"
+      (change)="categoryFilteredPrd()" [(ngModel)]="selectedCat">
+      <option [value]='category.id' *ngFor="let category of categoriesNames"> {{category.name}}</option>
+    </select>
+    <button class="btn btn-primary" [routerLink]="['/admin/categories-management']">Category Management</button>
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="SubcategoriesNamesVisibility">
+    <div class="mt-3 w-100 d-flex justify-content-between">
+      <select class="me-3 w-100 p-1"
+      (change)="SubcategoryFilteredPrd()" [(ngModel)]="selectedSubCat">
+      <option [value]="Subcategory.id" *ngFor="let Subcategory of SubcategoriesNames;">{{Subcategory.name}} </option>
+    </select>
+    <button class="btn btn-primary" [routerLink]="['/admin/sub-categories-management']">Sub Category Management</button>
+  </div>
+  </ng-container>
+
+  <!-- Products table-->
+
+
+
+
+    <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+
+      <thead>
+        <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white">
+
+          <th>No</th>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Edit</th>
+          <th>Delete </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="AllProducts.length > 0">
+        <tr *ngFor="let product of AllProducts; index as n">
+          <td>{{n+1}}</td>
+          <td><img [src]="'../../../assets/'+product.photo" width="50"></td>
+          <td>{{product.name}}</td>
+          <td>{{product.brand}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td><button class="btn btn-primary m-2" [routerLink]="['/admin/update-product',product.id]"><i class="fa fa-edit"></i></button></td>
+          <td> <button class="btn btn-danger m-2" (click)="deletePrd(product.id)"><i class="fa fa-trash"></i></button></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+</div>

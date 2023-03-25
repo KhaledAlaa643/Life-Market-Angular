@@ -1,0 +1,35 @@
+<div class="container-fluid px-2">
+  <div class="d-flex justify-content-between">
+    <h3 class="my-2 ps-1">Sub Category Management</h3>
+    <button class="btn btn-primary my-2" [routerLink]="['/admin/create-sub-category']">Add New Category</button>
+
+  </div>
+  <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+
+    <thead>
+      <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white">
+        <th>No</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Subcategory of AllSubcategories; index as n">
+        <td>{{n+1}}</td>
+        <td>{{Subcategory.name}}</td>
+        <td>{{Subcategory.description}}</td>
+        <td>
+          <button class="btn btn-primary" [routerLink]="['/admin/update-sub-category',Subcategory.id]"><i
+              class="fa fa-edit"></i></button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteSubCat(Subcategory.id)"> <i
+              class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

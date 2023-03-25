@@ -37,6 +37,15 @@ import { ContactComponent } from './Components/Dashboard/contact/contact.compone
 import { EditofferComponent } from './Components/editoffer/editoffer.component';
 import { AddofferComponent } from './Components/addoffer/addoffer.component';
 import { AddofersproductComponent } from './Components/addofersproduct/addofersproduct.component';
+import { ProductsManagementComponent } from './Components/Dashboard/products-management/products-management.component';
+import { CategoriesManagementComponent } from './Components/Dashboard/categories-management/categories-management.component';
+import { SubCategoriesManagementComponent } from './Components/Dashboard/sub-categories-management/sub-categories-management.component';
+import { CategoryUpdateComponent } from './Components/Dashboard/category-update/category-update.component';
+import { CreateCategoryComponent } from './Components/Dashboard/create-category/create-category.component';
+import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-category/create-sub-category.component';
+import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-update/sub-category-update.component';
+import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
+import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 // import { AuthGuard } from './guards/auth.guard';
 import { CloseComponent } from './close/close.component';
 import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
@@ -88,6 +97,15 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     EditofferComponent,
     AddofferComponent,
     AddofersproductComponent,
+    ProductsManagementComponent,
+    CategoriesManagementComponent,
+    SubCategoriesManagementComponent,
+    CategoryUpdateComponent,
+    CreateCategoryComponent,
+    CreateSubCategoryComponent,
+    SubCategoryUpdateComponent,
+    ProductUpdateComponent,
+    CreateProductComponent,
     // AuthGuard,
     CloseComponent,
     CustomersComponent,

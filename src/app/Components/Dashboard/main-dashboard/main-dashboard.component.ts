@@ -18,6 +18,7 @@ export class MainDashboardComponent implements OnInit {
   Addressres!: any;
   show!: boolean;
   hide!: boolean;
+  x:boolean = false;
 
   constructor(
     private profileserve: ProfileServiceService,
@@ -31,10 +32,12 @@ export class MainDashboardComponent implements OnInit {
     this.profileserve.getUserData().subscribe({
       next: (data) => {
         this.user = data
-        // if(this.user.type != "admin"){
-        //   this.logoutFun();
-        // }
-        // console.log(data)
+        if(this.user.type == "admin"){
+          this.x=true;
+        }
+        else{
+          this.logoutFun();
+        }
       },
       error: (err) => { console.log(err.error.error) }
     })
