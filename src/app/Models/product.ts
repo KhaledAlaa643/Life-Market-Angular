@@ -1,5 +1,4 @@
 export interface Product {
-    pivot: any;
     id?:string,
     name:string,
     description:string,

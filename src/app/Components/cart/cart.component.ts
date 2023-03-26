@@ -9,50 +9,47 @@ import Swal from 'sweetalert2'
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  products: Product[] = []
-  constructor(private cartService: CartService) {}
-  ngOnInit(): void
-  {
+
+  products: any[] = [];
+
+  constructor(
+    private cartService: CartService
+  ) { }
+
+  ngOnInit(): void {
     this.cartService.getCarts().subscribe((products) => {
       this.products = products
-
+      console.log(this.products);
     })
   }
 
-
-  inc(proId: any)
-  {
-    this.products = this.products.map((e: Product | any) => {
-      if (e.id === proId) {
-        return {
-          ...e,
-          quantity: e.quantity + 1,
+  incrementPrd(_id:any) {
+    this.cartService.incrementPrdInCart(_id).subscribe({
+      next: (res) => {
+        if(res==1){
+          window.location.reload();
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Out of Stock',
+          })
         }
       }
-      return e
-    })
-  }
-  dec(proId: any) {
-    this.products = this.products.map((e: Product | any) => {
-      if (e.id === proId) {
-        return {
-          ...e,
-          quantity: e.quantity - 1 > 0 ? e.quantity - 1 : 1,
-        }
-      }
-      return e
-    })
-  }
-  total(): any {
-    let total: number = 0
-    for (let product of this.products) {
-      total += product.price * product.quantity
-    }
-    return total
+    });
   }
 
-  // Delete From Only Browser :
-  deleteCart (id: string | undefined){
+  decrementPrd(_id:any) {
+    this.cartService.decrementPrdInCart(_id).subscribe({
+      next: (res) => {
+        if(res==1){
+          window.location.reload();
+        }
+      }
+    });
+  }
+
+  deleteCart(__id: any) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -60,41 +57,23 @@ export class CartComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: 'darkcyan',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Your product has been deleted from your cart.', 'success');
-    let index = this.products.findIndex(e=>e.id === id)
-    index !==-1 ? this.products.splice(index,1) : ""
-    }
-    })
+        this.cartService.deleteCart(__id).subscribe({
+          next: (res) => {
+            Swal.fire({
+              icon: 'success',
+              text: 'Delete Item From Cart Successfully',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              window.location.reload();
+            });
+          }
+        });
+      }
+    });
   }
-  // Delete From Both Browser And API :
-  // deleteProduct(productId: any) {
-  //   Swal.fire({
-  //     title: 'Are you sure?',
-  //     text: "You won't be able to revert this!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: 'darkcyan',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Yes, delete it!',
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire('Deleted!', 'Your product has been deleted from your cart.', 'success');
-  //       this.cartService.deleteCart(productId).subscribe(() => {
-  //         const index = this.products.findIndex((p) => p.id === productId)
-  //         if (index !== -1) {
-  //           this.products.splice(index, 1)
-  //         }
-  //       })
-  //     }
-  //   })
-  // }
-  check(){
-    let cart = this.products
-    let total = this.total()
-    let product = [cart,total]
-    return product
-  }
+
 }

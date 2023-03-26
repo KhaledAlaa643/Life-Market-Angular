@@ -25,11 +25,27 @@ export class CartService {
   }
 
 
+  getFavPrd(id:any):Observable<any>{
+    return this._httpClient.get<any>(`${environment.apiURL}/fav/${id}`)
+  }
+
+  addPrdToFav(id:any, p=null):Observable<any>{
+    return this._httpClient.post<any>(`${environment.apiURL}/fav_item/${id}`,p)
+  }
+
   getCarts():Observable<any[]>{
-    return this._httpClient.get<any[]>(`${environment.apiURL}/getcartprd`)
+    return this._httpClient.get<any[]>(`${environment.apiURL}/cartprd`)
   }
   
-  deleteCart(prdId:number):Observable<Product>{
-    return this._httpClient.delete<Product>(`${environment.apiURL}/shoppingcart/${prdId}`)
+  deleteCart(prdId:number):Observable<any>{
+    return this._httpClient.delete<any>(`${environment.apiURL}/delprdfromcart/${prdId}`)
+  }
+
+  incrementPrdInCart(prdId:any):Observable<any>{
+    return this._httpClient.get<any>(`${environment.apiURL}/increment/shoppingcart/${prdId}`)
+  }
+
+  decrementPrdInCart(prdId:any):Observable<any>{
+    return this._httpClient.get<any>(`${environment.apiURL}/decrement/shoppingcart/${prdId}`)
   }
 }
