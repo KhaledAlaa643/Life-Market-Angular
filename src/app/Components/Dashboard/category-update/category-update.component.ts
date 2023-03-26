@@ -43,14 +43,25 @@ export class CategoryUpdateComponent implements OnInit{
 
   }
   updateCat() {
+    const formData = new FormData();
+    formData.append('name',this.cat['name']);
+    formData.append('photo', this.file, this.file.name);
+    formData.append('description',this.cat['description']);
+    formData.append('id',this.recieved_id);
 
-    this.catmanage.updateCat(this.cat).subscribe({
+
+    this.catmanage.updateCat(formData).subscribe({
       next: () => {
-        this.route.navigate(['/dashboard/categories-management'])
+        this.route.navigate(['/admin/categories-management'])
       },
       error: (err) => {
         console.log(err.error.error)
       }
     })
   }
+  file!:File;
+  uploadimg(event:any){
+    this.file=event.target.files[0];
+
+    }
 }

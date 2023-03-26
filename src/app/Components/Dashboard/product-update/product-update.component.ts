@@ -28,7 +28,6 @@ export class ProductUpdateComponent {
     brand:'',
     quantity:'',
     price:'',
-    price_before_discount:'',
 id:''
   }
  subCat!:null;
@@ -56,23 +55,35 @@ received_id!:any
       }
     })
   }
+  price!:any;
+  quantity!:any;
   updateproduct() {
 
-console.log(this.product)
-    this.prdmanage.updateProduct(this.product).subscribe({
-      next: (data) => {
+    const formData = new FormData();
+    formData.append('name',this.product['name']);
+    formData.append('photo', this.file, this.file.name);
+    formData.append('brand',this.product['brand']);
+    formData.append('sub_cat_id',this.product['sub_cat_id']);
+    formData.append('description',this.product['description']);
+    formData.append('id',this.received_id);
+    this.price=this.product['price'];
+    this.quantity=this.product['quantity'];
+    formData.append('price',this.price);
+    formData.append('quantity',this.quantity);
 
-        this.route.navigate(['/dashboard/products-management'])
+    this.prdmanage.updateProduct(formData).subscribe({
+      next: (data) => {
+         console.log(data)
+        this.route.navigate(['/admin/products-management'])
       },
       error: (err) => {
         console.log(err.error.error)
       }
     })
   }
-  files!:any;
+  file!:File;
   uploadimg(event:any){
-    this.files=event.target.files[0];
-    console.log(this.files)
-    this.product['photo']=this.files['name']
+    this.file=event.target.files[0];
+
     }
 }

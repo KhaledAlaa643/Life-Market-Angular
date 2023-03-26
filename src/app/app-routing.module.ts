@@ -88,7 +88,7 @@ const routes: Routes = [
   ]},
 
   {path: 'admin', component:MainDashboardComponent,canActivate:[AuthGuard], children: [
-    
+
     {path: 'dashboard', component:DashboardComponent},
 
     {path: 'contact', component:ContactComponent},
@@ -115,18 +115,18 @@ const routes: Routes = [
     {path:'products-management',component:ProductsManagementComponent},
     {path:'create-product',component:CreateProductComponent},
     {path:'update-product/:id',component:ProductUpdateComponent},
-  
+
     {path:'categories-management',component:CategoriesManagementComponent},
     {path:'update-category/:id',component:CategoryUpdateComponent},
     {path:'create-category',component:CreateCategoryComponent},
-  
+
     {path:'sub-categories-management',component:SubCategoriesManagementComponent},
     {path:'update-sub-category/:id',component:SubCategoryUpdateComponent},
     {path:'create-sub-category',component:CreateSubCategoryComponent},
 
     {path: '**', component:NotFoundComponent}
   ]},
-    
+
 
 ];
 
