@@ -28,37 +28,41 @@ import { NotificationComponent } from './component/notification/notification.com
 
 const routes: Routes = [
 
-  {path: '', redirectTo:"/main/home", pathMatch:"full"},
+  { path: '', redirectTo: "/main/home", pathMatch: "full" },
 
-  {path: 'main', component:MainLayoutComponent, children: [
-    {path: 'home', component:HomeComponent},
-    {path: 'products/list/:id', component:ProductsListComponent},
-    {path: 'products/list/category/:id', component:ProductsListByCategoryComponent},
-    {path: 'product/:id', component:ProductDetailsComponent},
-    {path: 'cart', component:CartComponent, canActivate:[AuthGuard]},
-    {path: 'about', component:AboutUsComponent},
-    {path: 'contact', component:ContactUsComponent},
-    {path: 'products', component:ProductsComponent},
-    {path: 'wishlist', component:FavItemComponent},
-    
-    {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
-      {path:'myaccount',component:MyaccountComponent},
-      {path:'order',component:OrdersComponent},
-      {path:'saveditems',component:SavedItemsComponent},
-      {path:'address',component:AddressComponent},
-      {path:'manage',component:ManageAccountComponent},
-      {path:'updateaddress',component:UpdateAddressComponent},
-      {path:'notify',component:NotificationComponent}
-    ]},
+  {
+    path: 'main', component: MainLayoutComponent, children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'products/list/:id', component: ProductsListComponent },
+      { path: 'products/list/category/:id', component: ProductsListByCategoryComponent },
+      { path: 'product/:id', component: ProductDetailsComponent },
+      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'about', component: AboutUsComponent },
+      { path: 'contact', component: ContactUsComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'wishlist', component: FavItemComponent },
 
-    {path: '**', component:NotFoundComponent}
-  ]},
+      {
+        path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
+          { path: 'myaccount', component: MyaccountComponent },
+          { path: 'order', component: OrdersComponent },
+          { path: 'saveditems', component: SavedItemsComponent },
+          { path: 'address', component: AddressComponent },
+          { path: 'manage', component: ManageAccountComponent },
+          { path: 'updateaddress', component: UpdateAddressComponent },
+          { path: 'notify', component: NotificationComponent }
+        ]
+      },
 
-  {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent},
-  {path:'reset-Password-Request',component:RequestPasswordResetComponent},
+      { path: '**', component: NotFoundComponent }
+    ]
+  },
+
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'reset-Password-Request', component: RequestPasswordResetComponent },
   /////////dashboard routes////
-  {path:'orderadmin',component:OrderComponent},
+  { path: 'orderadmin', component: OrderComponent },
 ];
 
 
