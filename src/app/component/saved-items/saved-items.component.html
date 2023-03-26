@@ -8,13 +8,13 @@
 <div *ngFor="let i of prd; index as n" class="row  px-3 px-lg-5" >
 
     <div class="col-3 col-lg-2" >
-        <a (click)="goToPrdDetails(i[0].id)" class="text-muted text-decoration-none d-flex">
+        <a (click)="goToPrdDetails(i[0].prd_id)" class="text-muted text-decoration-none d-flex">
             <img [src]="'../../../assets/'+i[0].photo" width="100" class="w-100q p-1" alt="...">
         </a>
     </div>
    <div class="col-6 my-auto">
-        <p class="card-title mx-2 text-decoration-none text-dark">{{i[0].name}}</p>
-        <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i[0].price}}</h6>
+        <h4 class="card-title mx-2 text-decoration-none text-dark">{{i[0].name}}</h4>
+        <h6 class="mx-2 mt-1 mb-0 text-dark text-decoration-none">EGP {{i[0].price}}</h6>
         <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">
             EGP
             {{i[0].price_before_discount}}
