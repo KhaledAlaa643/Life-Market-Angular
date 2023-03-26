@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Notification } from 'src/app/viewmodules/notification';
 import { NotificationService } from 'src/app/Services/notification.service';
-import {  first, map} from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-notification',
@@ -12,21 +12,21 @@ export class NotificationComponent implements OnInit {
   // notifications: Notification[] = [];
   unreadCount: number = 0;
 
-  notification!:any
+  notification!: any
   constructor(private notifserve: NotificationService) { }
 
   ngOnInit() {
     this.notifserve.getNotifications().subscribe(
       (data: Notification) => {
-        this.notification=data
+        this.notification = data
         console.log(data);
         if (!data.read_at) {
           this.unreadCount++;
         }
       }
     );
-  
-   
+
+
 
     this.notifserve.getUnreadCount().subscribe({
       next: (count: number) => {
@@ -37,7 +37,7 @@ export class NotificationComponent implements OnInit {
         console.log(error);
       }
     });
-   
+
   }
   markNotificationAsRead(notificationId: number) {
     this.notifserve.markAsRead(notificationId).subscribe(() => {
