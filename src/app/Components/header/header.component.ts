@@ -5,7 +5,6 @@ import { Product } from 'src/app/Models/product';
 import { ProductsService } from 'src/app/Services/products.service';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { UserService } from 'src/app/services/user.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -24,7 +23,7 @@ export class HeaderComponent implements OnInit {
     private router:Router,
     private _productServ: ProductsService,
     private _authServ:AuthServiceService,
-    private _userServ:UserService
+    private _userServ:UserService,
   ) {}
 
 
@@ -34,7 +33,9 @@ export class HeaderComponent implements OnInit {
     if(this._authServ.isLoggedIn()!=null){
       this.isLoggedout = false;
     }
+  
   }
+  
 
   logoutFun(){
     this._userServ.logout().subscribe({

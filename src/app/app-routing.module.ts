@@ -24,6 +24,7 @@ import { AddressComponent } from './component/address/address.component';
 import { ManageAccountComponent } from './component/manage-account/manage-account.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OrderComponent } from './Components/Dashboard/order/order.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 const routes: Routes = [
 
@@ -46,7 +47,8 @@ const routes: Routes = [
       {path:'saveditems',component:SavedItemsComponent},
       {path:'address',component:AddressComponent},
       {path:'manage',component:ManageAccountComponent},
-      {path:'updateaddress',component:UpdateAddressComponent}
+      {path:'updateaddress',component:UpdateAddressComponent},
+      {path:'notify',component:NotificationComponent}
     ]},
 
     {path: '**', component:NotFoundComponent}

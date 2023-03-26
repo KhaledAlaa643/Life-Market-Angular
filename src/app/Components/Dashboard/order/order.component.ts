@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderadminService } from 'src/app/Services/orderadmin.service';
@@ -136,7 +137,7 @@ export class OrderComponent implements OnInit {
 
 
       width: '600px',
-    
+
 
     });
   }

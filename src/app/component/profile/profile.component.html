@@ -22,13 +22,32 @@
             <a routerLink="/main/profile/manage" routerLinkActive="active" class="py-1 fs-6"> <i class="fa-sharp fa-solid fa-gear p-1"></i> Account
               Management</a>
           </li>
+          
+         
+          <li class="nav-link mt-3">
+            <a routerLink="/main/profile/notify" routerLinkActive="active" class="py-1 fs-6">
+              <i class="fa-sharp fa-solid fa-bell p-1 " ></i> Notifications
+              <span *ngIf="unreadCount" class="badge badge-pill ms-4 badge-danger">{{ unreadCount }}</span>
+             
+            </a>
+          </li>
+          
+          
+         
+          
+          
+
+
           <hr class="mt-4" style="color:rgb(183, 187, 190)">
           <li class="nav-link">
             <a class="py-1 fs-6" (click)="logoutFun()"   style="color: rgb(46, 131, 216);font-weight:500;"><i class="fa fa-sign-out p-1"
                 aria-hidden="true"></i>
               LOGOUT</a>
           </li>
+          
+          
         </ul>
+        
       </div>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-12 bg-white pb-4 mt-3 mt-lg-0">

@@ -30,6 +30,7 @@ import { ManageAccountComponent } from './component/manage-account/manage-accoun
 import { AddressComponent } from './component/address/address.component';
 import { UpdateAddressComponent } from './component/update-address/update-address.component';
 import { OrderComponent } from './Components/Dashboard/order/order.component';
+import { NotificationComponent } from './component/notification/notification.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
@@ -62,6 +63,7 @@ import { OrderComponent } from './Components/Dashboard/order/order.component';
     AddressComponent,
     UpdateAddressComponent,
     OrderComponent,
+    NotificationComponent,
     
     // AuthGuard,
   ],

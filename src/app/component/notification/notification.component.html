@@ -1,0 +1,17 @@
+
+<h5 class=" mt-2">Notifications</h5>
+<hr>
+<div *ngIf="notification && notification.length > 0">
+    <div *ngFor="let notification of notification">
+        <div class="alert alert-success m-5" role="alert" (click)="markNotificationAsRead(notification.id)"
+            [class.read]="notification.read">
+            <p>{{ notification.data }}</p>
+            <small>{{ notification.created_at | date }}</small>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="!notification || notification.length === 0" class="alert alert-danger m-5 " role="alert">
+    No notifications to display.
+</div>
