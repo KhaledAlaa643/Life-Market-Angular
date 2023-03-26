@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderadminService } from 'src/app/Services/orderadmin.service';
@@ -68,7 +69,7 @@ export class OrderComponent implements OnInit {
       title: 'LIFE MARKET',
       html: `
       <br>
-      <div class="row text-start">
+      <div class="row text-start m-0 p-0">
         
           <p><strong style="color:#1f8291d4;"> Name:</strong> 
           ${this.orderData[0].first_name} 
@@ -90,7 +91,7 @@ export class OrderComponent implements OnInit {
          
         </div>
         <section class="container-fluid">
-        <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+        <table class="w-100 mt-3 mx-0 px-0 table table-bordered table-hover table-striped text-center">
             <thead>
             <tr style="text-transform:capitalize;" class="bg-white ">
                 
@@ -107,11 +108,11 @@ export class OrderComponent implements OnInit {
         ${this.orderData.map((product: any, i: number) => `
             <tr>
               <td>${i + 1}</td>
-              <td><img src="../../../assets/prd10.jpg" width="40px"></td>
-              <td>${product.name}</td>
-              <td>${product.price}</td>
-              <td>${product.total_quantity}</td>
-              <td>${product.totaled}</td>
+              <td><img src="http://localhost:8000/storage/images/${product.product_photo}" width="40px"></td>
+              <td>${product.product_name}</td>
+              <td>${product.product_price}</td>
+              <td>${product.quantity}</td>
+              <td>${product.quantity*product.product_price}</td>
             </tr>
           `).join('')
         }
@@ -136,7 +137,7 @@ export class OrderComponent implements OnInit {
 
 
       width: '600px',
-    
+
 
     });
   }

@@ -54,7 +54,9 @@ export class HeaderComponent implements OnInit {
     });
 
    
+  
   }
+  
 
   logoutFun(){
     this._userServ.logout().subscribe({

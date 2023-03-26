@@ -46,6 +46,7 @@ import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-ca
 import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-update/sub-category-update.component';
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
+import { NotificationComponent } from './component/notification/notification.component';
 // import { AuthGuard } from './guards/auth.guard';
 import { CloseComponent } from './close/close.component';
 import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
@@ -106,6 +107,8 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     SubCategoryUpdateComponent,
     ProductUpdateComponent,
     CreateProductComponent,
+    NotificationComponent,
+    
     // AuthGuard,
     CloseComponent,
     CustomersComponent,
