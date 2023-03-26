@@ -54,7 +54,7 @@
       <tbody *ngIf="AllProducts.length > 0">
         <tr *ngFor="let product of AllProducts; index as n">
           <td>{{n+1}}</td>
-          <td><img [src]="'../../../assets/'+product.photo" width="50"></td>
+          <td><img [src]="'http://localhost:8000/storage/images/products/'+product.photo" width="50"></td>
           <td>{{product.name}}</td>
           <td>{{product.brand}}</td>
           <td>{{product.price}}</td>

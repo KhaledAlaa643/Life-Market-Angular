@@ -22,17 +22,18 @@ export class CreateProductComponent implements OnInit {
   }
 
   product:any = {
-    name: '',
-    sub_cat_id: '',
-    description: '',
-    photo: '',
-    brand: '',
-    quantity: '',
-    price: '',
-    price_before_discount: '',
-
+    name:'',
+    sub_cat_id:'',
+    description:'',
+    photo:'',
+    brand:'',
+    quantity:'',
+    price:'',
   }
+  file!:File;
   subCat!: null;
+  price!:any;
+  quantity!:any;
 
   ngOnInit(): void {
 
@@ -49,10 +50,26 @@ export class CreateProductComponent implements OnInit {
   }
   createproduct() {
 
-    this.product.photo = 'ss3-1.jpg';
-    // console.log(this.product)
-    this.prdmanage.createProduct(this.product).subscribe({
+    const formData = new FormData();
+    formData.append('name',this.product['name']);
+
+    formData.append('photo', this.file, this.file.name);
+
+    formData.append('brand',this.product['brand']);
+    formData.append('sub_cat_id',this.product['sub_cat_id']);
+
+    formData.append('description',this.product['description']);
+    this.price=this.product['price'];
+    this.quantity=this.product['quntity'];
+    formData.append('price',this.price);
+    formData.append('quantity',this.product['quantity']);
+
+   
+
+
+    this.prdmanage.createProduct(formData).subscribe({
       next: (data) => {
+        console.log(data)
         this.route.navigate(['/admin/products-management'])
 
       },
@@ -61,12 +78,11 @@ export class CreateProductComponent implements OnInit {
       }
     })
   }
-  files!: any;
+
   uploadimg(event: any) {
-    this.files = event.target.files[0];
-    // console.log(typeof(this.files.name))
-    // this.product.photo = this.files.name
-    // console.log(this.product.photo)
+    this.file = event.target.files[0];
+
+
 
   }
 }

@@ -39,7 +39,7 @@ export class CreateSubCategoryComponent  implements OnInit{
     this.subCatmanage.createSubCat(this.Subcat).subscribe({
       next: (data) => {
 
-        this.route.navigate(['/dashboard/sub-categories-management'])
+        this.route.navigate(['/admin/sub-categories-management'])
       },
       error: (err) => {
         console.log(err.error.error)

@@ -22,10 +22,13 @@ export class CreateCategoryComponent {
     private route: Router) { }
   createCat() {
 
-
-    this.catmanage.createCat(this.cat).subscribe({
+    const formData = new FormData();
+    formData.append('name',this.cat['name']);
+    formData.append('photo', this.file, this.file.name);
+    formData.append('description',this.cat['description']);
+    this.catmanage.createCat(formData).subscribe({
       next: () => {
-        this.route.navigate(['/dashboard/categories-management'])
+        this.route.navigate(['/admin/categories-management'])
 
       },
       error: (err) => {
@@ -35,13 +38,11 @@ export class CreateCategoryComponent {
     })
 
   }
-  files!: any;
+  file!: any;
 
   uploadimg(event: any) {
-    this.files = event.target.files[0];
-    console.log(this.files)
-    this.cat['photo'] = this.files['name']
-    console.log(this.cat['photo'])
+    this.file = event.target.files[0];
+
   }
 
 }

@@ -128,8 +128,9 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
   ],
-  
+
   providers: [{
       provide :HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,

@@ -1,9 +1,11 @@
 <div class="container">
   <h3>Add New Product</h3>
-  <form #productUpdate (ngSubmit)="createproduct()" method="post" enctype="multipart/form-data">
+  <form  #myform="ngForm" (ngSubmit)="createproduct()" method="post" >
     <div class="form-group">
-      <label for="Name"> Product Name</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name"
+      <label for="name">  Name</label>
+      <input type="text" class="form-control" id="name"
+         name="name"
+       [(ngModel)]= 'product.name'
         placeholder="product name">
     </div>
     <div class="form-group">
@@ -17,20 +19,16 @@
     </div>
     <div class="form-group">
       <label for="photo">Photo</label>
-      <input type="file" (change)="uploadimg($event)" class="form-control" [(ngModel)]="product.photo" id="photo"
+      <input type="file" (change)=" uploadimg($event)" class="form-control" [(ngModel)]="product.photo" id="photo"
         name="Photo">
     </div>
-    
-    <div class="form-group">
-      <label for="price_before_discount">price before discount</label>
-      <input type="number" class="form-control" id="price_before_discount" name="Price_before_discount"
-        [(ngModel)]='product.price_before_discount' placeholder="price before discount">
-    </div>
+
+
     <div class="form-group">
       <label for="price">Price</label>
       <input type="number" class="form-control" id="price" name="Price" [(ngModel)]=product.price placeholder="Price">
     </div>
-    
+
     <div class="form-group">
       <label for="quantity">Quantity</label>
       <input type="number" class="form-control" id="quantity" name="Quantity" [(ngModel)]=product.quantity
