@@ -28,11 +28,11 @@
                 </div>
                 <div class="col-6 col-lg-3 px-3">
                   <div class="input-group">
-                    <button (click)="decrementPrd(pro.prd_id)" class="btn btn-danger" type="button"><i
+                    <button (click)="decrementPrd(pro.prd_id)" class="btn btn-success" style="background-color: darkcyan;" type="button"><i
                         class="fa-solid fa-minus"></i></button>
                     <input type="text" readonly value="{{pro.quantity}}" class="form-control text-center" placeholder=""
                       aria-label="Example text with two button addons">
-                    <button (click)="incrementPrd(pro.prd_id)" class="btn btn-success" type="button"><i
+                    <button (click)="incrementPrd(pro.prd_id)" class="btn btn-success" style="background-color: darkcyan;" type="button"><i
                         class="fa-solid fa-plus"></i></button>
                   </div>
                 </div>
@@ -54,9 +54,12 @@
             <h5 class="mb-0">Summary</h5>
           </div>
           <div class="card-body">
-
-            <button type="button" class="btn but btn-lg btn-block btn-primary" [routerLink]="['check']">
-              Go to checkout
+            <div class="d-flex justify-content-between px-2 my-2">
+              <h4>Total</h4>
+              <h4>EGP {{totalPrice}}</h4>
+            </div>
+            <button type="button" class="btn but btn-lg btn-block btn-outline-primary" [routerLink]="['check']">
+              Go To Checkout
             </button>
           </div>
         </div>

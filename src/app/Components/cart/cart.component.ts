@@ -11,15 +11,20 @@ import Swal from 'sweetalert2'
 export class CartComponent implements OnInit {
 
   products: any[] = [];
+  totalPrice:number = 0;
 
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.cartService.getCarts().subscribe((products) => {
-      this.products = products
-      console.log(this.products);
+    this.cartService.getCarts().subscribe((res) => {
+      this.products = res;
+      // console.log(this.products);
+      this.products.forEach(e=>{
+        this.totalPrice+=e.price*e.quantity;
+      })
+      // console.log(this.totalPrice);
     })
   }
 
