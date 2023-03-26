@@ -1,6 +1,5 @@
 export interface Notification {
   isRead: boolean;
- 
   id: number;
   user_id: number;
   type: string;

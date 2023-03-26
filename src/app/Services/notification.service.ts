@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NotificationService {
- 
+
   constructor(private httpservice: HttpClient) { }
   getNotifications(): Observable<Notification> {
     return this.httpservice.get<Notification>('http://localhost:8000/api/notifications', {
@@ -17,16 +17,16 @@ export class NotificationService {
       })
     });
   }
-   public markAsRead(notificationId: number): Observable<Notification> {
+  public markAsRead(notificationId: number): Observable<Notification> {
     return this.httpservice.post<Notification>(`http://localhost:8000/api/notifications/mark-as-read`, { id: notificationId });
   }
 
 
-getUnreadCount(): Observable<number> {
-  return this.httpservice.get<{unread_count: number}>(`http://localhost:8000/api/notifications/unread-count`).pipe(
-    map(response => response.unread_count)
-  );
-}
+  getUnreadCount(): Observable<number> {
+    return this.httpservice.get<{ unread_count: number }>(`http://localhost:8000/api/notifications/unread-count`).pipe(
+      map(response => response.unread_count)
+    );
+  }
 
 }
 
