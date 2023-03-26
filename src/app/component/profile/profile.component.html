@@ -5,49 +5,52 @@
       <div id="sidebar-wrapper" class="bg-white h-100">
         <ul class="sidebar-nav p-4 bg-white m-0">
           <li class="nav-link active">
-            <a routerLink="/main/profile/myaccount" routerLinkActive="active" class="py-1 fs-6"><i class="fa fa-user p-1" aria-hidden="true"></i>
+            <a routerLink="/main/profile/myaccount" routerLinkActive="active" class="py-1 fs-6"><i
+                class="fa fa-user p-1" aria-hidden="true"></i>
               My Account</a>
           </li>
           <li class="nav-link mt-3">
-            <a routerLink="/main/profile/order" routerLinkActive="activ" class="py-1 fs-6"><i class="fa fa-shopping-cart p-1 ps-1"
-                aria-hidden="true"></i>
+            <a routerLink="/main/profile/order" routerLinkActive="activ" class="py-1 fs-6"><i
+                class="fa fa-shopping-cart p-1 ps-1" aria-hidden="true"></i>
               Orders</a>
           </li>
-          
+
           <li class="nav-link mt-3">
-            <a routerLink="/main/profile/saveditems" routerLinkActive="active" class="py-1 fs-6"><i class="fa-solid fa-heart p-1"></i> Saved
+            <a routerLink="/main/profile/saveditems" routerLinkActive="active" class="py-1 fs-6"><i
+                class="fa-solid fa-heart p-1"></i> Saved
               items</a>
           </li>
           <li class="nav-link mt-3">
-            <a routerLink="/main/profile/manage" routerLinkActive="active" class="py-1 fs-6"> <i class="fa-sharp fa-solid fa-gear p-1"></i> Account
+            <a routerLink="/main/profile/manage" routerLinkActive="active" class="py-1 fs-6"> <i
+                class="fa-sharp fa-solid fa-gear p-1"></i> Account
               Management</a>
           </li>
-          
-         
+        
+
           <li class="nav-link mt-3">
             <a routerLink="/main/profile/notify" routerLinkActive="active" class="py-1 fs-6">
-              <i class="fa-sharp fa-solid fa-bell p-1 " ></i> Notifications
+              <i class="fa-sharp fa-solid fa-bell p-1 "></i> Notifications
               <span *ngIf="unreadCount" class="badge badge-pill ms-4 badge-danger">{{ unreadCount }}</span>
-             
+
             </a>
           </li>
-          
-          
-         
-          
-          
+
+
+
+
+
 
 
           <hr class="mt-4" style="color:rgb(183, 187, 190)">
           <li class="nav-link">
-            <a class="py-1 fs-6" (click)="logoutFun()"   style="color: rgb(46, 131, 216);font-weight:500;"><i class="fa fa-sign-out p-1"
-                aria-hidden="true"></i>
+            <a class="py-1 fs-6" (click)="logoutFun()" style="color: rgb(46, 131, 216);font-weight:500;"><i
+                class="fa fa-sign-out p-1" aria-hidden="true"></i>
               LOGOUT</a>
           </li>
-          
-          
+
+
         </ul>
-        
+
       </div>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-12 bg-white pb-4 mt-3 mt-lg-0">
@@ -55,31 +58,31 @@
     </div>
   </div>
 
-    <!-- top products selling list -->
-    <div *ngIf="topSellingProducts.length>5" class="row mt-4">
-      <div class="card p-0 ">
-        <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
-          <h5 class="text-center mt-1">Top Selling</h5>
-          <a (click)="goToPrdList('topSelling','1')" class="p-1">SEE MORE</a>
-        </div>
-        <div class="row  px-3 pb-4">
-          <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
-            <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
-              <div class="card shadow m-2 bg-body rounded h-100 p-1">
-                <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3"  alt="...">
-                <hr class="m-0 mb-2">
-                <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
-                <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
-                <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
-                  {{i.price_before_discount}}</p>
-              </div>
-            </a>
-          </div>
+  <!-- top products selling list -->
+  <div *ngIf="topSellingProducts.length>5" class="row mt-4">
+    <div class="card p-0 ">
+      <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+        <h5 class="text-center mt-1">Top Selling</h5>
+        <a (click)="goToPrdList('topSelling','1')" class="p-1">SEE MORE</a>
+      </div>
+      <div class="row  px-3 pb-4">
+        <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
+          <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
+            <div class="card shadow m-2 bg-body rounded h-100 p-1">
+              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" alt="...">
+              <hr class="m-0 mb-2">
+              <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+              <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
+  </div>
 
-      <!-- top products rating list -->
+  <!-- top products rating list -->
   <div *ngIf="topRatingProducts.length>5" class="row mt-4">
     <div class="card p-0 ">
       <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
