@@ -7,6 +7,11 @@ export interface Order {
         status?: string;
         total?: number;
         delivery_price_id?: number;
+        first_name?:string;
+        last_name?:string;
+        email?:string;
+        index?:number;
+        delivery_price?:number;
       }
       
 
