@@ -7,6 +7,7 @@ import { User } from 'src/app/viewmodules/user';
 import { Product } from 'src/app/Models/product';
 import { Address } from 'src/app/viewmodules/address';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -14,6 +15,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+
+  selectedStatus: string = "";
+  filteredOrders: Order[] = [];
 
   orders: any;
   orderForm: FormGroup;
@@ -30,16 +34,32 @@ export class OrderComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
-
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
-      console.log(data)
+      console.log(data);
+      this.filteredOrders = this.orders;
+
+      // Set the value of the status form control to the selected status when filtering
+      this.orderForm.get('status')?.valueChanges.subscribe((status: string) => {
+        this.selectedStatus = status;
+        this.applyFilter();
+      });
     });
 
   }
 
+
+
+
+
+  applyFilter() {
+    if (this.selectedStatus) {
+      this.filteredOrders = this.orders.filter((orders: { status: string; }) => orders.status === this.selectedStatus);
+    } else {
+      this.filteredOrders = this.orders;
+    }
+  }
   updateOrder(data: any, orderId: number) {
 
     this.orderService.updateOrder(data, orderId).subscribe({
@@ -62,15 +82,19 @@ export class OrderComponent implements OnInit {
     })
 
   }
+
+
   displayOrderData() {
+    const createdDate = new Date(this.orderData[0].created_at);
+    const deliveryDays = this.orderData[0].delivery_time;
+    const deliveryDate = new Date(createdDate.getTime() + deliveryDays * 24 * 60 * 60 * 1000);
+    const deliveryTime = deliveryDate.toISOString().slice(0, 19).replace('T', ' ');
 
     Swal.fire({
 
       title: 'LIFE MARKET',
       html: `
-      <br>
       <div class="row text-start m-0 p-0">
-        
           <p><strong style="color:#1f8291d4;"> Name:</strong> 
           ${this.orderData[0].first_name} 
           ${this.orderData[0].last_name}</p>
@@ -78,20 +102,23 @@ export class OrderComponent implements OnInit {
            ${this.orderData[0].email}</p>
           <p><strong style="color:#1f8291d4;">Phone:</strong>
            ${this.orderData[0].phone}</p>
-          
-         <br><br>
           <p><strong style="color:#1f8291d4;">Address:  </strong>
           ${this.orderData[0].street}, ${this.orderData[0].city}, 
           ${this.orderData[0].governorate} </p>
-          <p><strong style="color:#1f8291d4;">Zip code: </strong>
+          <p class="mb-1"><strong style="color:#1f8291d4;">Zip code: </strong>
            ${this.orderData[0].zip_code}</p>
-          <br><br>
-          <p><strong >Date: </strong> 
+           <hr class=" m-0 p-0" style="color:#1f8291d4;">
+          <p><strong >Order Date: </strong> 
           ${this.orderData[0].created_at}</p>
-         
+          <p><strong >Order total: </strong> 
+          ${this.orderData[0].order_total}</p>
+           <p><strong >Delivery Time: </strong> 
+          ${deliveryTime}</p>
+          <p><strong >Delivery Price: </strong> 
+          ${this.orderData[0].delivery_price} EGP</p>
         </div>
         <section class="container-fluid">
-        <table class="w-100 mt-3 mx-0 px-0 table table-bordered table-hover table-striped text-center">
+        <table class="w-100 mt-2 mx-0 px-0 table table-bordered table-hover table-striped text-center">
             <thead>
             <tr style="text-transform:capitalize;" class="bg-white ">
                 
@@ -112,14 +139,12 @@ export class OrderComponent implements OnInit {
               <td>${product.product_name}</td>
               <td>${product.product_price}</td>
               <td>${product.quantity}</td>
-              <td>${product.quantity*product.product_price}</td>
+              <td>${product.quantity * product.product_price}</td>
             </tr>
           `).join('')
         }
       </tbody>
-        </table>
-         
-      
+        </table> 
     `,
       confirmButtonText: 'OK',
       backdrop: `
@@ -140,5 +165,6 @@ export class OrderComponent implements OnInit {
 
 
     });
+
   }
 }
