@@ -11,8 +11,6 @@
                 <option value="shipped">Shipped</option>
             </select>
         </div>
-
-
         <div class="col-sm-6">
             <button class="btn btn-primary float-end" (click)="applyFilter()">Apply Filter</button>
         </div>
@@ -38,9 +36,6 @@
                 <td>{{ o.first_name }} {{o.last_name}}</td>
                 <td>{{o.email}}</td>
                 <td>{{o.total}}</td>
-
-
-
                 <td>
                     <form [formGroup]="orderForm">
 
@@ -67,8 +62,6 @@
                 <td><a class="btn btn-outline-info" (click)="showOrderDetails(o.id)">
                         Order Details
                     </a></td>
-
-
             </tr>
         </tbody>
     </table>
