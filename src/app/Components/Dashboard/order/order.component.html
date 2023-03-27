@@ -1,22 +1,22 @@
 
 <section class="container-fluid">
     <div class="row mb-3">
-            <div class="col-sm-6">
-                    <select [(ngModel)]="selectedStatus" class="form-select">
-                        <option value="">All</option>
-                        <option value="pending">Pending</option>
-                        <option value="processing">Processing</option>
-                        <option value="cancelled">Cancelled</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="shipped">Shipped</option>
-                      </select>
-              </div>
-              
-         
         <div class="col-sm-6">
-          <button class="btn btn-primary float-end" (click)="applyFilter()">Apply Filter</button>
+            <select [(ngModel)]="selectedStatus" class="form-select">
+                <option value="">All</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="delivered">Delivered</option>
+                <option value="shipped">Shipped</option>
+            </select>
         </div>
-      </div> 
+
+
+        <div class="col-sm-6">
+            <button class="btn btn-primary float-end" (click)="applyFilter()">Apply Filter</button>
+        </div>
+    </div>
     <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
         <thead>
             <tr style="text-transform:capitalize;color: #1f8291d4; " class="bg-white ">
@@ -40,9 +40,9 @@
                 <td>{{o.total}}</td>
 
 
-                 
-                <td >
-                    <form [formGroup]="orderForm" >
+
+                <td>
+                    <form [formGroup]="orderForm">
 
                         <select (change)="updateOrder(orderForm.value, o.id)" formControlName="status"
                             class="form-control" id="">
@@ -63,8 +63,6 @@
                             </option>
                         </select>
                     </form>
-
-
                 </td>
                 <td><a class="btn btn-outline-info" (click)="showOrderDetails(o.id)">
                         Order Details
