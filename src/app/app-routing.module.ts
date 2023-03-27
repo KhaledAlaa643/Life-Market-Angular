@@ -50,6 +50,7 @@ import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-
 import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-category/create-sub-category.component';
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
+import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
 
 const routes: Routes = [
 
@@ -123,6 +124,9 @@ const routes: Routes = [
     {path:'sub-categories-management',component:SubCategoriesManagementComponent},
     {path:'update-sub-category/:id',component:SubCategoryUpdateComponent},
     {path:'create-sub-category',component:CreateSubCategoryComponent},
+
+    {path:'gallery-management/:id',component:GalleryManagementComponent},
+
 
     {path: '**', component:NotFoundComponent}
   ]},
