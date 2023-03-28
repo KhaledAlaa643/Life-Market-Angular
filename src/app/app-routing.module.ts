@@ -51,6 +51,7 @@ import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-ca
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 import { NotificationComponent } from './component/notification/notification.component';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 const routes: Routes = [
 
@@ -72,6 +73,7 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
+    {path: 'payment', component:PaymentComponent},
 
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},

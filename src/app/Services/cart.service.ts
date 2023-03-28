@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Cart } from '../Models/cart';
-import { Observable, retry } from 'rxjs';
+import { BehaviorSubject, Observable, retry } from 'rxjs';
 import { Product } from '../Models/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  totalPrice: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor(private _httpClient:HttpClient) { }
 
@@ -36,7 +37,7 @@ export class CartService {
   getCarts():Observable<any[]>{
     return this._httpClient.get<any[]>(`${environment.apiURL}/cartprd`)
   }
-  
+
   deleteCart(prdId:number):Observable<any>{
     return this._httpClient.delete<any>(`${environment.apiURL}/delprdfromcart/${prdId}`)
   }
@@ -48,4 +49,5 @@ export class CartService {
   decrementPrdInCart(prdId:any):Observable<any>{
     return this._httpClient.get<any>(`${environment.apiURL}/decrement/shoppingcart/${prdId}`)
   }
+
 }

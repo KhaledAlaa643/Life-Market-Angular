@@ -10,6 +10,8 @@
     "axe/forms": "off",
     "axe/parsing": "off",
     "disown-opener": "off",
-    "axe/structure": "off"
+    "axe/structure": "off",
+    "axe/aria": "off",
+    "button-type": "off"
   }
 }

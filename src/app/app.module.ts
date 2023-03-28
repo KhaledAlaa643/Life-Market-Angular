@@ -59,10 +59,11 @@ import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-cust
 import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
 import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
 import { CheckOutComponent } from './Components/check-out/check-out.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 @NgModule({
   declarations: [
-
 
     AppComponent,
     MainLayoutComponent,
@@ -108,7 +109,7 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     ProductUpdateComponent,
     CreateProductComponent,
     NotificationComponent,
-    
+
     // AuthGuard,
     CloseComponent,
     CustomersComponent,
@@ -121,17 +122,18 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     EditDeliveryComponent,
     AddDeliveryComponent,
     CheckOutComponent,
+    PaymentComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FormsModule,
+    NgxPayPalModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+
   ],
 
   providers: [{

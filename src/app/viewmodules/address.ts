@@ -3,4 +3,5 @@ export interface Address {
     city:string;
     governorate:string;
     zip_code:number
+    user_id:number
 }
