@@ -10,7 +10,7 @@ export class OrdersService {
 
   constructor(private httpservice: HttpClient) { }
   getOrders(): Observable<Order> {
-    return this.httpservice.get<Order>('http://localhost:8000/api/orders', {
+    return this.httpservice.get<Order>('http://localhost:8000/api/user/orders', {
       headers: new HttpHeaders({
         accept: 'application/json'
       })

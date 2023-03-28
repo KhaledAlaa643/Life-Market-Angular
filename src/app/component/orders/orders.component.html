@@ -1,35 +1,130 @@
- <ng-container   *ngFor="let order of orders;index as i " >
-  <caption class="font-weight-bold bg-light px-3">OrderNum({{i+1}}) </caption>
- <table class="table table-bordered mt-2">
+<ng-container *ngFor="let order of orders;index as z">
+  <div class="card w-100 mt-3">
 
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">product name</th>
-      <th scope="col">product price</th>
-      <th scope="col">Qty</th>
-      <th scope="col">product total</th>
-    </tr>
-  </thead>
-  <tr   *ngFor="let item of order">
+    <div class="card-body" *ngFor="let item of order ; index as i">
+      <div class="row" *ngIf="i==0">
+        <div class="row">
+          <div class="col">
+           <div class="row">
+          <div class="col">
+            <h3 class="card-title font-weight-bold"> Order ID : {{item.id}}</h3>
+          </div>
+        </div>
+          <div class="row ">
+            <div class="col">
+              <span class="small font-weight-bold" style="color:gray" *ngIf="i==0">
+                order date : {{item.created_at|date:'shortDate'}} </span>
+            </div>
+
+          </div>
+        </div>
+          <div class="col ">
+            <div class="row float-end">
+              <h3>
+                <p class="font-weight-bold h5 badge" [ngClass]="{'bg-warning': ordersTotal[1][z].status ===
+                  'Processing',
+                  'bg-success': ordersTotal[1][z].status === 'Done',
+                  'bg-primary': ordersTotal[1][z].status === 'On Delivery' }">
+                  {{ordersTotal[1][z].status}}
+                </p>
+              </h3>
+            </div>
+            <div class="row small " style="color:gray">
+              <br>
+
+            </div>
+            <!-- <div class="row float-end small " style="color:gray">
+              <div *ngIf="(ordersTotal[1][z].status=='Processing' ||
+                ordersTotal[1][z].status=='On Delivery')"
+                class="ml-5">
+
+                Delivery Date: {{ordersTotal[1][z].time}} Days from ordering date
+              </div>
+            </div> -->
+          </div>
+        </div>
 
 
 
-  <td   *ngFor="let key of item | keyvalue ; index as z">
-  {{key.value}}
-<!-- 
-     <span *ngIf="z!==2"> {{key.value}}</span>
+      </div>
+      <br>
+      <div class="row mt-2">
+        <div class="col-4">
+          <img [src]="'../../../assets/'+item.photo" width="100" class="w-100q
+            p-1" alt="...">
+        </div>
 
-   <img *ngIf="z==2" src="'../../../assets/'+key.value" width="100" class="w-100q p-1" alt="...">
+        <div class="col-4">
+          <div class="row h6"> {{item.name}}</div>
+          <div class="row small" style="color:gray">{{item.description}}</div>
+        </div>
+        <div class="col-4 float-end">
+          <div class="row h5 mr-5 float-end">
 
--->
+            $ {{item.total_price}}
 
-  </td>
+          </div>
+          <div class="row small mr-5" style="color:gray">
+            <pre>
 
-</tr>
+          </pre>
+          </div>
+          <div class="row small mr-5 float-end" style="color:gray">
+
+            Qnt : {{item.product_qnt}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="color:gray; width:900px ; margin-left: 40px;">
+    <div class="row mb-2">
+      <div class="col ml-5">
+        <div class="h5 font-weight-bold" style="margin-left: 60px;">Payement
+        </div>
+      </div>
+      <div class=" col ml-5 ">
+        <div class="h5 font-weight-bold">Delivery</div>
+        <div class="small " style="color:gray">Address</div>
+        <div class=" ">
+
+          <span>{{addressData.street}},</span>
+          <br>
+          <span>{{addressData.city}}, {{addressData.governorate}}</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="row ml-5">
+      <hr style="color:gray; width:750px ; margin-left: 50px;">
+
+      <div class="col h5 font-weight-bold" style="margin-left: 50px;">Order
+        Summary</div>
+      <div class="row">
+        <div class="col " style="margin-left: 60px;">Subtotal</div>
+        <div class="col " style="margin-left: 60px;"> ${{ordersTotal[0][z]-ordersTotal[1][z].price}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col fs-6" style="margin-left: 60px;">Delivery</div>
+        <div class="col " style="margin-left: 48px;color:red;">
+          +${{ordersTotal[1][z].price}} </div>
+
+      </div>
+    </div>
 
 
-</table>
-<p class="font-weight-bold text-danger"> order total :
-  <span class="text-dark"> {{ordersTotal[i].total}}</span>
-</p>
+
+    <div class="row ml-5 mb-3">
+      <hr style="color:gray; width:750px ; margin-left: 50px;">
+
+      <div class="col h5 font-weight-bold text-success" style="margin-left:
+        60px;">Total</div>
+      <div class="col font-weight-bold text-success" style="margin-left: 25px;">${{
+        ordersTotal[0][z]}} </div>
+
+    </div>
+
+  </div>
 </ng-container>
