@@ -54,6 +54,7 @@ import { NotificationComponent } from './component/notification/notification.com
 import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
 
+
 const routes: Routes = [
 
   { path: '', redirectTo: "/main/home", pathMatch: "full" },
