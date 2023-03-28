@@ -51,6 +51,7 @@ import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-ca
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 import { NotificationComponent } from './component/notification/notification.component';
+import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 
 const routes: Routes = [
 
@@ -76,6 +77,7 @@ const routes: Routes = [
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},
       {path:'order',component:OrdersComponent},
+      {path:'previousorder',component:PreviousOrderComponent},
       {path:'saveditems',component:SavedItemsComponent},
       {path:'address',component:AddressComponent},
       {path:'manage',component:ManageAccountComponent},

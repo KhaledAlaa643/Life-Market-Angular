@@ -59,6 +59,7 @@ import { AddCustomerComponent } from './Dashbord/Customers/Add Customer/add-cust
 import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Delivery/edit-delivery/edit-delivery.component';
 import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
 import { CheckOutComponent } from './Components/check-out/check-out.component';
+import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { CheckOutComponent } from './Components/check-out/check-out.component';
     EditDeliveryComponent,
     AddDeliveryComponent,
     CheckOutComponent,
+    PreviousOrderComponent,
   ],
 
   imports: [
