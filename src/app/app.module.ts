@@ -60,6 +60,7 @@ import { EditDeliveryComponent } from './Dashbord/Delivery/delivery/Edit Deliver
 import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/add-delivery/add-delivery.component';
 import { CheckOutComponent } from './Components/check-out/check-out.component';
 import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
+import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { PreviousOrderComponent } from './component/previous-order/previous-orde
     AddDeliveryComponent,
     CheckOutComponent,
     PreviousOrderComponent,
+    GalleryManagementComponent,
   ],
 
   imports: [

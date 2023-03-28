@@ -49,6 +49,7 @@
           <th>Qty</th>
           <th>Edit</th>
           <th>Delete </th>
+          <th> gallery</th>
         </tr>
       </thead>
       <tbody *ngIf="AllProducts.length > 0">
@@ -61,6 +62,7 @@
           <td>{{product.quantity}}</td>
           <td><button class="btn btn-primary m-2" [routerLink]="['/admin/update-product',product.id]"><i class="fa fa-edit"></i></button></td>
           <td> <button class="btn btn-danger m-2" (click)="deletePrd(product.id)"><i class="fa fa-trash"></i></button></td>
+          <td> <button class="btn btn-danger m-2"  [routerLink]="['/admin/gallery-management/',product.id]">gallery</button></td>
         </tr>
 
       </tbody>
