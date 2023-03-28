@@ -5,19 +5,28 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1">Offer Title </label>
-            <input [(ngModel)]="offer.offer_title" type="text" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="Enter Name" name="offertitle">
+            <input [(ngModel)]="offer.offer_title" type="text" class="form-control" 
+            placeholder="Enter Name" name="offertitle" pattern="^[A-Z a-z0-9]{5,80}$"
+             #offer_title="ngModel" required>
+        </div>
+        <div [hidden]="offer_title.valid || offer_title.pristine" class="text-danger">
+            <p [hidden]="!offer_title.errors?.['required']">offer title Required</p>
+            <p [hidden]="!offer_title.errors?.['pattern']">Invalid offer title </p>
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Discount Percent</label>
-            <input [(ngModel)]="offer.discont_percent" name="discount" type="number" class="form-control"
-                id="exampleInputPassword1">
+            <input [(ngModel)]="offer.discont_percent" #discount_percent="ngModel" name="discount" type="number" class="form-control"
+                id="exampleInputPassword1"  pattern="[0-9]{1,2}$" required>
+        </div>
+        <div [hidden]="discount_percent.valid || discount_percent.pristine" class="text-danger">
+            <p [hidden]="!discount_percent.errors?.['required']">Discount Percentage Required</p>
+            <p [hidden]="!discount_percent.errors?.['pattern']">Invalid Discount </p>
         </div>
 
         <label for="exampleInputPassword1">Type</label>
 
-        <select class="form-select" [(ngModel)]="offer.type" name="type">
+        <select class="form-select" [(ngModel)]="offer.type" name="type" required>
 
             <option value="deals">Deals</option>
             <option value="gifts">Gifts</option>

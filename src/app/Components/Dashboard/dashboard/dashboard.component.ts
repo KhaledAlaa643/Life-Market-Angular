@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { DashboaedService } from 'src/app/Services/dashboaed.service';
 import { ProductsService } from 'src/app/Services/products.service';
@@ -9,7 +9,7 @@ Chart.register(...registerables);
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit, OnChanges {
 
   usersCount:any;
   ordersCount:any;
@@ -23,6 +23,7 @@ export class DashboardComponent {
   year:any;
   month:any;
   choseYear:any = 2023;
+  userData:any;
   usersMonthCount:any [] = [0,0,0,0,0,0,0,0,0,0,0,0];
   
 
@@ -30,6 +31,15 @@ export class DashboardComponent {
     private _messageServ:DashboaedService,
     private _productServ:ProductsService,
     ){}
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.choseYear){
+      // this.userCharts();
+      console.log("walid");
+      
+    }
+  }
   
   ngOnInit(): void {
     this._messageServ.getUsersCount().subscribe({
@@ -65,9 +75,11 @@ export class DashboardComponent {
     this._messageServ.getUsersChart().subscribe({
       next: (res) => {
         
-        for(let i=0;i<res.length;i++){
+        this.userData = res;
+        
+        for(let i=0;i<this.userData.length;i++){
           // console.log(res[i].created_at);
-          this.date = new Date(res[i].created_at);
+          this.date = new Date(this.userData[i].created_at);
           if(this.date.getFullYear() == this.choseYear){
             this.usersMonthCount[this.date.getMonth()]+=1;
           }
@@ -92,7 +104,6 @@ export class DashboardComponent {
             }
           }
         });
-        
 
       }
     });
@@ -121,6 +132,44 @@ export class DashboardComponent {
             indexAxis: 'y',
           }
         });
+      }
+    });
+    
+  }
+
+  userCharts(){
+
+    this.usersMonthCount = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+    if (this.chart1 != undefined){
+      this.chart1.destroy(); 
+    }
+    
+    for(let i=0;i<this.userData.length;i++){
+      // console.log(res[i].created_at);
+      this.date = new Date(this.userData[i].created_at);
+      if(this.date.getFullYear() == this.choseYear){
+        this.usersMonthCount[this.date.getMonth()]+=1;
+      }
+      
+    }
+
+    this.chart1 = new Chart('canvas1', {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Customers',
+          data: this.usersMonthCount,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
       }
     });
     

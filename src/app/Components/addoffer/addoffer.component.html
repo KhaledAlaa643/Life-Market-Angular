@@ -6,22 +6,30 @@
       <label for="Offer" class="col-form-label">Offer Title </label>
       <div>
         <input [(ngModel)]="offer.offer_title" type="text" class="form-control" id="exampleInputEmail1"
-          placeholder="Enter Offer title" name="offertitle" pattern="^[A-Za-z1-9]{5,100}$" #prdname="ngModel">
+          placeholder="Enter Offer title" name="offertitle" pattern="^[A-Z a-z0-9]{5,80}$" #offer_title="ngModel" required>
       </div>
+      <div [hidden]="offer_title.valid || offer_title.pristine" class="text-danger">
+        <p [hidden]="!offer_title.errors?.['required']">offer title Required</p>
+        <p [hidden]="!offer_title.errors?.['pattern']">Invalid offer title </p>
+    </div>
     </div>
 
     <div class="form-group row">
       <label for="price" class="col-form-label">Discount Percentage</label>
       <div>
-        <input name="prdprice" [(ngModel)]="offer.discont_percent" type="text" class="form-control" id="price"
-          placeholder="Price" pattern="[0-9]{1,2}$" required>
+        <input #discount_percent="ngModel" name="discont_percent" [(ngModel)]="offer.discont_percent" type="text" class="form-control" id="discount"
+          placeholder="Discount percentage" pattern="[0-9]{1,2}$"  required>
       </div>
+      <div [hidden]="discount_percent.valid || discount_percent.pristine" class="text-danger">
+        <p [hidden]="!discount_percent.errors?.['required']">Discount Percentage Required</p>
+        <p [hidden]="!discount_percent.errors?.['pattern']">Invalid Discount </p>
+    </div>
     </div>
 
     <div class="form-group row">
       <label for="type" class="col-form-label">Type</label>
       <div>
-        <select name="prdncat" [(ngModel)]="offer.type" class="form-select">
+        <select name="prdncat" [(ngModel)]="offer.type" #type="ngModel" class="form-select" required>
 
           <option value="deals">Deals</option>
           <option value="gift">Gift</option>
@@ -29,6 +37,10 @@
 
         </select>
       </div>
+      <div [hidden]="discount_percent.valid || discount_percent.pristine" class="text-danger">
+        <p [hidden]="!discount_percent.errors?.['required']">Discount Percentage Required</p>
+    </div>
+
     </div>
 
 

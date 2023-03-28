@@ -16,15 +16,28 @@ export class AddressComponent  {
     private http: HttpClient
   ){ }
   address:Address={} as Address;
-  CreateAdress(){
-      this.addressserve.CreateAdress(this.address).subscribe({
-        next: (data) => { 
-          console.log(data)
-          this.route.navigate(['/main/profile/myaccount']);
-        },
-        error: (err) => {console.log(err.error.error)}
+  // CreateAdress(){
+  //     this.addressserve.CreateAdress(this.address).subscribe({
+  //       next: (data) => { 
+  //         console.log(data)
+  //         this.route.navigate(['/main/profile/myaccount']);
+  //       },
+  //       error: (err) => {console.log(err.error.error)}
 
-      })
-    }
+  //     })
+  //   }
+  CreateAdress() {
+    this.addressserve.CreateAdress(this.address).subscribe({
+        next: (response: any) => {
+            console.log(response);
+           
+            this.route.navigate(['/main/profile/myaccount']);
+        },
+        error: (err) => {
+            console.log(err.error.error);
+        }
+    });
+}
+
   
   }

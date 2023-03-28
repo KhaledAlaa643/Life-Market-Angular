@@ -12,24 +12,26 @@ import { ProductsService } from 'src/app/Services/products.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit{
+export class ProductDetailsComponent implements OnInit {
 
   prd: Product[] = [];
   prdPhoto: Product_Photo[] = [];
   prdRating: Product_Rating[] = [];
-  prdId:any;
-  photo:any;
-  cart:Cart = {} as Cart;
-  isLoggedIn:boolean = false;
+  prdId: any;
+  photo: any;
+  cart: Cart = {} as Cart;
+  isLoggedIn: boolean = false;
+  addBtn: boolean = true;
+  isFav: boolean = false;
 
   constructor(
     private _productServ: ProductsService,
     public httpclient: HttpClient,
-    private router:Router,
-    private activatRoute:ActivatedRoute, 
-    private _cartServ:CartService,
-    private _authServ:AuthServiceService,
-  ) {}
+    private router: Router,
+    private activatRoute: ActivatedRoute,
+    private _cartServ: CartService,
+    private _authServ: AuthServiceService,
+  ) { }
 
 
   ngOnInit(): void {
@@ -37,47 +39,80 @@ export class ProductDetailsComponent implements OnInit{
     this._productServ.getProductsId(this.prdId).subscribe({
       next: (res) => {
         this.prd = res;
-        this.photo=res[0].photo,
-        console.log(this.prd);
+        this.photo = res[0].photo;
+        // console.log(this.prd);
       }
     });
     this._productServ.getProductsPhoto(this.prdId).subscribe({
       next: (res) => {
         this.prdPhoto = res;
-        console.log(this.prdPhoto);
+        // console.log(this.prdPhoto);
       }
     });
     this._productServ.getProductsRating(this.prdId).subscribe({
       next: (res) => {
         this.prdRating = res;
-        console.log(this.prdRating);
+        // console.log(this.prdRating);
       }
     });
 
-    if(this._authServ.isLoggedIn()!=null){
+    if (this._authServ.isLoggedIn() != null) {
       this.isLoggedIn = true;
     }
+
+    this._cartServ.getCarts().subscribe({
+      next: (res) => {
+        // console.log(res);
+
+        for (let i = 0; i < res.length; i++) {
+          if (res[i].prd_id == this.prdId) {
+            // console.log(res[i].prd_id);
+            this.addBtn = false;
+          }
+        }
+      }
+    });
+
+
+    this._cartServ.getFavPrd(this.prdId).subscribe({
+      next: (res) => {
+        if (res > 0) {
+          this.isFav = true;
+        }
+      }
+    });
   }
 
-  changeImage(pic:any){
+  changeImage(pic: any) {
     this.photo = pic;
   }
 
-  addPrdToCart(){
-    if(this.isLoggedIn==true){
+  addPrdToCart() {
+    if (this.isLoggedIn == true) {
       this.cart.quantity = 1;
       this.cart.price = this.prd[0].price;
       this.cart.prd_id = this.prdId;
       this._cartServ.addProductToCart(this.cart).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
+          window.location.reload();
         }
       });
     }
-    else{
+    else {
       this.router.navigate(['/login']);
     }
-    
+
+
+  }
+
+  addPrdToFav() {
+    this._cartServ.addPrdToFav(this.prdId).subscribe({
+      next: (res) => {
+        // console.log(res);
+        window.location.reload();
+      }
+    });
 
   }
 

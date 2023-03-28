@@ -3,7 +3,7 @@
   <form #myForm="ngForm" autocomplete="off" (ngSubmit)="saveAdmin()">
     <div class="form-group mb-1">
       <label for="exampleInputEmail1">First Name</label>
-      <input #adminFirstName="ngModel" [(ngModel)]="admin.first_name" required pattern="^[a-zA-Z]{4,15}$" type="text"
+      <input #adminFirstName="ngModel" [(ngModel)]="admin.first_name" required pattern="^[a-zA-Z]{3,15}$" type="text"
         class="form-control" id="exampleInputEmail1" name="adminFirstName">
 
       <div [hidden]="adminFirstName.valid || adminFirstName.pristine" class="text-danger">
@@ -13,7 +13,7 @@
     </div>
     <div class="form-group mb-1">
       <label for="exampleInputEmail1">Last Name</label>
-      <input #adminLastName="ngModel" [(ngModel)]="admin.last_name" required pattern="^[a-zA-Z]{4,15}$" type="text"
+      <input #adminLastName="ngModel" [(ngModel)]="admin.last_name" required pattern="^[a-zA-Z]{3,15}$" type="text"
         class="form-control" id="exampleInputEmail1" name="adminLastName">
 
       <div [hidden]="adminLastName.valid || adminLastName.pristine" class="text-danger">
@@ -28,25 +28,44 @@
     </div>
     <div class="form-outline mb-1">
       <label class="form-label" for="form1Example2">Phone</label>
-      <input name="adminPhone" [(ngModel)]="admin.phone" type="Phone" id="form1Example2" class="form-control" />
+      <input name="adminPhone" #phone="ngModel" [(ngModel)]="admin.phone" required="required" pattern="^01[0-2,5]{1}[0-9]{8}$" type="Phone" id="form1Example2" class="form-control" />
+      <div [hidden]="phone.valid || phone.pristine" class="text-danger">
+        <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!phone.errors?.['required']"> Phone Is
+          Required</p>
+        <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!phone.errors?.['pattern']">Invalid Phone
+          Number</p>
+      </div>
     </div>
 
     <div class="form-group mb-1">
       <label for="description">Password</label>
-      <input type="password" [(ngModel)]="admin.password" class="form-control" id="description" name="password"
+      <input type="password" #password="ngModel" [(ngModel)]="admin.password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" class="form-control" id="description" name="password"
         required>
+        <div [hidden]="password.valid || password.pristine" class="text-danger">
+          <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!password.errors?.['required']"> Password
+            Is Required</p>
+          <p class="text-danger ps-1" style="font-size: 14px;" [hidden]="!password.errors?.['pattern']">
+            Password must contain at least one capital letter and more than 8 characters</p>
+        </div>
     </div>
     <div class="form-group mb-1">
       <label for="description">Confirm Password</label>
-      <input type="password" [(ngModel)]="admin.password_confirmation" class="form-control" id="description"
+      <input #password_confirmation="ngModel" type="password" [(ngModel)]="admin.password_confirmation" class="form-control" id="description"
         name="Confirmpassword" required>
+        <div [hidden]="password_confirmation.valid || password_confirmation.pristine" class="text-danger">
+          <p class="text-danger ps-1" style="font-size: 14px;"
+            [hidden]="!password_confirmation.errors?.['required']"> Password Is Required</p>
+        </div>
+        <div *ngIf="password_confirmation.value!=password.value">
+          <p class="text-danger ps-1" style="font-size: 14px;">Password Not Matched</p>
+        </div>
     </div>
     <!-- <div class="form-group mb-1">
       <label for="description">Type</label>
       <input type="Type" [(ngModel)]="admin.type" class="form-control" id="description" name="Type" required>
     </div> -->
     <!-- Submit button -->
-    <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary px-4 mt-2 me-2">Save</button>
-    <input type="button" class="btn btn-secondary px-3 mt-2" value="Back" (click)="goBack()">
+    <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary px-4 mt-2 me-2">SAVE</button>
+    <input type="button" class="btn btn-secondary px-4 mt-2" value="BACK" (click)="goBack()">
   </form>
 </div>

@@ -51,10 +51,11 @@ import { CreateSubCategoryComponent } from './Components/Dashboard/create-sub-ca
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 const routes: Routes = [
 
-  {path: '', redirectTo:"/main/home", pathMatch:"full"},
+  { path: '', redirectTo: "/main/home", pathMatch: "full" },
 
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
@@ -79,7 +80,8 @@ const routes: Routes = [
       {path:'saveditems',component:SavedItemsComponent},
       {path:'address',component:AddressComponent},
       {path:'manage',component:ManageAccountComponent},
-      {path:'updateaddress',component:UpdateAddressComponent}
+      {path:'updateaddress',component:UpdateAddressComponent},
+      {path:'notify', component: NotificationComponent }
     ]},
 
     {path: 'cart/check', component:CheckOutComponent},

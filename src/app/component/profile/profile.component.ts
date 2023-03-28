@@ -4,7 +4,8 @@ import { Product } from 'src/app/Models/product';
 import { ProductsService } from 'src/app/Services/products.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/viewmodules/user';
-
+import { Notification } from 'src/app/viewmodules/notification';
+import { NotificationService } from 'src/app/Services/notification.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -18,12 +19,19 @@ export class ProfileComponent implements OnInit{
   topSelling: Product[] = [];
   topRatingProducts: Product[] = [];
   topRating: Product[] = [];
+  // notifications = [];
+  data:any
+  notificationCount: number = 0;
   
+  unreadCount: number = 0; 
+
+  notify:Notification = {} as Notification;
   constructor(
     private userserve: UserService,
     private route: Router,
     private _productServ: ProductsService,
     private router:Router,
+    private notifserve:NotificationService,
   ){}
 
 
@@ -45,9 +53,20 @@ export class ProfileComponent implements OnInit{
         // console.log(this.topSelling);
       }
     });
+    
+    this.notifserve.getUnreadCount().subscribe(count => {
+      this.unreadCount = count;
+    });
+    
+  }
+  markAsRead(notificationId: number) {
+    this.notifserve.markAsRead(notificationId).subscribe(() => {
+      this.unreadCount -= 1;
+    });
   }
 
-
+  
+  
   goToPrdList(_type:any, id:any){
     if(_type == "cat"){
       this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });

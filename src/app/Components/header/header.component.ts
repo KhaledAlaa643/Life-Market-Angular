@@ -5,6 +5,7 @@ import { Product } from 'src/app/Models/product';
 import { ProductsService } from 'src/app/Services/products.service';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { UserService } from 'src/app/services/user.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   searchInput:any;
   isLoggedout: boolean = true;
   userName!:any;
+  cart:number = 0;
   
 
   constructor(
@@ -24,7 +26,9 @@ export class HeaderComponent implements OnInit {
     private router:Router,
     private _productServ: ProductsService,
     private _authServ:AuthServiceService,
-    private _userServ:UserService
+    private _userServ:UserService,
+    private _cartServ:CartService
+
   ) {}
 
 
@@ -34,7 +38,25 @@ export class HeaderComponent implements OnInit {
     if(this._authServ.isLoggedIn()!=null){
       this.isLoggedout = false;
     }
+    else{
+      this.isLoggedout = true;
+      
+    }
+
+    this._cartServ.getCarts().subscribe({
+      next: (res) => {
+
+          this.cart = res.length;
+        
+        console.log(this.cart);
+
+      }
+    });
+
+   
+  
   }
+  
 
   logoutFun(){
     this._userServ.logout().subscribe({

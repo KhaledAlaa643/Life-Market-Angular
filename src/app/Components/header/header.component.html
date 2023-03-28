@@ -68,8 +68,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light px-2 fw-bold" [routerLink]="['/main/cart']"><i
-              class="fa-solid fa-cart-shopping mx-2 fs-5"></i>Cart</a>
+          <a class="btn btn-outline-light px-2 fw-bold" [routerLink]="['/main/cart']">
+            <i *ngIf="!cart" class="fa-solid fa-cart-shopping mx-2 fs-5"></i>
+            <img *ngIf="cart" class="mx-2" src="../../../assets/cart.png" width="25px" alt="">
+            Cart
+            </a>
         </li>
       </ul>
     </div>
