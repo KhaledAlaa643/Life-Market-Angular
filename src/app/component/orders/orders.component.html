@@ -22,8 +22,8 @@
             <div class="row float-end">
               <h3>
                 <p class="font-weight-bold h5 badge" [ngClass]="{'bg-warning': ordersTotal[1][z].status ===
-                  'Processing',
-                  'bg-success': ordersTotal[1][z].status === 'Done',
+                  'processing',
+                  'bg-success': ordersTotal[1][z].status === 'shipped',
                   'bg-primary': ordersTotal[1][z].status === 'On Delivery' }">
                   {{ordersTotal[1][z].status}}
                 </p>
