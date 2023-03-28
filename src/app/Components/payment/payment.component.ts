@@ -20,7 +20,7 @@ export class PaymentComponent  implements OnInit{
       render({
         id: "#myPalpal",
         currency:"USD",
-        value:"100.00 ",
+        value:"100.000",
         onApprove:(details)=>{
           alert("success transaction")
         }

@@ -114,11 +114,19 @@ export class CheckOutComponent {
           this.route.navigate(['main/payment'])
           this.cartData.totalPrice.next(this.totalAll())
           this.orderId = result.id
+          this.createOrder.addOrder(this.orderId).subscribe((res)=>{
+            console.log(res);
+          })
       },
       (error) => {
         console.error('Error creating order');
         console.error(error);
       }
     );
+  }
+  add (){
+    this.createOrder.addOrder(this.orderId).subscribe((res)=>{
+      console.log(res);
+    })
   }
 }

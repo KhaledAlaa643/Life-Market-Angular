@@ -11,4 +11,7 @@ export class CreateOrderService {
   createOrder(data:any){
     return this._httpClient.post(`${environment.apiURL}/checkout/createorder`,data)
   }
+  addOrder(id:any){
+    return this._httpClient.get(`${environment.apiURL}/orders/checkout/${id}`)
+  }
 }
