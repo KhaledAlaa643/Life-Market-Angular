@@ -1,154 +1,148 @@
-<div class="container py-5">
-  <div class="py-5 text-center">
+<div class="container my-4">
+  <div class="mb-5 text-center">
     <div class="row">
-      <div class="col-md-8 mb-3 ">
-        <h4 class="d-flex justify-content-between align-items-center mt-3 mb-3">
-          <span class="text-muted">Your cart</span>
-          <span class="badge badge-secondary badge-pill"> {{products.length}} </span>
-        </h4>
-        <!-- Cart Details -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of products">
-              <td><img [src]="product.photo" alt="" width="70px" height="80px"></td>
-              <td>{{product.name}} </td>
-              <td>{{product.quantity }}</td>
-              <td>{{product.price }}</td>
-              <td>{{product.price * product.quantity| currency}}</td>
-            </tr>
-            <tr>
-              <td><hr></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><hr></td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <strong>Total amount</strong>
-                </div>
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <span><strong>{{ totalFun()| currency }}</strong></span>
+      <div class="col-8">
+        <div class=" card p-3">
+          <h4 class="d-flex justify-content-between align-items-center mt-3 mb-3">
+            <span class="text-muted">YOUR ORDER ({{products.length}} items)</span>
+            <!-- <span class="badge badge-secondary badge-pill"> {{products.length}} </span> -->
+          </h4>
+          <!-- Cart Details -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td><img [src]="'http://localhost:8000/storage/images/products/'+product.photo" alt="" width="70px" height="80px"></td>
+                <td>{{product.name}} </td>
+                <td>{{product.quantity }}</td>
+                <td>{{product.price }}</td>
+                <td>{{product.price * product.quantity| currency}}</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <strong>Total amount</strong>
+                  </div>
                 </td>
-            </tr>
-            <tr>
-              <td>Delivery Fee</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                {{ selectedPrice |currency }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                <strong>Total amount</strong>
-                <strong>
-                  <p class="mb-0">(After Delivery)</p>
-                </strong>
-              </div>
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><span><strong>{{ totalFun() + selectedPrice| currency }}</strong></span></td>
-            </tr>
-          </tbody>
-        </table>
-        <h5 *ngIf="!show">Expected Time: {{ displayDate | date}}</h5>
-        <hr class="mb-8">
-        <button (click)="post()"  class="btn button btn-primary btn-lg btn-block" type="submit"  [disabled]="show">
-          Continue to checkout
-        </button>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <span><strong>{{ totalFun()| currency }}</strong></span>
+                </td>
+              </tr>
+              <tr>
+                <td>Delivery Fee</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  {{ selectedPrice |currency }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <strong>Total amount</strong>
+                    <strong>
+                      <p class="mb-0">(After Delivery)</p>
+                    </strong>
+                  </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span><strong>{{ totalFun() + selectedPrice| currency }}</strong></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <h5 *ngIf="!show">Expected Time: {{ displayDate | date}}</h5>
+          <hr class="mb-8">
+          <button (click)="post()" class="btn button btn-primary btn-lg btn-block" type="submit" [disabled]="show">
+            Continue to checkout
+          </button>
+        </div>
       </div>
-      <div class="card p-3 py-3 mt-3 card-1 text-center col-md-7">
+      <div class="card p-3 text-center col-4">
         <div *ngIf="hide">
           <h4>Delivery Address</h4>
           <div class="p-3 card-2">
-              <!-- Street -->
-              <div class="p-3 card-child">
-                  <div class="d-flex flex-row align-items-center">
-                    <span class="circle">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <div class="d-flex flex-column ms-3">
-                        <span class="fw-bold ads">Street</span>
-                        <span class="ads">{{ads.street}}</span>
-                    </div>
-                  </div>
-              </div>
-              <!-- City -->
-              <div class="p-3 card-child mt-4">
-                  <div class="d-flex flex-row align-items-center">
-                    <span class="circle-2">
-                      <i class="fa-solid fa-city"></i>
-                    </span>
-                    <div class="d-flex flex-column ms-3">
-                        <span class="fw-bold ads">City</span>
-                        <span class="ads">{{ads.city}}</span>
-                    </div>
-                  </div>
-              </div>
-              <!-- Zip Code -->
-              <div class="p-3 card-child mt-4">
-                  <div class="d-flex flex-row align-items-center">
-                    <span class="circle-2">
-                      <img src="https://img.icons8.com/stickers/100/null/zip-code.png" width="40px" height="40px"/>
-                    </span>
-                    <div class="d-flex flex-column ms-3">
-                        <span class="fw-bold ads">Zip Code</span>
-                        <span class="ads">{{ads.zip_code}}</span>
-                    </div>
-                  </div>
-              </div>
-              <!-- Governorate -->
-              <div class="p-3 card-child mt-4">
-                  <div class="d-flex flex-row align-items-center">
-                    <span class="circle-2">
-                        <i class="fa fa-bank"></i>
-                    </span>
-                    <div class="d-flex flex-column ms-3">
-                        <span class="fw-bold ads">Governorate</span>
-                        <span class="ads">{{ads.governorate}}</span>
-                    </div>
-                  </div>
-              </div>
-              <!-- Update Address -->
-              <div class="p-3  mt-4 py-4">
-                <div class="d-flex flex-row align-items-center">
-                  <div class="d-flex flex-column ms-3 mt-1">
-                    <button class="btn btn-success button" routerLink="/main/profile/updateaddress" routerLinkActive="active">CHANGE DEFAULT ADDRESS</button>
-                  </div>
+            <!-- Street -->
+            <div class="p-3 card-child">
+              <div class="d-flex flex-row align-items-center">
+                <span class="circle">
+                  <i class="fa fa-home"></i>
+                </span>
+                <div class="d-flex flex-column ms-3">
+                  <span class="fw-bold ads">Street</span>
+                  <span class="ads">{{ads.street}}</span>
                 </div>
               </div>
+            </div>
+            <!-- City -->
+            <div class="p-3 card-child mt-4">
+              <div class="d-flex flex-row align-items-center">
+                <span class="circle-2">
+                  <i class="fa-solid fa-city"></i>
+                </span>
+                <div class="d-flex flex-column ms-3">
+                  <span class="fw-bold ads">City</span>
+                  <span class="ads">{{ads.city}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Zip Code -->
+            <div class="p-3 card-child mt-4">
+              <div class="d-flex flex-row align-items-center">
+                <span class="circle-2">
+                  <img src="https://img.icons8.com/stickers/100/null/zip-code.png" width="40px" height="40px" />
+                </span>
+                <div class="d-flex flex-column ms-3">
+                  <span class="fw-bold ads">Zip Code</span>
+                  <span class="ads">{{ads.zip_code}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Governorate -->
+            <div class="p-3 card-child mt-4">
+              <div class="d-flex flex-row align-items-center">
+                <span class="circle-2">
+                  <i class="fa fa-bank"></i>
+                </span>
+                <div class="d-flex flex-column ms-3">
+                  <span class="fw-bold ads">Governorate</span>
+                  <span class="ads">{{ads.governorate}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Update Address -->
+            <div class="p-3  mt-4 py-4">
+              <div class="d-flex flex-row align-items-center">
+                <div class="d-flex flex-column ms-3 mt-1">
+                  <button class="btn btn-success button" routerLink="/main/profile/updateaddress"
+                    routerLinkActive="active">CHANGE DEFAULT ADDRESS</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Add Address -->
         <div *ngIf="show">
           <div class="p-3  mt-4 py-4">
-                <p>No default address found.</p>
-                <button routerLink="/main/profile/address" routerLinkActive="active" class="btn button btn-primary btn-block">ADD DEFAULT ADDRESS</button>
-            </div>
+            <p>No default address found.</p>
+            <button routerLink="/main/profile/address" routerLinkActive="active"
+              class="btn button btn-primary btn-block">ADD DEFAULT ADDRESS</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
