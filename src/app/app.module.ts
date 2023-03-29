@@ -61,10 +61,11 @@ import { AddDeliveryComponent } from './Dashbord/Delivery/delivery/Add Delivery/
 import { CheckOutComponent } from './Components/check-out/check-out.component';
 import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 @NgModule({
   declarations: [
-
 
     AppComponent,
     MainLayoutComponent,
@@ -110,7 +111,7 @@ import { GalleryManagementComponent } from './Components/Dashboard/gallery-manag
     ProductUpdateComponent,
     CreateProductComponent,
     NotificationComponent,
-    
+
     // AuthGuard,
     CloseComponent,
     CustomersComponent,
@@ -125,17 +126,18 @@ import { GalleryManagementComponent } from './Components/Dashboard/gallery-manag
     CheckOutComponent,
     PreviousOrderComponent,
     GalleryManagementComponent,
+    PaymentComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FormsModule,
+    NgxPayPalModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+
   ],
 
   providers: [{

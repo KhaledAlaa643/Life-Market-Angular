@@ -33,4 +33,11 @@ export class AddressService {
       })
     });
   }
+  getAlladdressData(): Observable<Address[]> {
+    return this.httpservice.get<Address[]>('http://localhost:8000/api/address', {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
 }

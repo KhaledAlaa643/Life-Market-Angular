@@ -53,6 +53,7 @@ import { CreateProductComponent } from './Components/Dashboard/create-product/cr
 import { NotificationComponent } from './component/notification/notification.component';
 import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,7 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
+    {path: 'payment', component:PaymentComponent},
 
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},

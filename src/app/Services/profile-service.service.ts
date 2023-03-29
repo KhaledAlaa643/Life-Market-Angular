@@ -21,4 +21,12 @@ export class ProfileServiceService {
       })
     });
   }
+  getUserDataByID(): Observable<User[]> {
+    return this.httpservice.get<User[]>(`http://localhost:8000/api/user/data/`, {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
+
 }

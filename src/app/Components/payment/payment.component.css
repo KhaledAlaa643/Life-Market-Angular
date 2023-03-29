@@ -1,0 +1,38 @@
+
+.btn.btn-primary {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background-image: linear-gradient(to right, #0e7877 0%, #79CBCA 51%, #77A1D3 100%);
+  border: none;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+}
+
+
+.btn.btn.btn-primary:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+.btn.btn-primary:hover .fas.fa-arrow-right {
+  transform: translate(15px);
+  transition: transform 0.2s ease-in;
+}
+.amount{
+  display: flex;
+  justify-content: space-between;
+}
+.total{
+  font-size: 20px;
+}
+.price{
+  color: darkcyan;
+  font-size: 20px;
+}

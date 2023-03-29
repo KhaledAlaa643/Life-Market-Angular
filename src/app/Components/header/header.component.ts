@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   isLoggedout: boolean = true;
   userName!:any;
   cart:number = 0;
-  
+
 
   constructor(
     public httpclient: HttpClient,
@@ -34,29 +34,27 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = localStorage.getItem('userName');
-    
+
     if(this._authServ.isLoggedIn()!=null){
       this.isLoggedout = false;
     }
     else{
       this.isLoggedout = true;
-      
+
     }
 
     this._cartServ.getCarts().subscribe({
       next: (res) => {
 
           this.cart = res.length;
-        
-        console.log(this.cart);
-
+      
       }
     });
 
-   
-  
+
+
   }
-  
+
 
   logoutFun(){
     this._userServ.logout().subscribe({
