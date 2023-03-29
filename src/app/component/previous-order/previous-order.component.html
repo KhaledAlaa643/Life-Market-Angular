@@ -19,35 +19,16 @@
                     <h6 class="mt-2">EGP {{i.product_price}}</h6>
                     <p style="color:gray">Qnt: {{i.quantity}}</p>
                 </div>
-
-
             </div>
             <div class="row mt-0">
                 <div class="col-12 px-4 p-1 m-0">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                     (click)="rateProduct(i.product_id)" class="btn p-0 text-success"
-                        style="font-size: 12px;">Add Rating To Product</button>
-                </div>
-                <div class="px-4 collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="">
-                        <textarea class="form-control" [(ngModel)]="prdRate.review" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
-                    </div>
-                    <div>
-                        <button (click)="(addRating(i.product_id, 1))" class="btn fs-4 m-0 p-0"><i
-                                class="fa-solid fa-star"></i></button>
-                        <button (click)="(addRating(i.product_id, 2))" class="btn fs-4 m-0 p-0"><i
-                                class="fa-solid fa-star"></i></button>
-                        <button (click)="(addRating(i.product_id, 3))" class="btn fs-4 m-0 p-0"><i
-                                class="fa-solid fa-star"></i></button>
-                        <button (click)="(addRating(i.product_id, 4))" class="btn fs-4 m-0 p-0"><i
-                                class="fa-solid fa-star"></i></button>
-                        <button (click)="(addRating(i.product_id, 5))" class="btn fs-4 m-0 p-0"><i
-                                class="fa-solid fa-star"></i></button>
-                    </div>
+                    <button class="navbar-toggler" type="button" (click)="rateProduct(i.product_id)"
+                        class="btn p-0 text-success" style="font-size: 12px;">Add Rating To Product</button>
                 </div>
             </div>
-
-
-        </div>
+            </div>
     </ng-container>
 </div>
+
+
+

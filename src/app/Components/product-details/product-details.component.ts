@@ -21,8 +21,10 @@ export class ProductDetailsComponent implements OnInit {
   photo: any;
   cart: Cart = {} as Cart;
   isLoggedIn: boolean = false;
-  addBtn: boolean = true;
+  addBtn: boolean = false;
   isFav: boolean = false;
+  x:boolean = false;
+  y:boolean = false;
 
   constructor(
     private _productServ: ProductsService,
@@ -40,7 +42,10 @@ export class ProductDetailsComponent implements OnInit {
       next: (res) => {
         this.prd = res;
         this.photo = res[0].photo;
-        // console.log(this.prd);
+        if(this.prd[0].quantity<1){
+          this.y=true;
+        }
+        
       }
     });
     this._productServ.getProductsPhoto(this.prdId).subscribe({
@@ -63,13 +68,20 @@ export class ProductDetailsComponent implements OnInit {
     this._cartServ.getCarts().subscribe({
       next: (res) => {
         // console.log(res);
-
+        
         for (let i = 0; i < res.length; i++) {
-          if (res[i].prd_id == this.prdId) {
+          if (res[i].prd_id == this.prdId || this.y==true) {
             // console.log(res[i].prd_id);
             this.addBtn = false;
+            this.x=true;
+          }
+          else{
+            this.addBtn = true;
+            this.x=false;
           }
         }
+        this.addBtn = true;
+        this.x=false;
       }
     });
 

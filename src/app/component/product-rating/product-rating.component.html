@@ -1,0 +1,26 @@
+<div class="row pt-3 ">
+        <div class="col-12">
+            <h5>Add Rating To Product</h5>
+            <hr>
+        </div>
+    </div>
+<div class="row mt-0">
+    <div class="px-4">
+        <div>
+            <label for="">Your Comment</label>
+            <textarea class="form-control" [(ngModel)]="prdRate.review" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+        </div>
+        <div class="mt-3">
+            <button (click)="(addRating(product_id, 1))" class="btn fs-4 m-0 p-0"><i
+                    class="fa-solid fa-star"></i></button>
+            <button (click)="(addRating(product_id, 2))" class="btn fs-4 m-0 p-0"><i
+                    class="fa-solid fa-star"></i></button>
+            <button (click)="(addRating(product_id, 3))" class="btn fs-4 m-0 p-0"><i
+                    class="fa-solid fa-star"></i></button>
+            <button (click)="(addRating(product_id, 4))" class="btn fs-4 m-0 p-0"><i
+                    class="fa-solid fa-star"></i></button>
+            <button (click)="(addRating(product_id, 5))" class="btn fs-4 m-0 p-0"><i
+                    class="fa-solid fa-star"></i></button>
+        </div>
+    </div>
+</div>

@@ -23,7 +23,7 @@
   <tbody>
     <tr *ngFor="let photo of photos; index as i">
       <td>{{i+1}}</td>
-      <td><img [src]="'http://localhost:8000/storage/images/gallery/'+photo.path" width="100"></td>
+      <td><img [src]="'http://localhost:8000/storage/images/products/'+photo.path" width="100"></td>
       <td><button class="btn btn-danger m-2" (click)="deleteGallery(photo.id)"><i class="fa fa-trash"></i></button></td>
 
     </tr>

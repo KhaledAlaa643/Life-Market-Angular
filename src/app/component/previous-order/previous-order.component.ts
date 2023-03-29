@@ -34,35 +34,8 @@ export class PreviousOrderComponent implements OnInit {
   }
 
   rateProduct(prd_id: any) {
- 
+    this.route.navigate(['main/profile/productRating/', prd_id]);
   }
 
-
-
-  addRating(prdId: any, star: any) {
-    this.prdRate.prd_id = prdId;
-    this.prdRate.star = star;
-    if (this.prdRate.review!='') {
-      this.prdServe.addRating(this.prdRate).subscribe({
-        next: (res) => {
-          // console.log(res);
-          // this.prd = res;
-        },
-        error: (err) => { 
-          Swal.fire({
-            icon: 'error',
-            title: 'Please Enter Your Comment...',
-          })
-        }
-      })
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Please Enter Your Comment...',
-      })
-    }
-    console.log(this.prdRate);
-  }
 
 }

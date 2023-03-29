@@ -30,10 +30,10 @@
   <!-- categories list -->
   <div *ngIf="cat.length>0" class="card px-2">
     <div class="row card-body">
-      <div *ngFor="let i of cat" class="col-3 col-lg-2 px-1">
+      <div *ngFor="let i of cat" class="col-4 col-lg-2 px-1">
         <div class="mt-2 p-1">
           <a (click)="goToPrdList('cat',i.id)" class="text-decoration-none w-100">
-            <img [src]="'../../../assets/'+i.photo" class="w-100 rounded" alt="">
+            <img [src]="'http://localhost:8000/storage/images/categories/'+i.photo" class="w-100 rounded" alt="">
             <p class="card-title text-center text-decoration-none text-dark">{{i.name}}</p>
           </a>
         </div>
@@ -56,7 +56,7 @@
         <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
           <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3"  alt="...">
+              <img [src]="'http://localhost:8000/storage/images/products/'+i.photo" class="card-img-top p-3"  alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <div *ngIf="i.prd_rating>0" class="ratings d-flex flex-row align-items-center px-2 mb-1">
@@ -94,7 +94,7 @@
           <div *ngFor="let i of dealsOffer" class="col-sm-12 col-lg-6 px-1">
             <div class="mt-2">
               <a (click)="goToPrdList('dealsOffer',i.id)">
-                <img [src]="'../../../assets/'+i.photo" class="w-100 rounded" alt="">
+                <img [src]="'http://localhost:8000/storage/images/offers/'+i.photo" class="w-100 rounded" alt="">
               </a>
             </div>
           </div>
@@ -117,7 +117,7 @@
         <div *ngFor="let i of topRating" class="col-lg-2 col-6 px-0 mt-2">
           <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" alt="...">
+              <img [src]="'http://localhost:8000/storage/images/products/'+i.photo" class="card-img-top p-3" alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <div *ngIf="i.prd_rating>0" class="ratings d-flex flex-row align-items-center px-2 mb-1">
@@ -151,7 +151,7 @@
           <div *ngFor="let i of giftsOffer" class="col-6 col-lg-3 px-1">
             <div class="mt-2">
               <a (click)="goToPrdList('giftsOffer',i.id)">
-                <img [src]="'../../../assets/'+i.photo" class="w-100" alt="">
+                <img [src]="'http://localhost:8000/storage/images/offers/'+i.photo" class="w-100" alt="">
               </a>
             </div>
           </div>
@@ -179,12 +179,12 @@
                   <ng-container *ngFor="let i of dailyOffer, index as n">
                     <div *ngIf="n==0" class="carousel-item active">
                       <a (click)="goToPrdList('dailyOffer',i.id)">
-                        <img [src]="'../../../assets/'+i.photo" class="d-block w-100" alt="...">
+                        <img [src]="'http://localhost:8000/storage/images/offers/'+i.photo" class="d-block w-100" alt="...">
                       </a>
                     </div>
                     <div *ngIf="n>0" class="carousel-item">
                       <a (click)="goToPrdList('dailyOffer',i.id)">
-                        <img [src]="'../../../assets/'+i.photo" class="d-block w-100" alt="...">
+                        <img [src]="'http://localhost:8000/storage/images/offers/'+i.photo" class="d-block w-100" alt="...">
                       </a>
                     </div>
                   </ng-container>
@@ -221,7 +221,7 @@
         <div *ngFor="let i of prd1" class="col-lg-2 col-6 px-0 mt-2">
           <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" alt="...">
+              <img [src]="'http://localhost:8000/storage/images/products/'+i.photo" class="card-img-top p-3" alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <div *ngIf="i.prd_rating>0" class="ratings d-flex flex-row align-items-center px-2 mb-1">
@@ -256,7 +256,7 @@
         <div *ngFor="let i of prd2" class="col-lg-2 col-6 px-0 mt-2">
           <a (click)="goToPrdDetails(i.id)" class="text-muted text-decoration-none">
             <div class="card shadow m-2 bg-body rounded h-100 p-1">
-              <img [src]="'../../../assets/'+i.photo" class="card-img-top p-3" alt="...">
+              <img [src]="'http://localhost:8000/storage/images/products/'+i.photo" class="card-img-top p-3" alt="...">
               <hr class="m-0 mb-2">
               <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
               <div *ngIf="i.prd_rating>0" class="ratings d-flex flex-row align-items-center px-2 mb-1">

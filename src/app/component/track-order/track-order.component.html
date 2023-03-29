@@ -1,0 +1,55 @@
+
+<div class="container px-1 px-md-4 py-5 mx-auto">
+    <div class="card m-0">
+        <div class="row d-flex justify-content-center px-3 py-4 pt-5">
+            <h5 class="text-center">ORDER <span class="text-primary  font-weight-bold">{{orderId}}</span></h5>
+        </div>
+        <!-- Add class 'active' to progress -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+            <ul *ngIf="orderStatus=='pending'" id="progressbar" class="text-center">
+                <li class="step0"></li>
+                <li class="step0"></li>
+                <li class="step0"></li>
+                <li class="step0"></li>
+            </ul>
+            <ul *ngIf="orderStatus=='processing'" id="progressbar" class="text-center">
+                <li class="active step0"></li>
+                <li class="step0"></li>
+                <li class="step0"></li>
+                <li class="step0"></li>
+            </ul>
+            <ul *ngIf="orderStatus=='ondelivery'" id="progressbar" class="text-center">
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="step0"></li>
+            </ul>
+            <ul *ngIf="orderStatus=='done'" id="progressbar" class="text-center">
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+            </ul>
+            </div>
+        </div>
+        <div class="row top">
+            <div class="col-3 d-flex justify-content-center">
+                <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+                <p class="font-weight-bold d-online">Order <br> Processed</p>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
+                <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+                <p class="font-weight-bold d-online">Order <br> Shipped</p>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
+                <img class="icon" src="https://i.imgur.com/TkPm63y.png">
+                <p class="font-weight-bold d-online">On Delivery</p>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
+                <img class="icon" src="https://i.imgur.com/HdsziHP.png">
+                <p class="font-weight-bold d-online">Order <br> Arrived</p>
+            </div>
+        </div>
+    </div>
+</div>

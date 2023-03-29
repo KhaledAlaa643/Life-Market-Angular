@@ -63,6 +63,8 @@ import { PreviousOrderComponent } from './component/previous-order/previous-orde
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentComponent } from './Components/payment/payment.component';
+import { ProductRatingComponent } from './component/product-rating/product-rating.component';
+import { TrackOrderComponent } from './component/track-order/track-order.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +129,8 @@ import { PaymentComponent } from './Components/payment/payment.component';
     PreviousOrderComponent,
     GalleryManagementComponent,
     PaymentComponent,
+    ProductRatingComponent,
+    TrackOrderComponent,
   ],
 
   imports: [

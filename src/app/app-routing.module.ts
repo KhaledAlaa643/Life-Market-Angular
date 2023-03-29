@@ -54,6 +54,8 @@ import { NotificationComponent } from './component/notification/notification.com
 import { PreviousOrderComponent } from './component/previous-order/previous-order.component';
 import { GalleryManagementComponent } from './Components/Dashboard/gallery-management/gallery-management.component';
 import { PaymentComponent } from './Components/payment/payment.component';
+import { ProductRatingComponent } from './component/product-rating/product-rating.component';
+import { TrackOrderComponent } from './component/track-order/track-order.component';
 
 
 const routes: Routes = [
@@ -82,6 +84,8 @@ const routes: Routes = [
       {path:'myaccount',component:MyaccountComponent},
       {path:'order',component:OrdersComponent},
       {path:'previousorder',component:PreviousOrderComponent},
+      {path:'productRating/:id',component:ProductRatingComponent},
+      {path:'trackorder/:id',component:TrackOrderComponent},
       {path:'saveditems',component:SavedItemsComponent},
       {path:'address',component:AddressComponent},
       {path:'manage',component:ManageAccountComponent},

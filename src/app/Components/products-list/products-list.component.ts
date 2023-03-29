@@ -42,7 +42,7 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByCatId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
-          // console.log(res);
+          console.log(res);
         }
       });
     }
@@ -50,6 +50,8 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByOfferId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
+          console.log(res);
+          
         }
       });
     }
