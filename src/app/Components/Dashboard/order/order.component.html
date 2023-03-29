@@ -1,18 +1,18 @@
 
 <section class="container-fluid">
     <div class="row mb-3">
-        <div class="col-sm-6">
-            <select [(ngModel)]="selectedStatus" class="form-select">
+        <div class="col-9 col-lg-10">
+            <select [(ngModel)]="selectedStatus" class="form-select w-100">
                 <option value="">All</option>
+                <option value="processing">Processing</option>                
+                <option value="ondelivery">On Delivery</option>
+                <option value="done">Done</option>
                 <option value="pending">Pending</option>
-                <option value="processing">Processing</option>
                 <option value="cancelled">Cancelled</option>
-                <option value="delivered">Delivered</option>
-                <option value="shipped">Shipped</option>
             </select>
         </div>
-        <div class="col-sm-6">
-            <button class="btn btn-primary float-end" (click)="applyFilter()">Apply Filter</button>
+        <div class="col-3 col-lg-2 ">
+            <button class="btn btn-primary float-end w-100" (click)="applyFilter()">Apply Filter</button>
         </div>
     </div>
     <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
@@ -41,20 +41,20 @@
 
                         <select (change)="updateOrder(orderForm.value, o.id)" formControlName="status"
                             class="form-control" id="">
+                            <option [selected]="o.status=='processing'" value="processing">
+                                Processing
+                            </option>
+                            <option [selected]="o.status=='ondelivery'" value="ondelivery ">
+                                On Delivery
+                            </option>
+                            <option [selected]="o.status=='done'" value="done">
+                                Done
+                            </option>
                             <option [selected]="o.status=='pending'" value="pending">
                                 Pending
                             </option>
-                            <option [selected]="o.status=='processing'" value="processing ">
-                                Processing
-                            </option>
                             <option [selected]="o.status=='cancelled'" value="cancelled">
                                 Cancelled
-                            </option>
-                            <option [selected]="o.status=='delivered'" value="delivered">
-                                Delivered
-                            </option>
-                            <option [selected]="o.status=='shipped'" value="shipped">
-                                Shipped
                             </option>
                         </select>
                     </form>

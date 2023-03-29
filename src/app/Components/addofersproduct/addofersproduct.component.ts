@@ -39,6 +39,8 @@ export class AddofersproductComponent implements OnInit  {
     this.prodsservice.getAllProducts().subscribe({
       next:(res)=>{
         this.allproducts=res;
+        console.log(res);
+        
 
 
       }

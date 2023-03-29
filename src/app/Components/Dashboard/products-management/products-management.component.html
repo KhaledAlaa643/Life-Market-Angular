@@ -47,9 +47,9 @@
           <th>Brand</th>
           <th>Price</th>
           <th>Qty</th>
+          <th>Gallery</th>
           <th>Edit</th>
           <th>Delete </th>
-          <th> gallery</th>
         </tr>
       </thead>
       <tbody *ngIf="AllProducts.length > 0">
@@ -60,9 +60,9 @@
           <td>{{product.brand}}</td>
           <td>{{product.price}}</td>
           <td>{{product.quantity}}</td>
+          <td> <button class="btn  m-2" style="background-color: rgb(35, 178, 178); color:white"  [routerLink]="['/admin/gallery-management/',product.id]">Gallery</button></td>
           <td><button class="btn btn-primary m-2" [routerLink]="['/admin/update-product',product.id]"><i class="fa fa-edit"></i></button></td>
           <td> <button class="btn btn-danger m-2" (click)="deletePrd(product.id)"><i class="fa fa-trash"></i></button></td>
-          <td> <button class="btn btn-danger m-2"  [routerLink]="['/admin/gallery-management/',product.id]">gallery</button></td>
         </tr>
 
       </tbody>

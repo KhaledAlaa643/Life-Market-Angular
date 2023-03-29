@@ -23,5 +23,12 @@ export class OrdersService {
       })
     });
   }
+  getOrdersByUser(): Observable<Order> {
+    return this.httpservice.get<Order>('http://localhost:8000/api/ordersbyuserid', {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
 
 }

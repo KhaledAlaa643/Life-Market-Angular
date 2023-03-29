@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
-      console.log(data);
+      // console.log(data);
       this.filteredOrders = this.orders;
 
       // Set the value of the status form control to the selected status when filtering
@@ -66,6 +66,7 @@ export class OrderComponent implements OnInit {
       next: (order: Order) => {
         console.log(`Order ${orderId} status updated successfully`);
         console.log('Updated order:', order);
+        window.location.reload();
       },
       error: (error: any) => {
         console.log('Error updating order status:', error);
@@ -95,28 +96,46 @@ export class OrderComponent implements OnInit {
       title: 'LIFE MARKET',
       html: `
       <div class="row text-start m-0 p-0">
-          <p><strong style="color:#1f8291d4;"> Name:</strong> 
-          ${this.orderData[0].first_name} 
-          ${this.orderData[0].last_name}</p>
-          <p><strong style="color:#1f8291d4;">Email:</strong>
-           ${this.orderData[0].email}</p>
-          <p><strong style="color:#1f8291d4;">Phone:</strong>
-           ${this.orderData[0].phone}</p>
-          <p><strong style="color:#1f8291d4;">Address:  </strong>
-          ${this.orderData[0].street}, ${this.orderData[0].city}, 
-          ${this.orderData[0].governorate} </p>
-          <p class="mb-1"><strong style="color:#1f8291d4;">Zip code: </strong>
-           ${this.orderData[0].zip_code}</p>
-           <hr class=" m-0 p-0" style="color:#1f8291d4;">
-          <p><strong >Order Date: </strong> 
-          ${this.orderData[0].created_at}</p>
-          <p><strong >Order total: </strong> 
-          ${this.orderData[0].order_total}</p>
-           <p><strong >Delivery Time: </strong> 
-          ${deliveryTime}</p>
-          <p><strong >Delivery Price: </strong> 
-          ${this.orderData[0].delivery_price} EGP</p>
-        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td style="color:#1f8291d4;">Name</td>
+              <td>${this.orderData[0].first_name} ${this.orderData[0].last_name}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Email</td>
+              <td>${this.orderData[0].email}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Phone</td>
+              <td>${this.orderData[0].phone}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Address</td>
+              <td>${this.orderData[0].street}, ${this.orderData[0].city}, ${this.orderData[0].governorate}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Zip Code</td>
+              <td>${this.orderData[0].zip_code}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Order Date</td>
+              <td>${this.orderData[0].created_at}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Delivery Time</td>
+              <td>${deliveryTime}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Delivery Price</td>
+              <td>${this.orderData[0].delivery_price}</td>
+            </tr>
+            <tr>
+              <td style="color:#1f8291d4;">Order Total</td>
+              <td>${this.orderData[0].order_total}</td>
+            </tr>
+          </tbody>
+        </table>
         <section class="container-fluid">
         <table class="w-100 mt-2 mx-0 px-0 table table-bordered table-hover table-striped text-center">
             <thead>
@@ -135,7 +154,7 @@ export class OrderComponent implements OnInit {
         ${this.orderData.map((product: any, i: number) => `
             <tr>
               <td>${i + 1}</td>
-              <td><img src="http://localhost:8000/storage/images/${product.product_photo}" width="40px"></td>
+              <td><img src="http://localhost:8000/storage/images/products/${product.product_photo}" width="40px"></td>
               <td>${product.product_name}</td>
               <td>${product.product_price}</td>
               <td>${product.quantity}</td>
@@ -144,7 +163,7 @@ export class OrderComponent implements OnInit {
           `).join('')
         }
       </tbody>
-        </table> 
+      </table> 
     `,
       confirmButtonText: 'OK',
       backdrop: `

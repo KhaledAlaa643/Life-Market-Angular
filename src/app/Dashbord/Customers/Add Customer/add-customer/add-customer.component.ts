@@ -84,8 +84,7 @@ export class AddCustomerComponent {
         // console.log(err.error.error)
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong, '+err,
+          title: 'Email Alredy Existed',
         })
       }
     })

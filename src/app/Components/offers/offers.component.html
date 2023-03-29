@@ -34,7 +34,7 @@
                 <td> {{offer.type}}</td>
                 <td> {{offer.discont_percent}}%</td>
                 <!-- <td><img [src]="'../../../assets/'+offer.photo" width="200px" height="70px" /></td> -->
-                <td><img [src]="'http://localhost:8000/storage/images/'+offer.photo" width="200px" height="70px" /></td>
+                <td><img [src]="'http://localhost:8000/storage/images/offers/'+offer.photo" width="200px" height="70px" /></td>
 
                 <td>
                     <button class="btn btn-info add" [routerLink]="['/admin/addproduct/offer/',offer.id]"><i

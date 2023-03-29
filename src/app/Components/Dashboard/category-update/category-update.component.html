@@ -1,7 +1,7 @@
 <div class="container">
   <h3> Update Category</h3>
 
-<form #catUpdate (ngSubmit)="updateCat()" method="post" enctype="multipart/form-data">
+<form #catUpdate="ngForm" (ngSubmit)="updateCat()" method="post" enctype="multipart/form-data">
 
   <div class="form-group">
     <label for="Name">Name</label>
@@ -9,13 +9,13 @@
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description" [(ngModel)]=cat.description [placeholder]="cat.description">
+    <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]=cat.description [placeholder]="cat.description"></textarea>
   </div>
   <div class="form-group">
     <label for="photo">Photo</label>
-    <input type="file" (change)=" uploadimg($event)"   class="form-control" [(ngModel)]="cat.photo" id="photo" name="photo" >
+    <input type="file" (change)=" uploadimg($event)" required  class="form-control" [(ngModel)]="cat.photo" id="photo" name="photo" >
   </div>
-  <button type="submit" class="btn btn-primary me-3 px-3">Update</button>
+  <button [disabled]="!catUpdate.valid" type="submit" class="btn btn-primary me-3 px-3">Update</button>
   <button [routerLink]="['/admin/categories-management']" class="btn btn-secondary text-white px-3">Back</button>
 
 </form>

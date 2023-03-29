@@ -6,7 +6,7 @@
       <label for="Offer" class="col-form-label">Offer Title </label>
       <div>
         <input [(ngModel)]="offer.offer_title" type="text" class="form-control" id="exampleInputEmail1"
-          placeholder="Enter Offer title" name="offertitle" pattern="^[A-Z a-z0-9]{5,80}$" #offer_title="ngModel" required>
+          placeholder="Enter Offer title" name="offertitle" pattern="^[A-Z a-z0-9%]{5,80}$" #offer_title="ngModel" required>
       </div>
       <div [hidden]="offer_title.valid || offer_title.pristine" class="text-danger">
         <p [hidden]="!offer_title.errors?.['required']">offer title Required</p>
