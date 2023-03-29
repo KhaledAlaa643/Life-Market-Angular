@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -33,7 +34,12 @@ export class RegisterComponent   {
         // console.log(data)
         this.route.navigate(['/login'])
       },
-      error: (err) => {console.log(err.error.error)}
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Email Alredy Existed',
+        })
+      }
     })
   }
 

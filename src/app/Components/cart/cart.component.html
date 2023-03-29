@@ -1,5 +1,6 @@
 <section class="h-100 gradient-custom">
-  <div class="container">
+  
+  <div *ngIf="products.length>0" class="container">
     <div class="row d-flex justify-content-center my-4">
       <div class="col-md-8">
         <div class="card mb-4">
@@ -28,12 +29,12 @@
                 </div>
                 <div class="col-6 col-lg-3 px-3">
                   <div class="input-group">
-                    <button (click)="decrementPrd(pro.prd_id)" class="btn btn-success" style="background-color: darkcyan;" type="button"><i
-                        class="fa-solid fa-minus"></i></button>
+                    <button (click)="decrementPrd(pro.prd_id)" class="btn btn-success"
+                      style="background-color: darkcyan;" type="button"><i class="fa-solid fa-minus"></i></button>
                     <input type="text" readonly value="{{pro.quantity}}" class="form-control text-center" placeholder=""
                       aria-label="Example text with two button addons">
-                    <button (click)="incrementPrd(pro.prd_id)" class="btn btn-success" style="background-color: darkcyan;" type="button"><i
-                        class="fa-solid fa-plus"></i></button>
+                    <button (click)="incrementPrd(pro.prd_id)" class="btn btn-success"
+                      style="background-color: darkcyan;" type="button"><i class="fa-solid fa-plus"></i></button>
                   </div>
                 </div>
               </div>
@@ -66,4 +67,17 @@
       </div>
     </div>
   </div>
+  
+  <div *ngIf="products.length<1" class="row my-5">
+    <div class="d-flex justify-content-center">
+      <img src="../../../assets/empty.png" width="150" alt="">
+    </div>
+    <h5 class="text-center mt-2 mb-4">There are no products found in cart...</h5>
+    <div class="d-flex justify-content-center">
+      <a [routerLink]="['/main/home']" class="btn btn-primary mt-3 px-3" style="background-color: darkcyan;">Go
+        Back To Home
+      </a>
+    </div>
+  </div>
+
 </section>

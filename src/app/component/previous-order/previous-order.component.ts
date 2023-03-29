@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product_Rating } from 'src/app/Models/product';
 import { OrdersService } from 'src/app/Services/orders.service';
+import { ProductsService } from 'src/app/Services/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,8 +14,10 @@ import Swal from 'sweetalert2';
 export class PreviousOrderComponent implements OnInit {
 
   prd: any;
+  prdRate: Product_Rating = {} as Product_Rating;
 
   constructor(
+    private prdServe: ProductsService,
     private Orderserve: OrdersService,
     private route: Router,
     private http: HttpClient,
@@ -24,39 +28,41 @@ export class PreviousOrderComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.prd = res;
-
-
       },
       error: (err) => { console.log(err.error.error) }
     })
   }
 
   rateProduct(prd_id: any) {
-    console.log(prd_id);
-    Swal.fire({
+ 
+  }
 
-      title: 'Rating',
-      html: `
-        <form>
-          <div class="mb-3">
-            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
-          </div>
-          <div>
-            <button type="submit" class="btn fs-4 m-0 p-0"><i class="fa-solid fa-star"></i></button>
-            <button type="submit" class="btn fs-4 m-0 p-0"><i class="fa-solid fa-star"></i></button>
-            <button type="submit" class="btn fs-4 m-0 p-0"><i class="fa-solid fa-star"></i></button>
-            <button type="submit" class="btn fs-4 m-0 p-0"><i class="fa-solid fa-star"></i></button>
-            <button type="submit" class="btn fs-4 m-0 p-0"><i class="fa-solid fa-star"></i></button>
-          </div>
-        </form>
-      `,
-      showConfirmButton: false,
-      customClass: {
-        title: 'my-title-class',
-        htmlContainer: 'my-html-container-class',
-        confirmButton: 'my-confirm-button-class',
-      },
-    });
+
+
+  addRating(prdId: any, star: any) {
+    this.prdRate.prd_id = prdId;
+    this.prdRate.star = star;
+    if (this.prdRate.review!='') {
+      this.prdServe.addRating(this.prdRate).subscribe({
+        next: (res) => {
+          // console.log(res);
+          // this.prd = res;
+        },
+        error: (err) => { 
+          Swal.fire({
+            icon: 'error',
+            title: 'Please Enter Your Comment...',
+          })
+        }
+      })
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Please Enter Your Comment...',
+      })
+    }
+    console.log(this.prdRate);
   }
 
 }

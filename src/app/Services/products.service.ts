@@ -57,6 +57,10 @@ export class ProductsService {
     return this._httpClient.get<Product[]>(`${environment.apiURL}/products`)
   }
 
+  addRating(r:any):Observable<any>{
+    return this._httpClient.post<any>(`${environment.apiURL}/rating`,r)
+  }
+
  
 
 }

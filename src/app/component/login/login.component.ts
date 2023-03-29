@@ -39,7 +39,7 @@ export class LoginComponent {
         }
         else {
 
-          this.wrongCredentials = "please Enter a valid Email or password"
+          this.wrongCredentials = "Please, Enter a Valid Email or Password"
         }
       }
     })

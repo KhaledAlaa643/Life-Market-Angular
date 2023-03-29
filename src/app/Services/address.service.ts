@@ -40,4 +40,12 @@ export class AddressService {
       })
     });
   }
+
+  getAlladdress(): Observable<any> {
+    return this.httpservice.get<any>('http://localhost:8000/api/alladdress', {
+      headers: new HttpHeaders({
+        accept: 'application/json'
+      })
+    });
+  }
 }
