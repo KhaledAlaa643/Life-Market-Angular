@@ -17,59 +17,61 @@ import { CreateOrderService } from 'src/app/Services/create-order.service';
   styleUrls: ['./check-out.component.css']
 })
 export class CheckOutComponent {
-  address:Address={} as Address;
-  products:Product[]=[]
-  delivery:Delivery[]=[]
-  Addressres:Address[]=[]
-  Orders:Order[]=[]
-  user:User[]=[];
-  selectedName: string="";
+  address: Address = {} as Address;
+  products: Product[] = []
+  delivery: Delivery[] = []
+  Addressres: Address[] = []
+  Orders: Order[] = []
+  user: User[] = [];
+  selectedName: string = "";
   selectedPrice: number = 0
-  selectedId:any
-  ads!:any
-  show!:boolean;
-  hide!:boolean;
+  selectedId: any
+  ads!: any
+  show!: boolean;
+  hide!: boolean;
   selectedTime: Date = new Date();
   displayDate!: Date;
   user_id = Number(localStorage.getItem('userId'))
-  totalPrice!:any
-  orderId!:any
+  totalPrice!: any
+  orderId!: any
   constructor(
     private route: Router,
-    private cartService:CartService,
-    private addressserve:AddressService,
-    private deliveryService:DeliveryService,
-    private cartData:CartService,
-    private createOrder:CreateOrderService) {}
-  ngOnInit(): void
-  {
+    private cartService: CartService,
+    private addressserve: AddressService,
+    private deliveryService: DeliveryService,
+    private cartData: CartService,
+    private createOrder: CreateOrderService) { }
+  ngOnInit(): void {
     // this.cartData.totalPrice.next(this.totalAll())
 
     this.cartService.totalPrice.subscribe(totalPrice => {
       this.totalPrice = totalPrice;
     });
 
-    this.cartService.getCarts().subscribe((res)=>{
+    this.cartService.getCarts().subscribe((res) => {
       this.products = res
     })
-    this.deliveryService.getDeliverys().subscribe((res)=>{
-      this.delivery = res
-      this.selectedId = this.delivery[0].id;
-      this.selectedName = this.delivery[0].governorate;
-      this.selectedPrice = this.delivery[0].price
-      this.selectedTime.setDate(this.selectedTime.getDate() + Number(this.delivery[0].time));
-      this.displayDate = this.selectedTime; // Assign the updated date to the displayDate variable
-    })
+
 
     this.addressserve.getaddressData().subscribe({
       next: (data) => {
         this.ads = data
+        console.log(this.ads);
         if (this.ads['error']) {
           this.show = true;
-          this.hide=false;
+          this.hide = false;
         } else {
           this.show = false;
-          this.hide=true;
+          this.hide = true;
+          this.deliveryService.getDeliverysByGovernorate(this.ads.governorate).subscribe((res) => {
+            this.delivery = res
+            console.log(this.delivery);
+            this.selectedId = this.delivery[0].id;
+            this.selectedName = this.delivery[0].governorate;
+            this.selectedPrice = this.delivery[0].price
+            this.selectedTime.setDate(this.selectedTime.getDate() + Number(this.delivery[0].time));
+            this.displayDate = this.selectedTime; // Assign the updated date to the displayDate variable
+          })
         }
       },
       error: (err) => {
@@ -77,13 +79,13 @@ export class CheckOutComponent {
       }
     });
   }
-  UpdateAdress(){
+  UpdateAdress() {
     this.addressserve.UpdateAdress(this.address).subscribe({
       next: (data) => {
         this.route.navigate(['/main/profile/myaccount']);
         console.log(data)
       },
-      error: (err) => {console.log(err.error.error)}
+      error: (err) => { console.log(err.error.error) }
     })
   }
   totalFun(): any {
@@ -93,7 +95,7 @@ export class CheckOutComponent {
     }
     return total
   }
-  totalAll (){
+  totalAll() {
     let total: number = 0
     for (let product of this.products) {
       total += product.price * product.quantity
@@ -107,25 +109,27 @@ export class CheckOutComponent {
       total: this.totalAll(),
       delivery_price_id: this.selectedId,
       user_id: this.user_id
-      };
-      return this.createOrder.createOrder(payload).subscribe(
-        (response) => {
-          let result:any = response
-          this.route.navigate(['main/payment'])
-          this.cartData.totalPrice.next(this.totalAll())
-          this.orderId = result.id
-          this.createOrder.addOrder(this.orderId).subscribe((res)=>{
-            console.log(res);
-          })
+    };
+    return this.createOrder.createOrder(payload).subscribe(
+      (response) => {
+        let result: any = response
+        this.route.navigate(['main/payment'])
+        this.cartData.totalPrice.next(this.totalAll())
+        this.orderId = result.id
+        this.createOrder.addOrder(this.orderId).subscribe((res) => {
+          // console.log(res);
+          window.location.reload();
+        })
       },
       (error) => {
         console.error('Error creating order');
         console.error(error);
       }
     );
+    
   }
-  add (){
-    this.createOrder.addOrder(this.orderId).subscribe((res)=>{
+  add() {
+    this.createOrder.addOrder(this.orderId).subscribe((res) => {
       console.log(res);
     })
   }

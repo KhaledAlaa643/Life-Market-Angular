@@ -9,7 +9,7 @@
         <div *ngIf="i.status=='done'" class="card px-0 mb-3">
             <div class="row mt-2">
                 <div class="col-3 col-lg-2">
-                    <img [src]="'../../../assets/'+i.product_photo" width="100" class="ps-2 ps-lg-4 " alt="...">
+                    <img [src]="'http://localhost:8000/storage/images/products/'+i.product_photo" width="100" class="ps-2 ps-lg-4 " alt="...">
                 </div>
                 <div class="col-6 col-lg-8">
                     <h6 class="mt-2"> {{i.product_name}}</h6>

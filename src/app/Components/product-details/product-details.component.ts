@@ -68,7 +68,8 @@ export class ProductDetailsComponent implements OnInit {
     this._cartServ.getCarts().subscribe({
       next: (res) => {
         // console.log(res);
-        
+        this.addBtn = true;
+        this.x=false;
         for (let i = 0; i < res.length; i++) {
           if (res[i].prd_id == this.prdId || this.y==true) {
             // console.log(res[i].prd_id);
@@ -80,8 +81,7 @@ export class ProductDetailsComponent implements OnInit {
             this.x=false;
           }
         }
-        this.addBtn = true;
-        this.x=false;
+        
       }
     });
 

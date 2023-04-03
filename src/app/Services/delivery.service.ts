@@ -18,6 +18,9 @@ export class DeliveryService {
   getDeliverys():Observable<Delivery[]>{
     return this._httpClient.get<Delivery[]>(`${environment.apiURL}/delivery`)
   }
+  getDeliverysByGovernorate(governorate:any):Observable<Delivery[]>{
+    return this._httpClient.get<Delivery[]>(`${environment.apiURL}/governorate/checkout/${governorate}`)
+  }
   deleteDelivery(deliveryId:number):Observable<Delivery>{
     return this._httpClient.delete<Delivery>(`${environment.apiURL}/delivery/${deliveryId}`)
   }

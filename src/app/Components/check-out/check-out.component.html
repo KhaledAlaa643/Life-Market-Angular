@@ -24,7 +24,7 @@
                 <td>{{product.name}} </td>
                 <td>{{product.quantity }}</td>
                 <td>{{product.price }}</td>
-                <td>{{product.price * product.quantity| currency}}</td>
+                <td>EGP {{product.price * product.quantity}}</td>
               </tr>
               <tr>
                 <td>
@@ -36,7 +36,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <span><strong>{{ totalFun()| currency }}</strong></span>
+                  <span><strong>EGP{{ totalFun() }}</strong></span>
                 </td>
               </tr>
               <tr>
@@ -45,7 +45,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  {{ selectedPrice |currency }}
+                  EGP {{ selectedPrice }}
                 </td>
               </tr>
               <tr>
@@ -60,7 +60,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span><strong>{{ totalFun() + selectedPrice| currency }}</strong></span></td>
+                <td><span><strong>EGP {{ totalFun() + selectedPrice }}</strong></span></td>
               </tr>
             </tbody>
           </table>
