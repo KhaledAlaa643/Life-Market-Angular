@@ -13,7 +13,6 @@ import { CartComponent } from './Components/cart/cart.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { ProductsComponent } from './Components/products/products.component';
-import { FavItemComponent } from './Components/fav-item/fav-item.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
 import { ProfileComponent } from './component/profile/profile.component';
@@ -77,7 +76,6 @@ const routes: Routes = [
     {path: 'about', component:AboutUsComponent},
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
-    {path: 'wishlist', component:FavItemComponent},
     {path: 'payment', component:PaymentComponent, canActivate:[AuthGuard]},
 
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[

@@ -12,7 +12,6 @@ import { ProductsListComponent } from './Components/products-list/products-list.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsListByCategoryComponent } from './Components/products-list-by-category/products-list-by-category.component';
 import { ProductsSearchComponent } from './Components/products-search/products-search.component';
-import { FavItemComponent } from './Components/fav-item/fav-item.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
@@ -47,8 +46,6 @@ import { SubCategoryUpdateComponent } from './Components/Dashboard/sub-category-
 import { ProductUpdateComponent } from './Components/Dashboard/product-update/product-update.component';
 import { CreateProductComponent } from './Components/Dashboard/create-product/create-product.component';
 import { NotificationComponent } from './component/notification/notification.component';
-// import { AuthGuard } from './guards/auth.guard';
-import { CloseComponent } from './close/close.component';
 import { CustomersComponent } from './Dashbord/Customers/Main Customers/customers.component';
 import { AdminsComponent } from './Dashbord/Admins/admins/Main Admin/admins.component';
 import { DeliveryComponent } from './Dashbord/Delivery/delivery/Main Delivery/delivery.component';
@@ -78,7 +75,6 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     ProductsListComponent,
     ProductsListByCategoryComponent,
     ProductsSearchComponent,
-    FavItemComponent,
     CartComponent,
     AboutUsComponent,
     ContactUsComponent,
@@ -99,7 +95,6 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     DashboardComponent,
     OffersComponent,
     ContactComponent,
-    // OffersComponent,
     EditofferComponent,
     AddofferComponent,
     AddofersproductComponent,
@@ -113,9 +108,6 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     ProductUpdateComponent,
     CreateProductComponent,
     NotificationComponent,
-
-    // AuthGuard,
-    CloseComponent,
     CustomersComponent,
     AdminsComponent,
     DeliveryComponent,
