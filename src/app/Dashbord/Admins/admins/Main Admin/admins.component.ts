@@ -39,7 +39,7 @@ deleteAdmin(adminId: any) {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'The Customer has been deleted Successfully',
+            title: 'The Admin has been deleted Successfully',
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {

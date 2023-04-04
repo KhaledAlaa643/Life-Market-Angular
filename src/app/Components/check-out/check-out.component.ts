@@ -17,6 +17,7 @@ import { CreateOrderService } from 'src/app/Services/create-order.service';
   styleUrls: ['./check-out.component.css']
 })
 export class CheckOutComponent {
+
   address: Address = {} as Address;
   products: Product[] = []
   delivery: Delivery[] = []
@@ -34,14 +35,20 @@ export class CheckOutComponent {
   user_id = Number(localStorage.getItem('userId'))
   totalPrice!: any
   orderId!: any
+
+
   constructor(
     private route: Router,
     private cartService: CartService,
     private addressserve: AddressService,
     private deliveryService: DeliveryService,
     private cartData: CartService,
-    private createOrder: CreateOrderService) { }
+    private createOrder: CreateOrderService
+  ){}
+
+
   ngOnInit(): void {
+
     this.cartService.totalPrice.subscribe(totalPrice => {
       this.totalPrice = totalPrice;
     });
@@ -50,11 +57,10 @@ export class CheckOutComponent {
       this.products = res
     })
 
-
     this.addressserve.getaddressData().subscribe({
       next: (data) => {
         this.ads = data
-        console.log(this.ads);
+        // console.log(this.ads);
         if (this.ads['error']) {
           this.show = true;
           this.hide = false;
@@ -76,15 +82,19 @@ export class CheckOutComponent {
       }
     });
   }
+
+
   UpdateAdress() {
     this.addressserve.UpdateAdress(this.address).subscribe({
       next: (data) => {
         this.route.navigate(['/main/profile/myaccount']);
-        console.log(data)
+        // console.log(data)
       },
       error: (err) => { console.log(err.error.error) }
     })
   }
+
+
   totalFun(): any {
     let total: number = 0
     for (let product of this.products) {
@@ -92,14 +102,16 @@ export class CheckOutComponent {
     }
     return total
   }
+
+
   totalAll() {
     let total: number = 0
     for (let product of this.products) {
       total += product.price * product.quantity
     }
-
     return total + this.selectedPrice
   }
+
 
   post() {
     const payload = {
@@ -114,15 +126,13 @@ export class CheckOutComponent {
         this.cartData.totalPrice.next(this.totalAll())
         this.orderId = result.id
         this.createOrder.addOrder(this.orderId).subscribe((res) => {
-          console.log(res);
+          // console.log(res);
         })
-
-        console.log(result.id);
-     // Save total price to local storage
-      localStorage.setItem('totalPrice', this.totalAll().toString());
+        // console.log(result.id);
+        localStorage.setItem('totalPrice', this.totalAll().toString());
       },
       (error) => {
-        console.error('Error creating order');
+        // console.error('Error creating order');
         console.error(error);
       }
     );
@@ -130,7 +140,7 @@ export class CheckOutComponent {
   }
   add() {
     this.createOrder.addOrder(this.orderId).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
     })
   }
 }

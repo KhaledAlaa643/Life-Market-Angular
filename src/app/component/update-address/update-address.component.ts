@@ -26,14 +26,14 @@ export class UpdateAddressComponent implements OnInit {
     this.addressserve.getaddressData().subscribe({
       next: (data) => {
         this.address=data
-         console.log(data)
+        //  console.log(data)
 
       },
       error: (err) => {console.log(err.error.error)}
     })
     this.addressserve.getAlladdress().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.governorate = res;
       },
       error: (err) => {

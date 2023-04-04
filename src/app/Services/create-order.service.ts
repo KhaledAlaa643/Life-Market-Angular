@@ -16,10 +16,10 @@ export class CreateOrderService {
   addOrder(id:any){
     return this._httpClient.get(`${environment.apiURL}/orders/checkout/${id}`)
   }
-     // send the data {card number, exp month, exp year,total}
-    orderData(details:Payment):Observable<Payment>{
-      return this._httpClient.post<Payment>(`${environment.apiURL}/payment/checkout/`,details)
-    }
+  // send the data {card number, exp month, exp year,total}
+  orderData(card:any):Observable<any>{
+    return this._httpClient.post<any>(`http://localhost:8000/api/paymentt/checkoutt`,card)
+  }
 
 
 

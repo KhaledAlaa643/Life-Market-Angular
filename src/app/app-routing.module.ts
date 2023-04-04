@@ -78,7 +78,7 @@ const routes: Routes = [
     {path: 'contact', component:ContactUsComponent},
     {path: 'products', component:ProductsComponent},
     {path: 'wishlist', component:FavItemComponent},
-    {path: 'payment', component:PaymentComponent},
+    {path: 'payment', component:PaymentComponent, canActivate:[AuthGuard]},
 
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard], children:[
       {path:'myaccount',component:MyaccountComponent},

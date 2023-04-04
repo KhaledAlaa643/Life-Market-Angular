@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  /* padding: 0 15px; */
   background-image: linear-gradient(to right, #0e7877 0%, #79CBCA 51%, #77A1D3 100%);
   border: none;
   transition: 0.5s;
@@ -20,8 +20,11 @@
   text-decoration: none;
 }
 
-p,h6{
+h5,h2{
   color:darkcyan
+}
+p{
+  color: red;
 }
 
 .btn.btn-primary:hover .fas.fa-arrow-right {

@@ -1,24 +1,23 @@
-<section class="p-4 p-md-5">
+<section class="p-3">
   <div class="row d-flex justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-5">
       <div class="card rounded-3">
         <div class="card-body p-4">
           <div class="text-center mb-4">
-            <h3>Settings</h3>
-            <h6>Payment</h6>
+            <h2>PAYMENT</h2>
           </div>
           <form  #myForm="ngForm" autocomplete="off" (ngSubmit)="pay()">
             <!-- Name -->
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-3">
               <label class="form-label" for="formControlLgName">Cardholder's Name</label>
-              <input type="text"   id="formControlLgName" required name="cardName" class="form-control form-control-lg"/>
+              <input type="text"   id="formControlLgName" required name="cardName" class="form-control"/>
             </div>
-            <div class="row mb-4">
+            <div class="row mb-3">
               <!-- Card Number -->
               <div class="col-12">
                 <div class="form-outline">
                   <label class="form-label" for="formControlLgCN">Card Number</label>
-                  <input type="number" #number="ngModel" [(ngModel)]="payment.number" id="formControlLgCN" required name="number" pattern="^\d{16}$" class="form-control form-control-lg"/>
+                  <input type="number" #number="ngModel" [(ngModel)]="payment.number" id="formControlLgCN" required name="number" pattern="^\d{16}$" class="form-control"/>
                 </div>
                 <div [hidden]="number.valid || number.pristine" class="text-danger">
                   <p [hidden]="!number.errors?.['required']">Card Number Required</p>
@@ -26,13 +25,13 @@
                 </div>
               </div>
               <!-- Exp Month -->
-              <div class="col-4 mb-4 mt-4">
+              <div class="col-4 mb-3 mt-3">
                 <div class="form-outline">
                   <label class="form-label" for="formControlLgXM">Expiration Month</label>
                   <input type="number" #expMonth="ngModel" placeholder="MM"
                   [(ngModel)]="payment.exp_month" id="formControlLgXM" required name="expMonth"
                   pattern="^(1[0-2]|[1-9])$"
-                  class="form-control form-control-lg"/>
+                  class="form-control"/>
                 </div>
                 <div [hidden]="expMonth.valid || expMonth.pristine" class="text-danger">
                   <p [hidden]="!expMonth.errors?.['required']">Exp Month Required</p>
@@ -40,10 +39,10 @@
                 </div>
               </div>
               <!-- Exp Year -->
-              <div class="col-4 mb-4 mt-4">
+              <div class="col-4 mb-3 mt-3">
                 <div class="form-outline">
                   <label class="form-label" for="formControlLgXY">Expiration Year</label>
-                  <input type="number" #expYear="ngModel"placeholder="20YY" [(ngModel)]="payment.exp_year" id="formControlLgXY" required name="expYear" pattern="^20[2-9]{2}$" class="form-control form-control-lg"/>
+                  <input type="number" #expYear="ngModel"placeholder="20YY" [(ngModel)]="payment.exp_year" id="formControlLgXY" required name="expYear" pattern="^20[2-9]{2}$" class="form-control"/>
                 </div>
                 <div [hidden]="expYear.valid || expYear.pristine" class="text-danger">
                   <p [hidden]="!expYear.errors?.['required']">Exp Year Required</p>
@@ -51,11 +50,11 @@
                 </div>
               </div>
               <!-- cvc -->
-              <div class="col-4 mb-4 mt-4">
+              <div class="col-4 mb-3 mt-3">
                 <div class="form-outline">
                   <label class="form-label" for="cvv">CVV</label>
                   <input type="number" placeholder="123"  #cvc="ngModel" [(ngModel)]="payment.cvc" id="cvv" required name="cvc" pattern="\d{3}"
-                  class="form-control form-control-lg"/>
+                  class="form-control "/>
                 </div>
                 <div [hidden]="cvc.valid || cvc.pristine" class="text-danger">
                   <p [hidden]="!cvc.errors?.['required']">CVC Required</p>
@@ -64,14 +63,14 @@
               </div>
             </div>
             <!-- Total -->
-            <div class="rounded border card-body border-2 d-flex w-100 p-3 align-items-center amount mb-4">
+            <div class="rounded border card-body border-2 d-flex w-100 align-items-center amount p-1 px-2 mb-4">
               <p class="mb-1 small total text-muted">Total amount due</p>
-              <h6 class=""> EGP {{totalPrice}} </h6>
+              <h5 class=""> EGP {{totalPrice}} </h5>
             </div>
             <!-- Pay Button -->
             <button class="btn btn-primary mb-3" [disabled]="myForm.invalid">
-              <span class="ps-3">Pay Now!</span>
-              <span class="fas fa-arrow-right"></span>
+              <span class="ps-4 fs-5">Pay Now</span>
+              <span class="fas fa-arrow-right pe-4"></span>
             </button>
           </form>
         </div>
