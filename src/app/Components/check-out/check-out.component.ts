@@ -42,8 +42,6 @@ export class CheckOutComponent {
     private cartData: CartService,
     private createOrder: CreateOrderService) { }
   ngOnInit(): void {
-    // this.cartData.totalPrice.next(this.totalAll())
-
     this.cartService.totalPrice.subscribe(totalPrice => {
       this.totalPrice = totalPrice;
     });
@@ -65,7 +63,6 @@ export class CheckOutComponent {
           this.hide = true;
           this.deliveryService.getDeliverysByGovernorate(this.ads.governorate).subscribe((res) => {
             this.delivery = res
-            console.log(this.delivery);
             this.selectedId = this.delivery[0].id;
             this.selectedName = this.delivery[0].governorate;
             this.selectedPrice = this.delivery[0].price
@@ -117,16 +114,19 @@ export class CheckOutComponent {
         this.cartData.totalPrice.next(this.totalAll())
         this.orderId = result.id
         this.createOrder.addOrder(this.orderId).subscribe((res) => {
-          // console.log(res);
-          window.location.reload();
+          console.log(res);
         })
+
+        console.log(result.id);
+     // Save total price to local storage
+      localStorage.setItem('totalPrice', this.totalAll().toString());
       },
       (error) => {
         console.error('Error creating order');
         console.error(error);
       }
     );
-    
+
   }
   add() {
     this.createOrder.addOrder(this.orderId).subscribe((res) => {

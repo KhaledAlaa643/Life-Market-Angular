@@ -1,5 +1,4 @@
-
-  <section class="p-4 p-md-5">
+<section class="p-4 p-md-5">
   <div class="row d-flex justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-5">
       <div class="card rounded-3">
@@ -8,48 +7,75 @@
             <h3>Settings</h3>
             <h6>Payment</h6>
           </div>
-          <form  #myForm="ngForm" autocomplete="off" (ngSubmit)="submitForm()">
+          <form  #myForm="ngForm" autocomplete="off" (ngSubmit)="pay()">
+            <!-- Name -->
             <div class="form-outline mb-4">
-              <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
-              <input #prdName="ngModel"  [(ngModel)]="name" pattern="^^[a-zA-Z ]*$" type="text" id="formControlLgXsd" required name="name" class="form-control form-control-lg"/>
+              <label class="form-label" for="formControlLgName">Cardholder's Name</label>
+              <input type="text"   id="formControlLgName" required name="cardName" class="form-control form-control-lg"/>
             </div>
-            <div [hidden]="prdName.valid || prdName.pristine" class="text-danger">
-              <p [hidden]="!prdName.errors?.['required']">Cart Name Required</p>
-          </div>
             <div class="row mb-4">
-              <div class="col-7">
+              <!-- Card Number -->
+              <div class="col-12">
                 <div class="form-outline">
-                  <label class="form-label" for="formControlLgXM">Card Number</label>
-                  <input type="number" id="formControlLgXM" required name="number" class="form-control form-control-lg"/>
+                  <label class="form-label" for="formControlLgCN">Card Number</label>
+                  <input type="number" #number="ngModel" [(ngModel)]="payment.number" id="formControlLgCN" required name="number" pattern="^\d{16}$" class="form-control form-control-lg"/>
+                </div>
+                <div [hidden]="number.valid || number.pristine" class="text-danger">
+                  <p [hidden]="!number.errors?.['required']">Card Number Required</p>
+                  <p [hidden]="!number.errors?.['pattern']">Invalid Card Number</p>
                 </div>
               </div>
-              <div class="col-3">
+              <!-- Exp Month -->
+              <div class="col-4 mb-4 mt-4">
                 <div class="form-outline">
-                  <label class="form-label" for="formControlLgExpk">Expire Date</label>
-                  <input type="number" id="formControlLgExpk" required name="expire" class="form-control form-control-lg"/>
+                  <label class="form-label" for="formControlLgXM">Expiration Month</label>
+                  <input type="number" #expMonth="ngModel" placeholder="MM"
+                  [(ngModel)]="payment.exp_month" id="formControlLgXM" required name="expMonth"
+                  pattern="^(1[0-2]|[1-9])$"
+                  class="form-control form-control-lg"/>
+                </div>
+                <div [hidden]="expMonth.valid || expMonth.pristine" class="text-danger">
+                  <p [hidden]="!expMonth.errors?.['required']">Exp Month Required</p>
+                  <p [hidden]="!expMonth.errors?.['pattern']">Invalid Exp Month</p>
                 </div>
               </div>
-              <div class="col-2">
+              <!-- Exp Year -->
+              <div class="col-4 mb-4 mt-4">
                 <div class="form-outline">
-                  <label class="form-label" for="formControlLgcvv">Cvv</label>
-                  <input type="password" id="formControlLgcvv" required name="cvv" class="form-control form-control-lg"/>
+                  <label class="form-label" for="formControlLgXY">Expiration Year</label>
+                  <input type="number" #expYear="ngModel"placeholder="20YY" [(ngModel)]="payment.exp_year" id="formControlLgXY" required name="expYear" pattern="^20[2-9]{2}$" class="form-control form-control-lg"/>
+                </div>
+                <div [hidden]="expYear.valid || expYear.pristine" class="text-danger">
+                  <p [hidden]="!expYear.errors?.['required']">Exp Year Required</p>
+                  <p [hidden]="!expYear.errors?.['pattern']">Invalid Exp Year</p>
+                </div>
+              </div>
+              <!-- cvc -->
+              <div class="col-4 mb-4 mt-4">
+                <div class="form-outline">
+                  <label class="form-label" for="cvv">CVV</label>
+                  <input type="number" placeholder="123"  #cvc="ngModel" [(ngModel)]="payment.cvc" id="cvv" required name="cvc" pattern="\d{3}"
+                  class="form-control form-control-lg"/>
+                </div>
+                <div [hidden]="cvc.valid || cvc.pristine" class="text-danger">
+                  <p [hidden]="!cvc.errors?.['required']">CVC Required</p>
+                  <p [hidden]="!cvc.errors?.['pattern']">Invalid CVC</p>
                 </div>
               </div>
             </div>
+            <!-- Total -->
             <div class="rounded border card-body border-2 d-flex w-100 p-3 align-items-center amount mb-4">
               <p class="mb-1 small total text-muted">Total amount due</p>
-              <h6 class="mb-0 price"> {{totalPrice | currency}} </h6>
-          </div>
-            <div class="btn btn-primary mb-3">
+              <h6 class=""> EGP {{totalPrice}} </h6>
+            </div>
+            <!-- Pay Button -->
+            <button class="btn btn-primary mb-3" [disabled]="myForm.invalid">
               <span class="ps-3">Pay Now!</span>
               <span class="fas fa-arrow-right"></span>
-            </div>
+            </button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </section>
-<div id="myPalpal">
-
-</div>

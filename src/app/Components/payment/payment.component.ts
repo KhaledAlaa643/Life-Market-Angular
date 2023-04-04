@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import {render} from 'creditcardpayments/creditCardPayments'
+import { Payment } from 'src/app/Models/payment';
+import { CreateOrderService } from 'src/app/Services/create-order.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -9,45 +12,37 @@ import {render} from 'creditcardpayments/creditCardPayments'
 })
 
 export class PaymentComponent  implements OnInit{
-  name=""
-  number=0
-  expire=0
-  cvv=0
-  totalPrice!:any
-  constructor(private http: HttpClient,
-    private cartService:CartService,
-    ) {
-      render({
-        id: "#myPalpal",
-        currency:"USD",
-        value:"100.000",
-        onApprove:(details)=>{
-          alert("success transaction")
-        }
-      })
+  payment:Payment = {} as Payment
+  totalPrice!: any;
+  constructor(private cartService: CartService,
+    private createOrder:CreateOrderService) {}
+
+  ngOnInit(): void {
+    const storedTotalPrice = localStorage.getItem('totalPrice');
+    if (storedTotalPrice) {
+      this.totalPrice = parseFloat(storedTotalPrice);
+    } else {
+      this.totalPrice = 0;
     }
-    ngOnInit(): void {
-      this.cartService.totalPrice.subscribe(totalPrice => {
-        this.totalPrice = totalPrice
-        // You can do whatever you want with the totalPrice value here
-      });
-    }
-  formValid() {
-    return this.name && this.number && this.expire && this.cvv;
-  }
-  submitForm() {
-    const paymentData = {
-      name: this.name,
-      number: this.number,
-      expire: this.expire,
-      cvv: this.cvv,
-    };
-    this.http.post('https://api.paymentprocessor.com/pay', paymentData)
-    .subscribe((response) => {
-      console.log('Payment successful', response);
-    }, (error) => {
-      console.error('Payment error', error);
+
+    this.cartService.totalPrice.subscribe(totalPrice => {
+      this.totalPrice = storedTotalPrice
     });
+  }
+
+  pay(){
+    this.payment.amount = this.totalPrice
+    console.log(this.payment);
+    this.createOrder.orderData(this.payment).subscribe((res)=>{
+        Swal.fire({
+          icon: 'success',
+          text: 'Your Order is Success!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+       // Remove total price from local storage
+  localStorage.removeItem('totalPrice');
   }
 }
 
