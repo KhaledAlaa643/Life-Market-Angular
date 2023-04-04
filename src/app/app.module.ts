@@ -20,7 +20,6 @@ import { ProductsComponent } from './Components/products/products.component';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MyaccountComponent } from './component/myaccount/myaccount.component';
 import { OrdersComponent } from './component/orders/orders.component';
@@ -62,6 +61,9 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { ProductRatingComponent } from './component/product-rating/product-rating.component';
 import { TrackOrderComponent } from './component/track-order/track-order.component';
+import { ForgetPasswordComponentComponent } from './component/forget-password-component/forget-password-component.component';
+import { ResetPasswordComponentComponent } from './component/reset-password-component/reset-password-component.component';
+import { NewPasswordComponentComponent } from './component/new-password-component/new-password-component.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,6 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     ProductsComponent,
     RegisterComponent,
     LoginComponent,
-    RequestPasswordResetComponent,
     ProfileComponent,
     MyaccountComponent,
     OrdersComponent,
@@ -123,6 +124,9 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     PaymentComponent,
     ProductRatingComponent,
     TrackOrderComponent,
+    ForgetPasswordComponentComponent,
+    ResetPasswordComponentComponent,
+    NewPasswordComponentComponent,
   ],
 
   imports: [
