@@ -15,7 +15,6 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { ProductsComponent } from './Components/products/products.component';
 import { FavItemComponent } from './Components/fav-item/fav-item.component';
 import { AuthGuard } from './guards/auth.guard';
-import { RequestPasswordResetComponent } from './component/request-password-reset/request-password-reset.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MyaccountComponent } from './component/myaccount/myaccount.component';
 import { OrdersComponent } from './component/orders/orders.component';
@@ -56,6 +55,9 @@ import { GalleryManagementComponent } from './Components/Dashboard/gallery-manag
 import { PaymentComponent } from './Components/payment/payment.component';
 import { ProductRatingComponent } from './component/product-rating/product-rating.component';
 import { TrackOrderComponent } from './component/track-order/track-order.component';
+import { ForgetPasswordComponentComponent } from './component/forget-password-component/forget-password-component.component';
+import { ResetPasswordComponentComponent } from './component/reset-password-component/reset-password-component.component';
+import { NewPasswordComponentComponent } from './component/new-password-component/new-password-component.component';
 
 
 const routes: Routes = [
@@ -64,8 +66,9 @@ const routes: Routes = [
 
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'reset-Password-Request',component:RequestPasswordResetComponent},
-
+  {path:'forget',component:ForgetPasswordComponentComponent},
+  {path:'reset',component:ResetPasswordComponentComponent},
+  {path:'password',component:NewPasswordComponentComponent},
   {path: 'main', component:MainLayoutComponent, children: [
     {path: 'home', component:HomeComponent},
     {path: 'products/list/:id', component:ProductsListComponent},
