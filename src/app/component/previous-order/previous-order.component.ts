@@ -26,7 +26,7 @@ export class PreviousOrderComponent implements OnInit {
   ngOnInit(): void {
     this.Orderserve.getOrdersByUser().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.prd = res;
       },
       error: (err) => { console.log(err.error.error) }
@@ -34,7 +34,26 @@ export class PreviousOrderComponent implements OnInit {
   }
 
   rateProduct(prd_id: any) {
-    this.route.navigate(['main/profile/productRating/', prd_id]);
+    this.prdServe.getRating(prd_id).subscribe({
+      next: (res) => {
+        // console.log(res);
+        if(res.length>0){
+          Swal.fire({
+            icon: 'info',
+            title: 'You have already reviewed this product',
+          })
+        }
+        else {
+          this.route.navigate(['main/profile/productRating/', prd_id]);
+        }
+      },
+      error: (err) => { 
+        Swal.fire({
+          icon: 'info',
+          title: 'You have already reviewed this product',
+        })
+      }
+    })
   }
 
 
