@@ -46,8 +46,8 @@
           </div>
 
           <div class="buttons d-flex flex-row mt-2 gap-3">
-            <button *ngIf="addBtn" (click)="addPrdToCart()" class="btn btn-primary bg px-4">Add To Cart</button>
-            <button *ngIf="!addBtn" (click)="addPrdToCart()" class="btn btn-primary bg px-4 disabled">Add To Cart</button>
+            <button *ngIf="addBtn && !y" (click)="addPrdToCart()" class="btn btn-primary bg px-4">Add To Cart</button>
+            <button *ngIf="!addBtn || y" (click)="addPrdToCart()" class="btn btn-primary bg px-4 disabled">Add To Cart</button>
             <button [routerLink]="['/main/home']" class="btn btn-secondary text-white px-4">Go Back</button>
             <button *ngIf="!isFav" (click)="addPrdToFav()" class="btn text-danger fs-3 m-0 p-0"><i class="fa-regular fa-heart"></i></button>
             <button *ngIf="isFav" (click)="addPrdToFav()" class="btn text-danger fs-3 m-0 p-0"><i class="fa-solid fa-heart"></i></button>

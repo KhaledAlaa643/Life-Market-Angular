@@ -20,6 +20,7 @@ export class ProductsListComponent implements OnChanges, OnInit {
   listId:any;
   @Input() sentCatId:string = '0';
   selectedCatId:string = '0';
+  isfull:any = 0;
 
   constructor(
     private _categoryServ: CategoryiesService,
@@ -30,10 +31,6 @@ export class ProductsListComponent implements OnChanges, OnInit {
     private router:Router,
   ){}
 
-
-
- 
-
   
   ngOnInit(): void {
     this.listId = String(this.activatRoute.snapshot.paramMap.get('id'));
@@ -42,7 +39,13 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByCatId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
-          console.log(res);
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
+          // console.log(res);
         }
       });
     }
@@ -50,7 +53,13 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByOfferId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
-          console.log(res);
+          // console.log(res);
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
           
         }
       });
@@ -59,6 +68,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByOfferId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -66,6 +81,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getProductsByOfferId(this.listId).subscribe({
         next: (res) => {
           this.prd = res;
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -73,6 +94,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getTopRatingProducts().subscribe({
         next: (res) => {
           this.prd = res;
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -80,6 +107,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
       this._productServ.getTopRatingProducts().subscribe({
         next: (res) => {
           this.prd = res;
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -88,6 +121,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
         next: (res) => {
           this.prd = res;
           // console.log(this.listId);
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -101,6 +140,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
         next:(res)=>{
           this.prd = res;
           // console.log(res);
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
         }
       });
     }
@@ -109,6 +154,12 @@ export class ProductsListComponent implements OnChanges, OnInit {
         next: (res)=>{
           this.prd = res;
           // console.log(res);
+          if(this.prd[0].name){
+            this.isfull=1;
+          }
+          else{
+            this.isfull=-1;
+          }
           
         }
       });

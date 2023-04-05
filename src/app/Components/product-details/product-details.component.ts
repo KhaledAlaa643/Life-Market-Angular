@@ -70,8 +70,11 @@ export class ProductDetailsComponent implements OnInit {
         // console.log(res);
         this.addBtn = true;
         this.x=false;
+        if(this.y==true){
+          this.addBtn = false;
+        }
         for (let i = 0; i < res.length; i++) {
-          if (res[i].prd_id == this.prdId || this.y==true) {
+          if (res[i].prd_id == this.prdId) {
             // console.log(res[i].prd_id);
             this.addBtn = false;
             this.x=true;

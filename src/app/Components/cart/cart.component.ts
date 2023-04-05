@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product'
 import { CartService } from 'src/app/Services/cart.service'
+import { ProductsService } from 'src/app/Services/products.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -12,20 +14,51 @@ export class CartComponent implements OnInit {
 
   products: any[] = [];
   totalPrice:number = 0;
+  topSellingProducts: Product[] = [];
+  topSelling: Product[] = [];
+  topRatingProducts: Product[] = [];
+  topRating: Product[] = [];
+  isfull:any = 0;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private _productServ: ProductsService,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
     this.cartService.getCarts().subscribe((res) => {
       this.products = res;
+      if(this.products[0].name){
+        this.isfull=1;
+      }
+      else{
+        this.isfull=-1;
+      }
       // console.log(this.products);
       this.products.forEach(e=>{
         this.totalPrice+=e.price*e.quantity;
       })
       // console.log(this.totalPrice);
     })
+
+    this._productServ.getTopSellingProducts().subscribe({
+      next: (res) => {
+        this.topSellingProducts = res;
+        for(let i=0;i<6;i++){
+          this.topSelling[i] = this.topSellingProducts[i];
+        }
+      }
+    });
+    this._productServ.getTopRatingProducts().subscribe({
+      next: (res) => {
+        this.topRatingProducts = res;
+        for(let i=0;i<6;i++){
+          this.topRating[i] = this.topRatingProducts[i];
+        }
+        // console.log(this.topSelling);
+      }
+    });
   }
 
   incrementPrd(_id:any) {
@@ -79,6 +112,20 @@ export class CartComponent implements OnInit {
         });
       }
     });
+  }
+
+  goToPrdList(_type:any, id:any){
+    if(_type == "cat"){
+      this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });
+    }
+    else{
+      this.router.navigate(['main/products/list', id], { queryParams: { type: _type} });
+    }
+  }
+
+
+  goToPrdDetails(id:any){
+    this.router.navigate(['main/product/', id]);
   }
 
 }
