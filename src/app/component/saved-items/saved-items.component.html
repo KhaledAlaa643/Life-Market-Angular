@@ -9,13 +9,13 @@
 
     <div class="col-3 col-lg-2" >
         <a (click)="goToPrdDetails(i[0].prd_id)" class="text-muted text-decoration-none d-flex">
-            <img [src]="'http://localhost:8000/storage/images/products/'+i[0].photo" width="100" class="w-100q p-1" alt="...">
+            <img [src]="'http://localhost:8000/storage/images/products/'+i[0].photo" height="100" class="w-100q p-1" alt="...">
         </a>
     </div>
-   <div class="col-8 my-auto">
-        <h6 class="card-title mx-2 text-decoration-none text-dark">{{i[0].name}}</h6>
-        <p class="mx-2" style="color:gray">{{i[0].description}}</p>
-        <h6 class="mx-2 mt-1 mb-0 text-dark text-decoration-none">EGP {{i[0].price}}</h6>
+   <div class="col-7 col-lg-8 my-auto">
+        <h5 class="card-title mx-2 text-decoration-none text-dark">{{i[0].name}}</h5>
+        <p class="mx-2 mb-1" style="color:gray">{{i[0].description}}</p>
+        <h6 class="mx-2 mt-0 mb-0 text-dark text-decoration-none">EGP {{i[0].price}}</h6>
         <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">
             EGP
             {{i[0].price_before_discount}}
@@ -23,8 +23,10 @@
     </div>
 
 
-    <div class="col-1 my-auto">
+    <div class="col-2 col-lg-1 my-auto">
         <a class="btn btn-danger text-white" (click)="deletFavItem(i[0].id)"><i class="fa-solid fa-trash-can"></i></a>
     </div>
+
+    <hr *ngIf="n<prd.length-1" class="my-3">
 
 </div>

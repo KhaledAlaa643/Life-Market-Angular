@@ -5,15 +5,15 @@
         <div class="d-flex flex-column justify-content-center">
           <div class="main_image">
             <!-- <p *ngFor="let i of prd">{{}}</p> -->
-            <img *ngFor="let i of prd" [src]="'http://localhost:8000/storage/images/products/'+photo" id="main_product_image" width="350" />
+            <img *ngFor="let i of prd" [src]="'http://localhost:8000/storage/images/products/'+photo" id="main_product_image"  height="300" />
           </div>
           <div class="thumbnail_images">
             <ul class="px-0" id="thumbnail">
               <li>
-                <img *ngFor="let i of prd" (click)="changeImage(i.photo)" [src]="'http://localhost:8000/storage/images/products/'+i.photo" width="70" />
+                <img *ngFor="let i of prd" (click)="changeImage(i.photo)" [src]="'http://localhost:8000/storage/images/products/'+i.photo" height="70" />
               </li>
               <li *ngFor="let i of prdPhoto">
-                <img (click)="changeImage(i.path)" [src]="'http://localhost:8000/storage/images/products/'+i.path" width="70" />
+                <img (click)="changeImage(i.path)" [src]="'http://localhost:8000/storage/images/products/'+i.path" height="70" />
               </li>
             </ul>
           </div>
