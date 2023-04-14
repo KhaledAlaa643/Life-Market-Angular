@@ -70,6 +70,9 @@ export class ProductsService {
 
   }
 
- 
+  getSimilarProducts(catId:any):Observable<any>{
+    return this._httpClient.get<any>(`${environment.apiURL}/similar_products/productdetails/${catId}`)
+
+  }
 
 }

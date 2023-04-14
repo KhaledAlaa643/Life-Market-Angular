@@ -1,4 +1,4 @@
-<div class="container mt-4 mb-4 px-0">
+<div class="container mt-4 mb-4 px-3">
   <div class="card">
     <div class="row g-0">
       <div class="col-md-6 border-end">
@@ -48,7 +48,7 @@
           <div class="buttons d-flex flex-row mt-2 gap-3">
             <button *ngIf="addBtn && !y" (click)="addPrdToCart()" class="btn btn-primary bg px-4">Add To Cart</button>
             <button *ngIf="!addBtn || y" (click)="addPrdToCart()" class="btn btn-primary bg px-4 disabled">Add To Cart</button>
-            <button [routerLink]="['/main/home']" class="btn btn-secondary text-white px-4">Go Back</button>
+            <button [routerLink]="['/main/home']" class="btn btn-secondary text-white px-4">Go To Homepage</button>
             <button *ngIf="!isFav" (click)="addPrdToFav()" class="btn text-danger fs-3 m-0 p-0"><i class="fa-regular fa-heart"></i></button>
             <button *ngIf="isFav" (click)="addPrdToFav()" class="btn text-danger fs-3 m-0 p-0"><i class="fa-solid fa-heart"></i></button>
           </div>
@@ -58,10 +58,44 @@
     </div>
   </div>
 </div>
+<div class="container mt-0 mb-5 p-0 px-4">
+  <div *ngIf="topSellingProducts.length>5" class="row mt-4">
+    <div class="card p-0 ">
+      <div class="card-header list-group-item-warning text-dark d-flex justify-content-between">
+        <h5 class="text-center mt-1">Similar Products</h5>
+        <a (click)="goToPrdList('topSelling','1')" class="p-1">SEE MORE</a>
+      </div>
+      <div class="row  px-3 pb-4">
+        <div *ngFor="let i of topSelling" class="col-lg-2 col-6 px-0 mt-2">
+          <a [href]="'main/product/'+i.id" class="text-muted text-decoration-none">
+            <div class="card shadow m-2 bg-body rounded h-100 p-1">
+              <div style="height: 170px;">
+                <img [src]="'http://localhost:8000/storage/images/products/'+i.photo" style="aspect-ratio: 1;  object-fit: contain;" class="card-img-top p-3 h-100"  alt="...">
+                </div>
+              <hr class="m-0 mb-2">
+              <p class="card-title mx-2 text-decoration-none text-dark">{{i.name}}</p>
+              <div *ngIf="i.prd_rating>0" class="ratings d-flex flex-row align-items-center px-2 mb-1">
+                <div class="d-flex flex-row" style="font-size: 12px;color: rgb(216, 178, 11);">
+                  <ng-container *ngFor="let index of [1,2,3,4,5],index as n">
+                    <i *ngIf="i.prd_rating>n" class="fa-solid fa-star"></i>
+                    <i *ngIf="i.prd_rating<=n" class="fa-regular fa-star"></i>
+                  </ng-container>
+                </div>
+              </div>
+              <h6 class="mx-2 mb-0 text-dark text-decoration-none">EGP {{i.price}}</h6>
+              <p *ngIf="i.price_before_discount>0" class="mx-2 mb-0 text-muted text-decoration-line-through">EGP
+                {{i.price_before_discount}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <section>
   <div class="container my-lg-5 py-4 text-dark">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-12 col-lg-10 col-xl-8">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-xl-12">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h4 class="text-dark mb-0">Comments ({{prdRating.length}})</h4>
           <div class="card">
@@ -91,7 +125,15 @@
       </div>
     </div>
   </div>
+
+
+  
+
+
 </section>
+
+
+
 <script>
   function changeImage(element) {
     var main_prodcut_image = document.getElementById('main_product_image');

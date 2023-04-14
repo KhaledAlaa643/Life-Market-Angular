@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   products: any[] = [];
   totalPrice:number = 0;
   topSellingProducts: Product[] = [];
-  topSelling: Product[] = [];
+  topSelling: Product[] = []; 
   topRatingProducts: Product[] = [];
   topRating: Product[] = [];
   isfull:any = 0;
@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getCarts().subscribe((res) => {
       this.products = res;
-      if(this.products[0].name){
+      if(this.products[0]){
         this.isfull=1;
       }
       else{
@@ -59,6 +59,8 @@ export class CartComponent implements OnInit {
         // console.log(this.topSelling);
       }
     });
+    console.log(this.isfull);
+    
   }
 
   incrementPrd(_id:any) {
