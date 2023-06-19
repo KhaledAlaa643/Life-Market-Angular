@@ -25,6 +25,10 @@ export class ProductDetailsComponent implements OnInit {
   isFav: boolean = false;
   x:boolean = false;
   y:boolean = false;
+  topSellingProducts: Product[] = [];
+  topSelling: Product[] = []; 
+  z:any = 0;
+  k:any = 6;
 
   constructor(
     private _productServ: ProductsService,
@@ -45,7 +49,22 @@ export class ProductDetailsComponent implements OnInit {
         if(this.prd[0].quantity<1){
           this.y=true;
         }
-        
+        this._productServ.getSimilarProducts(this.prd[0].sub_cat_id).subscribe({
+          
+          next: (res) => {
+            this.topSellingProducts = res;
+            for(let i=0;i<this.k;i++){
+              if(this.prd[0].id == this.topSellingProducts[i].id){
+                this.k++;
+                continue;
+              }
+              else{
+                this.topSelling[this.z] = this.topSellingProducts[i];
+                this.z++;
+              }
+            }
+          }
+        });
       }
     });
     this._productServ.getProductsPhoto(this.prdId).subscribe({
@@ -88,6 +107,8 @@ export class ProductDetailsComponent implements OnInit {
       }
     });
 
+    
+
 
     this._cartServ.getFavPrd(this.prdId).subscribe({
       next: (res) => {
@@ -129,6 +150,20 @@ export class ProductDetailsComponent implements OnInit {
       }
     });
 
+  }
+
+  goToPrdList(_type:any, id:any){
+    if(_type == "cat"){
+      this.router.navigate(['main/products/list/category', id], { queryParams: { type: _type} });
+    }
+    else{
+      this.router.navigate(['main/products/list', id], { queryParams: { type: _type} });
+    }
+  }
+
+
+  goToPrdDetails(id:any){
+    this.router.navigate(['main/product/', id]);
   }
 
 }

@@ -20,11 +20,31 @@
             </thead>
             <tbody>
               <tr *ngFor="let product of products">
-                <td><img [src]="'http://localhost:8000/storage/images/products/'+product.photo" alt="" width="70px" height="80px"></td>
-                <td>{{product.name}} </td>
-                <td>{{product.quantity }}</td>
-                <td>{{product.price }}</td>
-                <td>EGP {{product.price * product.quantity}}</td>
+                <td>
+                  <div style="height: 70px;">
+                    <img [src]="'http://localhost:8000/storage/images/products/'+product.photo" class="mb-2" style="aspect-ratio: 1;  object-fit: contain;" width="70px" height="70px">
+                  </div>
+                </td>
+                <td>
+                  <p class="my-auto mt-3">
+                    {{product.name}} 
+                  </p>
+                </td>
+                <td>
+                  <p class="my-auto mt-3">
+                    {{product.quantity }}
+                  </p>
+                </td>
+                <td>
+                  <p class="my-auto mt-3">
+                    {{product.price }}
+                  </p>
+                </td>
+                <td>
+                  <p class="my-auto mt-3">
+                    EGP {{product.price * product.quantity}}
+                  </p>
+                </td>
               </tr>
               <tr>
                 <td>
